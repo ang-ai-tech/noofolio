@@ -494,29 +494,30 @@
     <form hx-post="/create/step/5" hx-target=".creation-layout" hx-swap="outerHTML">
         <div class="form-row">
             <div class="form-group">
-                <label for="ai_guilty">😅 AI: Uso per...</label>
-                <textarea name="ai_guilty" id="ai_guilty" rows="4">{{ data.get('ai_guilty', '') }}</textarea>
+                <label for="ai_guilty">😅 Per quali task usi l'AI e ti vergogni un po' ad ammetterlo?</label>
+                <textarea name="ai_guilty" id="ai_guilty" rows="4" placeholder="Es: 'Scrivo email formali', 'Genero idee per brainstorming', ecc.">{{ data.get('ai_guilty', '') }}</textarea>
             </div>
             <div class="form-group">
-                <label for="ai_better">🤖 AI meglio di me</label>
-                <textarea name="ai_better" id="ai_better" rows="4">{{ data.get('ai_better', '') }}</textarea>
+                <label for="ai_never">🚫 Per quali invece non la useresti MAI?</label>
+                <textarea name="ai_never" id="ai_never" rows="4" placeholder="Es: 'Decisioni strategiche importanti', 'Feedback delicati al team', ecc.">{{ data.get('ai_never', '') }}</textarea>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group">
-                <label for="ai_never">🚫 AI: Mai per...</label>
-                <textarea name="ai_never" id="ai_never" rows="4">{{ data.get('ai_never', '') }}</textarea>
+                <label for="ai_better">🤖 C'è qualcosa che l'AI fa MEGLIO di te?</label>
+                <textarea name="ai_better" id="ai_better" rows="4" placeholder="Es: 'Analizzare grandi quantità di dati', 'Generare varianti creative', ecc.">{{ data.get('ai_better', '') }}</textarea>
             </div>
             <div class="form-group">
-                <label for="human_better">🧠 Io meglio dell'AI</label>
-                <textarea name="human_better" id="human_better" rows="4">{{ data.get('human_better', '') }}</textarea>
+                <label for="human_better">🧠 E qualcosa che tu fai meglio dell'AI (con prove concrete)?</label>
+                <textarea name="human_better" id="human_better" rows="4" placeholder="Es: 'Capire le dinamiche del team', 'Negoziare compromessi complessi', con esempi concreti">{{ data.get('human_better', '') }}</textarea>
             </div>
         </div>
 
         <div class="form-group">
             <label for="delta_story">📖 Storia Delta</label>
-            <textarea name="delta_story" id="delta_story" rows="5">{{ data.get('delta_story', '') }}</textarea>
+            <p class="form-help">Racconta un momento in cui la tua collaborazione con l'AI ha prodotto qualcosa di inaspettato o particolarmente brillante</p>
+            <textarea name="delta_story" id="delta_story" rows="5" placeholder="Es: 'Stavo cercando di risolvere X, l'AI mi ha suggerito Y, e insieme abbiamo scoperto Z...'">{{ data.get('delta_story', '') }}</textarea>
         </div>
 
         <div class="form-actions">
