@@ -9,23 +9,37 @@
 </div>
 
 <!-- Floating NooMe Chat Widget -->
-<div id="chat-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 2000;">
+<div id="chat-widget" style="position: fixed; bottom: 30px; right: 30px; z-index: 2000;">
     <!-- Chat Button (when closed) -->
     <button id="chat-toggle" onclick="toggleChat()" style="
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
+        min-width: 320px;
+        padding: 1.25rem 1.75rem;
+        border-radius: 16px;
         background: linear-gradient(135deg, var(--primary), var(--accent));
         border: none;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        box-shadow: 0 8px 24px rgba(99, 102, 241, 0.5), 0 0 0 0 rgba(99, 102, 241, 0.4);
         display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.8rem;
-        transition: transform 0.2s;
-    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-        🧠
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        animation: pulse-glow 2s ease-in-out infinite;
+    " onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(99, 102, 241, 0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(99, 102, 241, 0.5)'">
+        <div style="display: flex; align-items: center; gap: 0.75rem; width: 100%;">
+            <span style="font-size: 2rem;">🧠</span>
+            <div style="flex: 1; text-align: left;">
+                <div style="font-weight: 700; font-size: 1.1rem; color: #fff; margin-bottom: 0.25rem;">
+                    Chatta con {{ profile_name }}
+                </div>
+                <div style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.9); font-weight: 400;">
+                    Clicca e inizia a chattare con l'alterego digitale
+                </div>
+            </div>
+        </div>
+        <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.7); font-style: italic; margin-top: 0.25rem;">
+            💬 Puoi chiedermi quello che chiederesti a {{ profile_name }}
+        </div>
     </button>
 
     <!-- Chat Window (hidden by default) -->
@@ -132,6 +146,41 @@
 
 #chat-messages::-webkit-scrollbar-thumb:hover {
     background: var(--primary);
+}
+
+/* Chat toggle button animation */
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 8px 24px rgba(99, 102, 241, 0.5), 0 0 0 0 rgba(99, 102, 241, 0.4);
+    }
+    50% {
+        box-shadow: 0 8px 24px rgba(99, 102, 241, 0.5), 0 0 0 8px rgba(99, 102, 241, 0);
+    }
+}
+
+/* Responsive chat toggle */
+@media (max-width: 768px) {
+    #chat-toggle {
+        min-width: 280px !important;
+        padding: 1rem 1.25rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    #chat-toggle > div:first-child > span {
+        font-size: 1.5rem !important;
+    }
+
+    #chat-toggle > div:first-child > div > div:first-child {
+        font-size: 1rem !important;
+    }
+
+    #chat-toggle > div:first-child > div > div:nth-child(2) {
+        font-size: 0.75rem !important;
+    }
+
+    #chat-toggle > div:nth-child(2) {
+        font-size: 0.7rem !important;
+    }
 }
 </style>
 
