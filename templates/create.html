@@ -673,34 +673,110 @@
     <!-- Step 10: Generation -->
     <h2 class="step-header">✨ Generazione Noofolio</h2>
 
-    {% if ready_to_generate %}
-    <div id="generation-status">
-        <div class="status-box">
-            <p>⏳ Preparazione...</p>
+    <div id="generation-status" style="max-width: 600px; margin: 2rem auto;">
+        <div class="progress-container" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem;">
+            <div class="progress-steps">
+                <div class="progress-step" id="step-1" style="margin-bottom: 1rem; padding: 1rem; border-radius: 8px; background: rgba(99, 102, 241, 0.1);">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div class="spinner" style="width: 20px; height: 20px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                        <span id="step-1-text">⏳ Preparazione...</span>
+                    </div>
+                </div>
+                <div class="progress-step" id="step-2" style="margin-bottom: 1rem; padding: 1rem; border-radius: 8px; opacity: 0.5;">
+                    <span id="step-2-text">🔍 Rilevamento archetipo...</span>
+                </div>
+                <div class="progress-step" id="step-3" style="margin-bottom: 1rem; padding: 1rem; border-radius: 8px; opacity: 0.5;">
+                    <span id="step-3-text">🧩 Estrazione pattern...</span>
+                </div>
+                <div class="progress-step" id="step-4" style="margin-bottom: 1rem; padding: 1rem; border-radius: 8px; opacity: 0.5;">
+                    <span id="step-4-text">🌳 Analisi decisioni...</span>
+                </div>
+                <div class="progress-step" id="step-5" style="margin-bottom: 1rem; padding: 1rem; border-radius: 8px; opacity: 0.5;">
+                    <span id="step-5-text">✏️ Rilevamento firma...</span>
+                </div>
+                <div class="progress-step" id="step-6" style="margin-bottom: 1rem; padding: 1rem; border-radius: 8px; opacity: 0.5;">
+                    <span id="step-6-text">📖 Composizione narrativa...</span>
+                </div>
+                <div class="progress-step" id="step-7" style="margin-bottom: 1rem; padding: 1rem; border-radius: 8px; opacity: 0.5;">
+                    <span id="step-7-text">🎨 Generazione portfolio...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions" style="margin-top: 2rem;">
+            <button type="button" class="btn btn-secondary" onclick="goBackStep(9)" id="back-button">← Indietro</button>
         </div>
     </div>
 
+    <style>
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    </style>
+
     <script>
-    // Trigger generation
-    fetch('/api/generate', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'}
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            window.location.href = '/result/' + data.profile_id;
-        } else {
-            document.getElementById('generation-status').innerHTML =
-                '<div class="error-box"><p>❌ Errore: ' + data.error + '</p></div>';
+    // Avvia automaticamente la generazione quando si carica lo step 10
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentStep = {{ step }};
+        if (currentStep === 10) {
+            startGeneration();
         }
-    })
-    .catch(error => {
-        document.getElementById('generation-status').innerHTML =
-            '<div class="error-box"><p>❌ Errore di rete</p></div>';
     });
+
+    function startGeneration() {
+        // Nascondi il pulsante indietro durante la generazione
+        const backButton = document.getElementById('back-button');
+        if (backButton) backButton.style.display = 'none';
+
+        // Usa Server-Sent Events per il progresso in tempo reale
+        const eventSource = new EventSource('/api/generate-stream');
+
+        eventSource.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+
+            if (data.error) {
+                document.getElementById('generation-status').innerHTML =
+                    '<div class="error-box" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgb(239, 68, 68); padding: 1.5rem; border-radius: 8px;"><p>❌ Errore: ' + data.error + '</p><button type="button" class="btn btn-secondary" onclick="goBackStep(9)" style="margin-top: 1rem;">← Torna allo step precedente</button></div>';
+                eventSource.close();
+                return;
+            }
+
+            if (data.complete) {
+                eventSource.close();
+                // Redirect alla pagina dei risultati
+                window.location.href = '/result/' + data.profile_id;
+                return;
+            }
+
+            // Aggiorna lo step corrente
+            const stepNum = data.step;
+            const stepEl = document.getElementById('step-' + stepNum);
+            const stepText = document.getElementById('step-' + stepNum + '-text');
+
+            if (data.status === 'running') {
+                stepEl.style.background = 'rgba(99, 102, 241, 0.1)';
+                stepEl.style.opacity = '1';
+                stepEl.innerHTML = '<div style="display: flex; align-items: center; gap: 1rem;"><div class="spinner" style="width: 20px; height: 20px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite;"></div><span>' + data.text + '</span></div>';
+            } else if (data.status === 'done') {
+                stepEl.style.background = 'rgba(34, 197, 94, 0.1)';
+                stepEl.style.opacity = '1';
+                stepEl.innerHTML = '<div style="display: flex; align-items: center; gap: 1rem;"><span style="color: var(--accent-green);">✅</span><span>' + data.text + '</span></div>';
+
+                // Mostra l'archetipo se disponibile
+                if (data.data && data.data.archetype_name) {
+                    stepEl.innerHTML += '<div style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(99, 102, 241, 0.05); border-radius: 4px; font-size: 0.9rem;"><strong>Archetipo rilevato:</strong> ' + data.data.archetype_name + '</div>';
+                }
+            }
+        };
+
+        eventSource.onerror = function(error) {
+            console.error('EventSource error:', error);
+            document.getElementById('generation-status').innerHTML =
+                '<div class="error-box" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgb(239, 68, 68); padding: 1.5rem; border-radius: 8px;"><p>❌ Errore di connessione. Riprova.</p><button type="button" class="btn btn-secondary" onclick="goBackStep(9)" style="margin-top: 1rem;">← Torna allo step precedente</button></div>';
+            eventSource.close();
+        };
+    }
     </script>
-    {% endif %}
 
     {% endif %}
 
