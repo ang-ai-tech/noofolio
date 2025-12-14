@@ -3,171 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marco Rossi - Noofolio</title>
+    <title>Marco Rossi - The Hacker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: #0a0a0f;
-            color: #e2e8f0;
-            line-height: 1.7;
-            padding: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            background: #0a0a0a;
+            color: #f5f5f5;
+            line-height: 1.6;
+            font-size: 14px;
         }
-        .container { max-width: 900px; margin: 0 auto; }
-        .header {
-            text-align: center;
-            padding: 3rem 0;
-            border-bottom: 2px solid rgba(99, 102, 241, 0.3);
-            margin-bottom: 3rem;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        .archetype {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #6366f1, #22d3ee);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
+
+        /* Header - Stile caotico asimmetrico */
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            border: 2px solid #ea580c;
+            border-radius: 0 20px 0 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(234, 88, 12, 0.3);
         }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(234, 88, 12, 0.03) 10px,
+                rgba(234, 88, 12, 0.03) 20px
+            );
+            animation: glitch 8s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(2px, -2px); }
+            50% { transform: translate(-2px, 2px); }
+            75% { transform: translate(2px, 2px); }
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ea580c;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
         .tagline {
-            font-size: 1.2rem;
-            color: #94a3b8;
+            font-size: 1.2em;
+            color: #f97316;
+            margin-bottom: 20px;
             font-style: italic;
+            position: relative;
+            z-index: 1;
         }
-        .section {
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: rgba(18, 18, 26, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-        }
-        .section-title {
-            font-size: 1.5rem;
-            color: #818cf8;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .narrative {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #cbd5e1;
-        }
-        .highlight {
-            background: rgba(99, 102, 241, 0.15);
-            padding: 1.5rem;
-            border-left: 3px solid #6366f1;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-        .decision-card {
-            background: rgba(10, 10, 15, 0.8);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }
-        .badge {
+
+        .archetype {
             display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background: rgba(99, 102, 241, 0.2);
-            color: #818cf8;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            margin: 0.25rem;
+            background: #ea580c;
+            color: #0a0a0a;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
         }
-        ul { list-style: none; padding-left: 0; }
-        li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
-        li:before {
-            content: "→";
+
+        .links {
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .links a {
+            display: inline-block;
+            color: #ea580c;
+            text-decoration: none;
+            margin-right: 20px;
+            border: 1px solid #ea580c;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .links a:hover {
+            background: #ea580c;
+            color: #0a0a0a;
+            transform: translateX(3px);
+        }
+
+        /* Superpotere - Box asimmetrico in evidenza */
+        .superpotere {
+            background: #1a1a1a;
+            border-left: 5px solid #f97316;
+            border-right: 2px solid #ea580c;
+            border-top: 1px solid #ea580c;
+            border-bottom: 3px solid #f97316;
+            padding: 30px;
+            margin-bottom: 30px;
+            transform: rotate(-0.5deg);
+            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.2);
+        }
+
+        .superpotere h2 {
+            color: #ea580c;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        /* Sezioni - Layout caotico */
+        section {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 0 15px 0 15px;
+            position: relative;
+        }
+
+        section:nth-child(even) {
+            border-radius: 15px 0 15px 0;
+            border-color: #444;
+        }
+
+        section:hover {
+            border-color: #ea580c;
+            box-shadow: 0 0 15px rgba(234, 88, 12, 0.15);
+        }
+
+        h2 {
+            color: #f97316;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #ea580c;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #ea580c;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .project-box {
+            background: #0a0a0a;
+            border-left: 3px solid #f97316;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 0 8px;
+        }
+
+        .project-box h4 {
+            color: #ea580c;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        /* Liste - Stile tech */
+        ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        ul li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        ul li::before {
+            content: ">";
             position: absolute;
             left: 0;
-            color: #6366f1;
+            color: #ea580c;
+            font-weight: bold;
+        }
+
+        /* Highlight boxes */
+        .highlight {
+            background: rgba(234, 88, 12, 0.1);
+            border-left: 4px solid #ea580c;
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+
+        /* Footer - Terminal style */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 2px solid #ea580c;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .container { padding: 10px; }
+            section { padding: 20px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">Marco Rossi</h1>
-            <p class="archetype">Problem Solver × Pragmatist</p>
-            <p class="tagline">The Builder — Trasforma idee in prodotti funzionanti</p>
+        <header>
+            <h1>Marco Rossi</h1>
+            <p class="tagline">Breaking things until they work</p>
+            <div class="archetype">The Hacker = Builder × Chaos × Pragmatist</div>
+            <div class="links">
+                <a href="https://github.com/marcorossi" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/marco-rossi-dev" target="_blank">LinkedIn</a>
+            </div>
+        </header>
+
+        <div class="superpotere">
+            <h2>// Superpotere</h2>
+            <p>Trovare bug impossibili seguendo pattern invisibili. Tipo quando tutti dicono 'funziona sulla mia macchina' e io trovo quel race condition che si verifica solo martedì alle 3 di notte.</p>
         </div>
 
-        <div class="section">
-            <h2 class="section-title">💬 Opening</h2>
-            <p class="narrative">
-                Non sono il migliore a scrivere codice elegante. Ma se hai un bug che nessuno riesce a trovare, chiamami.
-            </p>
-        </div>
+        <section>
+            <h2>// Opening</h2>
+            <p>Full-stack developer da 5 anni. Ho iniziato in consulenza (impara a fare tutto velocemente), poi startup (impara che niente funziona come dovrebbe), ora founder di un side project (impara a dire no). Stack: Python, JavaScript, React, FastAPI. Philosophy: il codice migliore è quello che risolve il problema dell'utente, non quello che vince premi di architettura.</p>
+        </section>
 
-        <div class="section">
-            <h2 class="section-title">⚡ Superpotere</h2>
+        <section>
+            <h2>// Decision Log</h2>
+
+            <h3>Decisione Contro Corrente</h3>
             <div class="highlight">
-                <strong>Trovare bug impossibili seguendo pattern invisibili</strong>
+                <p>Team voleva microservizi perché 'scalabile' e tutti i blog dicevano che era il futuro. I dati dicevano: 200 utenti/giorno, 3 sviluppatori, zero esperienza con distributed systems. Ho proposto monolite modulare. Mi hanno detto che ero 'stuck in the past'. Ho fatto vedere i numeri: 3 settimane di setup vs 3 giorni, 40% del tempo in debugging di comunicazione tra servizi. Abbiamo fatto il monolite. 18 mesi dopo: deployment 3x più veloce della concorrenza, zero downtime, team ancora sano di mente.</p>
             </div>
-        </div>
 
-        <div class="section">
-            <h2 class="section-title">🌳 Decision Log</h2>
-            <div class="decision-card">
-                <h3 style="color: #22d3ee; margin-bottom: 0.75rem;">Contro corrente: Microservizi vs Monolite</h3>
-                <p style="margin-bottom: 0.5rem;"><strong>Contesto:</strong> Il team voleva microservizi, i dati suggerivano overhead eccessivo</p>
-                <p style="margin-bottom: 0.5rem;"><strong>Scelta:</strong> Monolite modulare</p>
-                <p style="color: #22c55e;"><strong>Risultato:</strong> 3x più veloce deployment, meno complessità</p>
-            </div>
-        </div>
+            <h3>Progetti Chiave</h3>
 
-        <div class="section">
-            <h2 class="section-title">💀 Failure Museum</h2>
-            <p class="narrative">
-                Ho passato 3 mesi a costruire una piattaforma perfetta di analytics che nessuno ha mai usato.
-                Avrei dovuto chiedere agli utenti cosa volevano prima di scrivere una riga di codice.
-            </p>
-        </div>
+            <div class="project-box">
+                <h4>Sistema di Caching Ibrido</h4>
+                <p><strong>Fork:</strong></p>
+                <p>Opzioni:<br>
+                A) Redis cluster (standard, documentato, tutti lo conoscono)<br>
+                B) In-memory + file cache (weird, custom, fragile)</p>
+                <p>Dati: 90% delle query erano read-only, infra budget limitato, deploy su server singolo.</p>
+                <p>Ho scelto B con un twist: in-memory per hot data, SQLite per persistence, Redis solo per invalidation signals.</p>
+                <p><strong>Risultato:</strong> 99.9% hit rate, $500/mese risparmiati, 1 dipendenza in meno. Il tech lead mi odiava ma gli utenti erano felici.</p>
+            </div>
 
-        <div class="section">
-            <h2 class="section-title">🤖 Human Delta</h2>
-            <div style="display: grid; gap: 1rem;">
-                <div>
-                    <h4 style="color: #818cf8; margin-bottom: 0.5rem;">AI: Uso per...</h4>
-                    <p>Boilerplate e documentazione. Non mi vergogno.</p>
-                </div>
-                <div>
-                    <h4 style="color: #818cf8; margin-bottom: 0.5rem;">AI: Mai per...</h4>
-                    <p>Decisioni architetturali o per capire il dominio del problema</p>
-                </div>
-                <div>
-                    <h4 style="color: #22c55e; margin-bottom: 0.5rem;">Io meglio dell'AI</h4>
-                    <p>Debugging, intuizione su dove cercare, feeling su cosa è rotto</p>
-                </div>
+            <div class="project-box">
+                <h4>Refactoring o Rewrite?</h4>
+                <p><strong>Fork:</strong></p>
+                <p>Codebase legacy di 50k righe in jQuery. Team split:<br>
+                A) Rewrite totale in React (sexy, portfolio-worthy)<br>
+                B) Refactor incrementale (noioso, sicuro)</p>
+                <p>Ho scelto C: rewrite graduale con strangler pattern.</p>
+                <p><strong>Perché:</strong> ogni 'big rewrite' che ho visto è fallito. Ma il codice era davvero brutto. Soluzione: nuove feature in React, vecchie feature solo se si rompono.</p>
+                <p><strong>Risultato:</strong> 6 mesi dopo: 60% migrato, zero down, utenti non se ne sono accorti.</p>
             </div>
-        </div>
 
-        <div class="section">
-            <h2 class="section-title">🧬 Firma Cognitiva</h2>
-            <div>
-                <h4 style="color: #22c55e; margin-bottom: 0.5rem;">✅ Strengths</h4>
-                <span class="badge">Debugging impossibile</span>
-                <span class="badge">Prototipazione rapida</span>
-                <span class="badge">Architetture pragmatiche</span>
-            </div>
-            <div style="margin-top: 1rem;">
-                <h4 style="color: #ef4444; margin-bottom: 0.5rem;">❌ Anti-Skills</h4>
-                <span class="badge">Design pixel-perfect</span>
-                <span class="badge">Long-term planning oltre 6 mesi</span>
-            </div>
-            <div style="margin-top: 1rem;">
-                <h4 style="color: #818cf8; margin-bottom: 0.5rem;">💎 Core Belief</h4>
-                <p class="narrative">
-                    Il miglior codice è quello che risolve il problema dell'utente, non quello che vince premi di architettura.
-                </p>
-            </div>
-        </div>
+            <h3>Peggior Decisione</h3>
+            <p>Ho scelto MongoDB perché era 'flessibile' e non volevo pensare allo schema. 6 mesi dopo: dati inconsistenti, query impossibili, migrations a mano. Ho speso 2 settimane a migrare tutto su PostgreSQL con proper schema. Lezione: la flessibilità senza disciplina è solo caos rimandato.</p>
+        </section>
 
-        <footer style="text-align: center; padding: 2rem; color: #64748b; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 3rem;">
-            <p>Generated by <strong>Noofolio</strong> – Your work, not your role.</p>
-            <p style="font-size: 0.85rem; margin-top: 0.5rem;">From the noosphere: decisions, judgment, and proof.</p>
+        <section>
+            <h2>// Anti-Skills</h2>
+
+            <h3>Eresia</h3>
+            <p>Credo che il 90% dei design patterns siano over-engineering. Factory di factory? Strategy pattern per 2 casi? No. YAGNI non è pigrizia, è saggezza. Il miglior codice è quello che puoi capire alle 3 di notte dopo 3 birre.</p>
+
+            <h3>Mai Più</h3>
+            <p>Mai più progetti dove 'Agile' significa 'nessun piano, cambiamo idea ogni giorno'. Vero agile = iterazioni veloci con direzione chiara. Fake agile = caos con standup. Ne ho fatti 2 così, entrambi finiti in burnout e turnover.</p>
+
+            <h3>Red Flags</h3>
+            <ul>
+                <li>Progetti senza staging environment - Production è per utenti, non per testing</li>
+                <li>'Fix this quick' senza capire la root cause - Fixing symptoms crea zombie bugs</li>
+                <li>Codice senza tests per 'andare veloce' - Lentezza viene dopo, con gli interessi</li>
+                <li>Build tool che nessuno nel team capisce - Se si rompe alle 2am, voglio fixarlo</li>
+            </ul>
+
+            <h3>Red Flags Aziendali</h3>
+            <p>Quando il CTO non fa code review. Quando 'move fast' significa 'skip tests'. Quando nessuno sa cosa gira in produzione. Quando l'ultimo deploy è stato 3 mesi fa. Quando 'tech debt' è una parolaccia.</p>
+        </section>
+
+        <section>
+            <h2>// Failure Museum</h2>
+
+            <h3>Fallimento Più Grande</h3>
+            <div class="highlight">
+                <p>Analytics Platform Perfetto Che Nessuno Ha Usato. 3 mesi di lavoro. Dashboard bellissime. Metriche sophisticated. Zero adoption. Perché? Non avevo chiesto agli utenti cosa volevano. Avevo assunto che 'più dati = meglio'. Falso. Volevano 3 numeri grossi e un alert se qualcosa va male. Ho imparato: talk to users before writing code, not after.</p>
+            </div>
+
+            <h3>Pattern di Fallimento</h3>
+            <p>Tendo a over-engineer quando sono insicuro. Se non so la soluzione, aggiungo layers finché mi sento safe. Risultato: codice complicato che nasconde il fatto che non ho capito il problema. Sto imparando a scrivere la soluzione più stupida che funziona, THEN iterare.</p>
+
+            <h3>Credenza Uccisa</h3>
+            <p>Credevo che 'clean code' fosse il valore supremo. Poi ho lavorato su un codebase 'sporco' che generava 50M euro/anno e un codebase 'pulito' che nessuno usava. Ho capito: clean code è un mezzo, non un fine. Il fine è risolvere problemi. Se il codice brutto funziona e quello bello no, vince il brutto.</p>
+
+            <h3>Feedback Brutale</h3>
+            <p class="highlight">'Sei bravissimo a fixare problemi tecnici, ma ignori quelli umani. Quel bug che hai fixato? Il vero problema era che il PM e il designer non si parlavano.' — Senior dev. Aveva ragione. Ora debuggo anche le comunicazioni, non solo il codice.</p>
+        </section>
+
+        <section>
+            <h2>// Human Delta</h2>
+
+            <h3>AI Guilty</h3>
+            <p>Uso AI per: boilerplate (React components, API endpoints), documentazione, code reviews automatici, refactoring suggestions. Ha trasformato le parti noiose da ore a minuti. Non mi vergogno.</p>
+
+            <h3>AI Never</h3>
+            <p>Mai per: capire requirement ambigui (AI inventa plausibilmente), decisioni architetturali strategiche (AI non sa il contesto), debugging di race conditions (AI guessa, io ragiono), valutare trade-off di performance (AI cita best practices, io misuro).</p>
+
+            <h3>AI Meglio di Me</h3>
+            <p>L'AI è meglio di me a: generare varianti di codice, ricordare sintassi obscure, scrivere tests tedious ma importanti, mantenere consistenza in codebase grossi.</p>
+
+            <h3>Io Meglio di AI</h3>
+            <p>Io sono meglio a: capire PERCHÉ un bug esiste (non solo DOVE), intuire quale parte del codice nasconde complessità, sapere quando fermarmi invece di aggiungere features, leggere tra le righe dei requirement del cliente.</p>
+
+            <h3>Delta Story</h3>
+            <div class="highlight">
+                <p><strong>Cliente:</strong> 'Il sistema è lento, ottimizza il database.'</p>
+                <p><strong>AI avrebbe:</strong> generato query ottimizzate, suggerito indici, proposto caching.</p>
+                <p><strong>Io ho fatto:</strong> aperto browser dev tools. Il bottleneck era un'immagine 15MB che caricavano in ogni pagina.</p>
+                <p><strong>Fix:</strong> 5 minuti di image optimization.</p>
+                <p><strong>Valore:</strong> problema risolto senza toccare il database.</p>
+                <p>L'AI ottimizza quello che gli chiedi. L'umano trova il vero problema.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>// Curiosity Stack</h2>
+
+            <h3>Masterclass</h3>
+            <p>Farei una masterclass su 'Debugging Esistenziale': come trovare bug che non dovrebbero esistere. Tipo: 'funziona in dev, staging, ma non in prod'. 'Si rompe solo per questo cliente'. 'Era funzionante ieri, codice non è cambiato'. Debugging è filosofia applicata.</p>
+
+            <h3>Libri</h3>
+            <ul>
+                <li>The Pragmatic Programmer - bibbia pratica</li>
+                <li>Designing Data-Intensive Applications - capire cosa succede sotto</li>
+                <li>A Philosophy of Software Design - complessità spiegata bene</li>
+                <li>Release It! - produzione non è dev con utenti</li>
+            </ul>
+
+            <h3>Media</h3>
+            <p><strong>Podcast:</strong> Software Engineering Daily, Changelog</p>
+            <p><strong>YouTube:</strong> ThePrimeagen (hot takes su tech), Fireship (memes con sostanza)</p>
+            <p><strong>Blog:</strong> Hillel Wayne (formal methods reso umano), Dan Luu (performance deep dives)</p>
+
+            <h3>Persone</h3>
+            <p>Un senior che mi ha insegnato: 'Leggi il codice come leggi il codice degli altri. Anche se è tuo.' Un PM che mi ha fatto capire che 'funziona' non basta, deve risolvere il problema giusto. Un founder che mi ha mostrato che shipping imperfetto batte perfetto mai rilasciato.</p>
+
+            <h3>Connessione Inaspettata</h3>
+            <p>Studio scacchi. C'entra col coding? Più di quanto pensassi: pattern recognition, pensare 3 mosse avanti, quando sacrificare eleganza per tattica, accettare che non puoi calcolare tutto. Debugging complesso è come endgame: meno pezzi, più conta ogni mossa.</p>
+
+            <h3>Rabbit Hole</h3>
+            <p>Sto esplorando come Rust gestisce memory safety senza garbage collection. Non perché devo usarlo, ma perché cambia come penso alla ownership anche in Python/JS. Ogni linguaggio che impari ti mostra blind spots degli altri.</p>
+        </section>
+
+        <section>
+            <h2>// Human API</h2>
+
+            <h3>Come Comunicare</h3>
+            <p>Preferisco async (Slack, email, GitHub issues) per cose che richiedono pensiero. Call per brainstorming o quando c'è troppo context-switching. Se mi scrivi alle 23:00 rispondo, ma non aspettartelo. Se serve urgente, chiamami, non messaggiare 'ciao' e aspettare.</p>
+
+            <h3>Feedback Style</h3>
+            <p>Voglio feedback specifico con esempi. 'Questo codice è confuso' non aiuta. 'Questa funzione fa 3 cose, splittala' aiuta. Do feedback allo stesso modo: non giudizio, ma osservazioni + suggerimenti. Pull request sono per imparare, non per flex.</p>
+
+            <h3>Crash Triggers</h3>
+            <p>Vado in crash quando: priorità cambiano ogni 2 giorni senza spiegazione, 'urgent' diventa il default, meeting senza agenda che potevano essere email, mi chiedono stime su progetti che non ho capito.</p>
+
+            <h3>Bias Conosciuti</h3>
+            <p>Preferisco soluzioni tecniche a soluzioni umane (automazione vs comunicazione). Sottovaluto il tempo di documentazione. Sovrastimo quanto gli altri sanno di contesto che io do per scontato. Tendo a fixare sintomi prima di capire root cause.</p>
+
+            <h3>Condizioni Ideali</h3>
+            <p>Blocchi di 3-4 ore senza interruzioni per deep work. Autonomia su 'come', allineamento su 'cosa' e 'perché'. Deployment frequency alta (paura viene da deploy rari). Team che fa code review costruttive. Accesso a produzione per debuggare (con safety nets).</p>
+        </section>
+
+        <section>
+            <h2>// What's Next</h2>
+
+            <h3>Sto Imparando</h3>
+            <p>Voglio capire meglio system design e distributed systems. Non per fare microservizi ovunque, ma per sapere quando servono davvero. Anche: come scrivere codice che altri possono mantenere facilmente (il me tra 6 mesi è 'altri').</p>
+
+            <h3>Tra 2 Anni</h3>
+            <p>Voglio essere passato da 'developer che scrive codice' a 'developer che abilita altri developer'. Questo significa: mentorship, migliori processi, meno hero coding. E vorrei aver lanciato il mio side project a revenue sostenibile.</p>
+
+            <h3>Dream Project</h3>
+            <p>Una piattaforma di 'debugging condiviso' - tipo Stack Overflow ma per bug specifici, con timeline, ipotesi testate, dead ends documentati. Quante volte risolvi un bug obscure e quel knowledge si perde? Voglio catturare quel processo.</p>
+        </section>
+
+        <footer>
+            <p>Generated by Noofolio | The Hacker = Builder × Chaos × Pragmatist</p>
         </footer>
     </div>
 </body>

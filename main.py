@@ -388,16 +388,45 @@ async def generate_express(request: Request):
     """Generate portfolio from Express mode (5 questions)"""
     try:
         form_data = await request.form()
-        
+
+        # Handle CV - check type and process accordingly
+        cv_content = ''
+        cv_type = form_data.get('cv_type', 'text')
+
+        if cv_type == 'upload' and 'cv_file' in form_data:
+            cv_file = form_data['cv_file']
+            if cv_file and hasattr(cv_file, 'file'):
+                try:
+                    file_content = await cv_file.read()
+                    cv_content = FileProcessor.process_cv_file(file_content, cv_file.filename)
+                except Exception as e:
+                    cv_content = f"[Errore processing CV file: {e}]"
+        elif cv_type == 'link':
+            cv_link = form_data.get('cv_link', '')
+            if cv_link:
+                cv_content = f"CV disponibile al link: {cv_link}\n[Il sistema dovrebbe fetchare il contenuto automaticamente]"
+        else:
+            cv_content = form_data.get('cv_content', '')
+
+        # Handle multiple links
+        link_urls = form_data.getlist('link_url[]')
+        link_types = form_data.getlist('link_type[]')
+
+        links = []
+        for url, link_type in zip(link_urls, link_types):
+            if url and url.strip():
+                links.append({'url': url.strip(), 'type': link_type})
+
         # Build simplified user_data
         user_data = {
             'nome': form_data.get('nome'),
             'cognome': form_data.get('cognome'),
-            'cv_content': form_data.get('cv_content'),
+            'cv_content': cv_content,
             'superpotere': form_data.get('superpotere'),
             'against_data': form_data.get('key_decision'),  # Map to decision log
             'human_better': form_data.get('human_delta'),  # Map to human delta
-            'main_link': form_data.get('main_link', ''),
+            'links': links,  # Multiple links
+            'main_link': links[0]['url'] if links else '',  # First link as main
             # Set defaults for missing fields
             'presentazione': '',
             'projects': [],
