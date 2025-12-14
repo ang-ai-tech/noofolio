@@ -151,63 +151,63 @@
         <h3 class="step-sidebar-title">Creazione Noofolio</h3>
         <ul class="step-list">
             <li class="step-item {% if step == 1 %}active{% elif step > 1 %}completed{% else %}pending{% endif %}">
-                <span class="step-number">{% if step > 1 %}✓{% else %}1{% endif %}</span>
+                <span class="step-number">{% if step > 1 %}âœ“{% else %}1{% endif %}</span>
                 <div class="step-info">
                     <div class="step-title">Chi Sei</div>
                     <div class="step-description">Nome, CV, Links</div>
                 </div>
             </li>
             <li class="step-item {% if step == 2 %}active{% elif step > 2 %}completed{% else %}pending{% endif %}">
-                <span class="step-number">{% if step > 2 %}✓{% else %}2{% endif %}</span>
+                <span class="step-number">{% if step > 2 %}âœ“{% else %}2{% endif %}</span>
                 <div class="step-info">
                     <div class="step-title">Decision Log</div>
                     <div class="step-description">Scelte chiave</div>
                 </div>
             </li>
             <li class="step-item {% if step == 3 %}active{% elif step > 3 %}completed{% else %}pending{% endif %}">
-                <span class="step-number">{% if step > 3 %}✓{% else %}3{% endif %}</span>
+                <span class="step-number">{% if step > 3 %}âœ“{% else %}3{% endif %}</span>
                 <div class="step-info">
                     <div class="step-title">Anti-Skills</div>
                     <div class="step-description">Cosa NON fai</div>
                 </div>
             </li>
             <li class="step-item {% if step == 4 %}active{% elif step > 4 %}completed{% else %}pending{% endif %}">
-                <span class="step-number">{% if step > 4 %}✓{% else %}4{% endif %}</span>
+                <span class="step-number">{% if step > 4 %}âœ“{% else %}4{% endif %}</span>
                 <div class="step-info">
                     <div class="step-title">Failure Museum</div>
                     <div class="step-description">I fallimenti</div>
                 </div>
             </li>
             <li class="step-item {% if step == 5 %}active{% elif step > 5 %}completed{% else %}pending{% endif %}">
-                <span class="step-number">{% if step > 5 %}✓{% else %}5{% endif %}</span>
+                <span class="step-number">{% if step > 5 %}âœ“{% else %}5{% endif %}</span>
                 <div class="step-info">
                     <div class="step-title">Human Delta</div>
                     <div class="step-description">Tu vs AI</div>
                 </div>
             </li>
             <li class="step-item {% if step == 6 %}active{% elif step > 6 %}completed{% else %}pending{% endif %}">
-                <span class="step-number">{% if step > 6 %}✓{% else %}6{% endif %}</span>
+                <span class="step-number">{% if step > 6 %}âœ“{% else %}6{% endif %}</span>
                 <div class="step-info">
                     <div class="step-title">Curiosity Stack</div>
                     <div class="step-description">Fonti di ispirazione</div>
                 </div>
             </li>
             <li class="step-item {% if step == 7 %}active{% elif step > 7 %}completed{% else %}pending{% endif %}">
-                <span class="step-number">{% if step > 7 %}✓{% else %}7{% endif %}</span>
+                <span class="step-number">{% if step > 7 %}âœ“{% else %}7{% endif %}</span>
                 <div class="step-info">
                     <div class="step-title">Human API</div>
                     <div class="step-description">Manuale d'uso</div>
                 </div>
             </li>
             <li class="step-item {% if step == 8 %}active{% elif step > 8 %}completed{% else %}pending{% endif %}">
-                <span class="step-number">{% if step > 8 %}✓{% else %}8{% endif %}</span>
+                <span class="step-number">{% if step > 8 %}âœ“{% else %}8{% endif %}</span>
                 <div class="step-info">
                     <div class="step-title">What's Next</div>
                     <div class="step-description">Obiettivi futuri</div>
                 </div>
             </li>
             <li class="step-item {% if step == 9 %}active{% elif step > 9 %}completed{% else %}pending{% endif %}">
-                <span class="step-number">{% if step > 9 %}✓{% else %}9{% endif %}</span>
+                <span class="step-number">{% if step > 9 %}âœ“{% else %}9{% endif %}</span>
                 <div class="step-info">
                     <div class="step-title">Immagini</div>
                     <div class="step-description">Gallery personale</div>
@@ -228,17 +228,17 @@
 
     {% if step == 1 %}
     <!-- Step 1: Chi Sei -->
-    <h2 class="step-header">📋 Step 1: Chi Sei</h2>
+    <h2 class="step-header">ðŸ“‹ Step 1: Chi Sei</h2>
 
     <div class="encouragement-box">
-        <h4>✨ Prima di iniziare...</h4>
-        <p>Ci vorrà pazienza ma ne varrà la pena. I recruiter potranno chattare col tuo profilo.</p>
+        <h4>âœ¨ Prima di iniziare...</h4>
+        <p>Ci vorrÃ  pazienza ma ne varrÃ  la pena. I recruiter potranno chattare col tuo profilo.</p>
         <p style="margin-top: 1rem; padding: 0.75rem; background: rgba(99, 102, 241, 0.1); border-left: 3px solid var(--primary); border-radius: 4px; font-size: 0.9rem;">
-            ⏭️ <strong>Ricorda:</strong> Tutte le domande sono facoltative! Puoi skippare e andare avanti. Più rispondi, migliore sarà il risultato.
+            â­ï¸ <strong>Ricorda:</strong> Tutte le domande sono facoltative! Puoi skippare e andare avanti. PiÃ¹ rispondi, migliore sarÃ  il risultato.
         </p>
     </div>
 
-    <form hx-post="/create/step/1" hx-target=".creation-layout" hx-swap="outerHTML" enctype="multipart/form-data">
+    <form hx-validate="true" hx-post="/create/step/1" hx-target=".creation-layout" hx-swap="outerHTML" enctype="multipart/form-data">
         <div class="form-row">
             <div class="form-group">
                 <label for="nome">Nome *</label>
@@ -252,7 +252,7 @@
 
         <!-- CV Section with 3 options -->
         <div class="form-group">
-            <label>📄 CV / Background *</label>
+            <label>ðŸ“„ CV / Background *</label>
             <div class="cv-options" style="margin-top: 0.5rem;">
                 <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
                     <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
@@ -282,7 +282,7 @@
                 </div>
 
                 <div id="cv-text" style="display: block;">
-                    <textarea name="cv_content" rows="8" required
+                    <textarea name="cv_content" rows="8"
                               placeholder="Incolla qui il testo del tuo CV o descrivi il tuo background professionale...">{{ data.get('cv_content', '') }}</textarea>
                 </div>
             </div>
@@ -290,7 +290,7 @@
 
         <!-- Links Section (Dynamic) -->
         <div class="form-group">
-            <label>🔗 Link professionali</label>
+            <label>ðŸ”— Link professionali</label>
             <p class="form-help">Aggiungi LinkedIn, GitHub, Behance, Articoli, Portfolio, ecc.</p>
 
             <div id="links-container">
@@ -306,7 +306,7 @@
                         <option value="Articolo">Articolo</option>
                         <option value="Altro">Altro</option>
                     </select>
-                    <button type="button" onclick="removeLink(this)" class="btn-icon" style="padding: 0.75rem; background: var(--accent-red); color: white; border: none; border-radius: 8px; cursor: pointer;">✕</button>
+                    <button type="button" onclick="removeLink(this)" class="btn-icon" style="padding: 0.75rem; background: var(--accent-red); color: white; border: none; border-radius: 8px; cursor: pointer;">âœ•</button>
                 </div>
 
                 <div class="link-row" style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
@@ -320,39 +320,59 @@
                         <option value="Articolo">Articolo</option>
                         <option value="Altro">Altro</option>
                     </select>
-                    <button type="button" onclick="removeLink(this)" class="btn-icon" style="padding: 0.75rem; background: var(--accent-red); color: white; border: none; border-radius: 8px; cursor: pointer;">✕</button>
+                    <button type="button" onclick="removeLink(this)" class="btn-icon" style="padding: 0.75rem; background: var(--accent-red); color: white; border: none; border-radius: 8px; cursor: pointer;">âœ•</button>
                 </div>
             </div>
 
             <button type="button" onclick="addLink()" class="btn btn-secondary" style="margin-top: 0.5rem;">
-                ➕ Aggiungi link
+                âž• Aggiungi link
             </button>
         </div>
 
         <div class="form-group">
-            <label for="superpotere">⚡ Superpotere</label>
+            <label for="superpotere">âš¡ Superpotere</label>
             <p class="form-help">Se i tuoi amici o i tuoi colleghi ti definissero un supereroe, quale sarebbe il tuo superpotere?</p>
             <textarea name="superpotere" id="superpotere" rows="3"
                       placeholder='Es: "Sono quello che trova il bug impossibile" oppure "Riesco a semplificare idee complesse"'>{{ data.get('superpotere', '') }}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="presentazione">💬 Presentazione</label>
+            <label for="presentazione">ðŸ’¬ Presentazione</label>
             <textarea name="presentazione" id="presentazione" rows="3">{{ data.get('presentazione', '') }}</textarea>
         </div>
 
         <div class="form-actions">
-            <a href="/" class="btn btn-secondary">← Home</a>
-            <button type="submit" class="btn btn-primary">Avanti →</button>
+            <a href="/" class="btn btn-secondary">â† Home</a>
+            <button type="submit" class="btn btn-primary">Avanti â†’</button>
         </div>
     </form>
 
     <script>
     function toggleCVInput(type) {
+        const cvText = document.querySelector('[name="cv_content"]');
+        const cvFile = document.querySelector('[name="cv_file"]');
+        const cvLink = document.querySelector('[name="cv_link"]');
+        
         document.getElementById('cv-upload').style.display = type === 'upload' ? 'block' : 'none';
         document.getElementById('cv-link').style.display = type === 'link' ? 'block' : 'none';
         document.getElementById('cv-text').style.display = type === 'text' ? 'block' : 'none';
+        
+        // Gestisci required dinamicamente
+        if (type === 'text') {
+            cvText.required = true;
+            if (cvFile) cvFile.required = false;
+            if (cvLink) cvLink.required = false;
+        } else if (type === 'upload') {
+            cvText.required = false;
+            if (cvFile) cvFile.required = true;
+            if (cvLink) cvLink.required = false;
+        } else if (type === 'link') {
+            cvText.required = false;
+            if (cvFile) cvFile.required = false;
+            if (cvLink) cvLink.required = true;
+        }
     }
+
 
     function addLink() {
         const container = document.getElementById('links-container');
@@ -370,7 +390,7 @@
                 <option value="Articolo">Articolo</option>
                 <option value="Altro">Altro</option>
             </select>
-            <button type="button" onclick="removeLink(this)" class="btn-icon" style="padding: 0.75rem; background: var(--accent-red); color: white; border: none; border-radius: 8px; cursor: pointer;">✕</button>
+            <button type="button" onclick="removeLink(this)" class="btn-icon" style="padding: 0.75rem; background: var(--accent-red); color: white; border: none; border-radius: 8px; cursor: pointer;">âœ•</button>
         `;
         container.appendChild(newRow);
     }
@@ -382,220 +402,220 @@
 
     {% elif step == 2 %}
     <!-- Step 2: Decision Log -->
-    <h2 class="step-header">🌳 Step 2: Decision Log</h2>
+    <h2 class="step-header">ðŸŒ³ Step 2: Decision Log</h2>
 
-    <form hx-post="/create/step/2" hx-target=".creation-layout" hx-swap="outerHTML">
+    <form hx-validate="true" hx-post="/create/step/2" hx-target=".creation-layout" hx-swap="outerHTML">
         <div class="form-group">
-            <label for="against_data">🎯 Decisione Contro Corrente</label>
+            <label for="against_data">ðŸŽ¯ Decisione Contro Corrente</label>
             <p class="form-help">L'ultima volta che sei andato CONTRO i dati o il team</p>
             <textarea name="against_data" id="against_data" rows="6">{{ data.get('against_data', '') }}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="project_desc">📖 Progetto con Biforcazione</label>
+            <label for="project_desc">ðŸ“– Progetto con Biforcazione</label>
             <textarea name="project_desc" id="project_desc" rows="6">{{ data.get('project_desc', '') }}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="worst_decision">💀 Peggior Decisione</label>
+            <label for="worst_decision">ðŸ’€ Peggior Decisione</label>
             <textarea name="worst_decision" id="worst_decision" rows="4">{{ data.get('worst_decision', '') }}</textarea>
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
-            <button type="submit" class="btn btn-primary">Avanti →</button>
+            <button type="button" class="btn btn-secondary" onclick="history.back()">â† Indietro</button>
+            <button type="submit" class="btn btn-primary">Avanti â†’</button>
         </div>
     </form>
 
     {% elif step == 3 %}
     <!-- Step 3: Anti-Skills -->
-    <h2 class="step-header">🚫 Step 3: Anti-Skills</h2>
+    <h2 class="step-header">ðŸš« Step 3: Anti-Skills</h2>
 
-    <form hx-post="/create/step/3" hx-target=".creation-layout" hx-swap="outerHTML">
+    <form hx-validate="true" hx-post="/create/step/3" hx-target=".creation-layout" hx-swap="outerHTML">
         <div class="form-group">
-            <label for="heresy">🔥 Eresia Professionale</label>
+            <label for="heresy">ðŸ”¥ Eresia Professionale</label>
             <textarea name="heresy" id="heresy" rows="5">{{ data.get('heresy', '') }}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="anti_skills">🚫 Cosa NON Fai</label>
+            <label for="anti_skills">ðŸš« Cosa NON Fai</label>
             <textarea name="anti_skills" id="anti_skills" rows="5">{{ data.get('anti_skills', '') }}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="red_flags">🚩 Red Flags</label>
+            <label for="red_flags">ðŸš© Red Flags</label>
             <textarea name="red_flags" id="red_flags" rows="4">{{ data.get('red_flags', '') }}</textarea>
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
-            <button type="submit" class="btn btn-primary">Avanti →</button>
+            <button type="button" class="btn btn-secondary" onclick="history.back()">â† Indietro</button>
+            <button type="submit" class="btn btn-primary">Avanti â†’</button>
         </div>
     </form>
 
     {% elif step == 4 %}
     <!-- Step 4: Failure Museum -->
-    <h2 class="step-header">💀 Step 4: Failure Museum</h2>
+    <h2 class="step-header">ðŸ’€ Step 4: Failure Museum</h2>
 
-    <form hx-post="/create/step/4" hx-target=".creation-layout" hx-swap="outerHTML">
+    <form hx-validate="true" hx-post="/create/step/4" hx-target=".creation-layout" hx-swap="outerHTML">
         <div class="form-group">
-            <label for="biggest_failure">💥 Fallimento Vero</label>
+            <label for="biggest_failure">ðŸ’¥ Fallimento Vero</label>
             <textarea name="biggest_failure" id="biggest_failure" rows="6">{{ data.get('biggest_failure', '') }}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="pattern_failure">🔄 Pattern di Errore</label>
+            <label for="pattern_failure">ðŸ”„ Pattern di Errore</label>
             <textarea name="pattern_failure" id="pattern_failure" rows="4">{{ data.get('pattern_failure', '') }}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="belief_murdered">💔 Credenza Assassinata</label>
+            <label for="belief_murdered">ðŸ’” Credenza Assassinata</label>
             <textarea name="belief_murdered" id="belief_murdered" rows="4">{{ data.get('belief_murdered', '') }}</textarea>
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
-            <button type="submit" class="btn btn-primary">Avanti →</button>
+            <button type="button" class="btn btn-secondary" onclick="history.back()">â† Indietro</button>
+            <button type="submit" class="btn btn-primary">Avanti â†’</button>
         </div>
     </form>
 
     {% elif step == 5 %}
     <!-- Step 5: Human Delta -->
-    <h2 class="step-header">🤖 Step 5: Human Delta</h2>
+    <h2 class="step-header">ðŸ¤– Step 5: Human Delta</h2>
 
-    <form hx-post="/create/step/5" hx-target=".creation-layout" hx-swap="outerHTML">
+    <form hx-validate="true" hx-post="/create/step/5" hx-target=".creation-layout" hx-swap="outerHTML">
         <div class="form-row">
             <div class="form-group">
-                <label for="ai_guilty">😅 AI: Uso per...</label>
+                <label for="ai_guilty">ðŸ˜… AI: Uso per...</label>
                 <textarea name="ai_guilty" id="ai_guilty" rows="4">{{ data.get('ai_guilty', '') }}</textarea>
             </div>
             <div class="form-group">
-                <label for="ai_better">🤖 AI meglio di me</label>
+                <label for="ai_better">ðŸ¤– AI meglio di me</label>
                 <textarea name="ai_better" id="ai_better" rows="4">{{ data.get('ai_better', '') }}</textarea>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group">
-                <label for="ai_never">🚫 AI: Mai per...</label>
+                <label for="ai_never">ðŸš« AI: Mai per...</label>
                 <textarea name="ai_never" id="ai_never" rows="4">{{ data.get('ai_never', '') }}</textarea>
             </div>
             <div class="form-group">
-                <label for="human_better">🧠 Io meglio dell'AI</label>
+                <label for="human_better">ðŸ§  Io meglio dell'AI</label>
                 <textarea name="human_better" id="human_better" rows="4">{{ data.get('human_better', '') }}</textarea>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="delta_story">📖 Storia Delta</label>
+            <label for="delta_story">ðŸ“– Storia Delta</label>
             <textarea name="delta_story" id="delta_story" rows="5">{{ data.get('delta_story', '') }}</textarea>
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
-            <button type="submit" class="btn btn-primary">Avanti →</button>
+            <button type="button" class="btn btn-secondary" onclick="history.back()">â† Indietro</button>
+            <button type="submit" class="btn btn-primary">Avanti â†’</button>
         </div>
     </form>
 
     {% elif step == 6 %}
     <!-- Step 6: Curiosity Stack -->
-    <h2 class="step-header">📚 Step 6: Curiosity Stack</h2>
+    <h2 class="step-header">ðŸ“š Step 6: Curiosity Stack</h2>
 
-    <form hx-post="/create/step/6" hx-target=".creation-layout" hx-swap="outerHTML">
+    <form hx-validate="true" hx-post="/create/step/6" hx-target=".creation-layout" hx-swap="outerHTML">
         <div class="form-group">
-            <label for="masterclass">🎓 Masterclass Non-Lavorativa</label>
+            <label for="masterclass">ðŸŽ“ Masterclass Non-Lavorativa</label>
             <textarea name="masterclass" id="masterclass" rows="5">{{ data.get('masterclass', '') }}</textarea>
         </div>
 
         <div class="form-row">
             <div class="form-group">
-                <label for="books">📚 Libri formativi</label>
+                <label for="books">ðŸ“š Libri formativi</label>
                 <textarea name="books" id="books" rows="4">{{ data.get('books', '') }}</textarea>
             </div>
             <div class="form-group">
-                <label for="people">👤 Mentori</label>
+                <label for="people">ðŸ‘¤ Mentori</label>
                 <textarea name="people" id="people" rows="4">{{ data.get('people', '') }}</textarea>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="rabbit_hole">🐇 Rabbit Hole Attuale</label>
+            <label for="rabbit_hole">ðŸ‡ Rabbit Hole Attuale</label>
             <textarea name="rabbit_hole" id="rabbit_hole" rows="4">{{ data.get('rabbit_hole', '') }}</textarea>
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
-            <button type="submit" class="btn btn-primary">Avanti →</button>
+            <button type="button" class="btn btn-secondary" onclick="history.back()">â† Indietro</button>
+            <button type="submit" class="btn btn-primary">Avanti â†’</button>
         </div>
     </form>
 
     {% elif step == 7 %}
     <!-- Step 7: Human API -->
-    <h2 class="step-header">🧬 Step 7: Human API</h2>
+    <h2 class="step-header">ðŸ§¬ Step 7: Human API</h2>
 
-    <form hx-post="/create/step/7" hx-target=".creation-layout" hx-swap="outerHTML">
+    <form hx-validate="true" hx-post="/create/step/7" hx-target=".creation-layout" hx-swap="outerHTML">
         <div class="form-group">
-            <label for="communication">💬 Comunicazione</label>
+            <label for="communication">ðŸ’¬ Comunicazione</label>
             <textarea name="communication" id="communication" rows="4">{{ data.get('communication', '') }}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="crash_triggers">💥 Crash Triggers</label>
+            <label for="crash_triggers">ðŸ’¥ Crash Triggers</label>
             <textarea name="crash_triggers" id="crash_triggers" rows="4">{{ data.get('crash_triggers', '') }}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="known_biases">⚠️ Bias Noti</label>
+            <label for="known_biases">âš ï¸ Bias Noti</label>
             <textarea name="known_biases" id="known_biases" rows="4">{{ data.get('known_biases', '') }}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="ideal_conditions">✨ Condizioni Ideali</label>
+            <label for="ideal_conditions">âœ¨ Condizioni Ideali</label>
             <textarea name="ideal_conditions" id="ideal_conditions" rows="4">{{ data.get('ideal_conditions', '') }}</textarea>
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
-            <button type="submit" class="btn btn-primary">Avanti →</button>
+            <button type="button" class="btn btn-secondary" onclick="history.back()">â† Indietro</button>
+            <button type="submit" class="btn btn-primary">Avanti â†’</button>
         </div>
     </form>
 
     {% elif step == 8 %}
     <!-- Step 8: What's Next -->
-    <h2 class="step-header">🚀 Step 8: What's Next</h2>
+    <h2 class="step-header">ðŸš€ Step 8: What's Next</h2>
 
-    <form hx-post="/create/step/8" hx-target=".creation-layout" hx-swap="outerHTML">
+    <form hx-validate="true" hx-post="/create/step/8" hx-target=".creation-layout" hx-swap="outerHTML">
         <div class="form-group">
-            <label for="learning_next">🎯 Vuoi Imparare</label>
+            <label for="learning_next">ðŸŽ¯ Vuoi Imparare</label>
             <textarea name="learning_next" id="learning_next" rows="4">{{ data.get('learning_next', '') }}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="two_years">🔮 Tra 2 Anni</label>
+            <label for="two_years">ðŸ”® Tra 2 Anni</label>
             <textarea name="two_years" id="two_years" rows="4">{{ data.get('two_years', '') }}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="dream_project">🌟 Progetto dei Sogni</label>
+            <label for="dream_project">ðŸŒŸ Progetto dei Sogni</label>
             <textarea name="dream_project" id="dream_project" rows="4">{{ data.get('dream_project', '') }}</textarea>
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
-            <button type="submit" class="btn btn-primary">Avanti →</button>
+            <button type="button" class="btn btn-secondary" onclick="history.back()">â† Indietro</button>
+            <button type="submit" class="btn btn-primary">Avanti â†’</button>
         </div>
     </form>
 
     {% elif step == 9 %}
     <!-- Step 9: Immagini (Facoltativo) -->
-    <h2 class="step-header">🖼️ Step 9: Immagini Personali</h2>
+    <h2 class="step-header">ðŸ–¼ï¸ Step 9: Immagini Personali</h2>
     <p class="step-subtitle" style="color: var(--text-muted); margin-bottom: 1.5rem;">
         Facoltativo: Aggiungi foto personali, hobby, viaggi, progetti per arricchire visivamente il tuo Noofolio.
     </p>
 
-    <form hx-post="/create/step/9" hx-target=".creation-layout" hx-swap="outerHTML" enctype="multipart/form-data">
+    <form hx-validate="true" hx-post="/create/step/9" hx-target=".creation-layout" hx-swap="outerHTML" enctype="multipart/form-data">
         <div class="form-group">
-            <label>📸 Carica immagini (fino a 10)</label>
+            <label>ðŸ“¸ Carica immagini (fino a 10)</label>
             <input type="file" name="images[]" multiple accept="image/*"
                    style="padding: 0.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); width: 100%;">
             <p class="form-help">
@@ -611,24 +631,24 @@
         </div>
 
         <div class="encouragement-box">
-            <h4>💡 Suggerimento</h4>
-            <p>Le immagini renderanno il tuo Noofolio più personale e memorabile. Mostra chi sei oltre il lavoro!</p>
+            <h4>ðŸ’¡ Suggerimento</h4>
+            <p>Le immagini renderanno il tuo Noofolio piÃ¹ personale e memorabile. Mostra chi sei oltre il lavoro!</p>
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
-            <button type="submit" class="btn btn-primary">🚀 Genera Noofolio</button>
+            <button type="button" class="btn btn-secondary" onclick="history.back()">â† Indietro</button>
+            <button type="submit" class="btn btn-primary">ðŸš€ Genera Noofolio</button>
         </div>
     </form>
 
     {% elif step == 10 %}
     <!-- Step 10: Generation -->
-    <h2 class="step-header">✨ Generazione Noofolio</h2>
+    <h2 class="step-header">âœ¨ Generazione Noofolio</h2>
 
     {% if ready_to_generate %}
     <div id="generation-status">
         <div class="status-box">
-            <p>⏳ Preparazione...</p>
+            <p>â³ Preparazione...</p>
         </div>
     </div>
 
@@ -644,12 +664,12 @@
             window.location.href = '/result/' + data.profile_id;
         } else {
             document.getElementById('generation-status').innerHTML =
-                '<div class="error-box"><p>❌ Errore: ' + data.error + '</p></div>';
+                '<div class="error-box"><p>âŒ Errore: ' + data.error + '</p></div>';
         }
     })
     .catch(error => {
         document.getElementById('generation-status').innerHTML =
-            '<div class="error-box"><p>❌ Errore di rete</p></div>';
+            '<div class="error-box"><p>âŒ Errore di rete</p></div>';
     });
     </script>
     {% endif %}
