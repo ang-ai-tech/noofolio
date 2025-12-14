@@ -88,5 +88,41 @@
         "corrected": false
       }
     ]
+  },
+  {
+    "id": "5",
+    "session_id": "1765726942.070392",
+    "timestamp": "2025-12-14T16:42:22.070392",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ciao?",
+        "timestamp": "2025-12-14T16:42:22.070392"
+      },
+      {
+        "role": "assistant",
+        "content": "Mi dispiace, al momento non riesco a elaborare la domanda. Errore: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CW6qMVWYpCr3PthkxSUq9'}",
+        "timestamp": "2025-12-14T16:42:22.070392",
+        "corrected": false
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "session_id": "1765727163.452949",
+    "timestamp": "2025-12-14T16:46:03.452949",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ciao",
+        "timestamp": "2025-12-14T16:46:03.452949"
+      },
+      {
+        "role": "assistant",
+        "content": "Mi dispiace, al momento non riesco a elaborare la domanda. Errore: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CW6qdoykb47BHm2eXPGoC'}",
+        "timestamp": "2025-12-14T16:46:03.452949",
+        "corrected": false
+      }
+    ]
   }
 ]
