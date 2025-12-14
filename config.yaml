@@ -1,0 +1,107 @@
+# Noofolio Configuration
+# =====================
+
+# LLM Settings
+llm:
+  provider: "anthropic"  # gemini, anthropic, openai
+  models:
+    gemini: "gemini-2.0-flash"
+    anthropic: "claude-sonnet-4-5-20250929"
+    openai: "gpt-4-turbo-preview"
+  temperature: 0.7
+
+# API Limits
+api:
+  daily_limit: 100
+  calls_today: 0
+  last_reset: null
+
+# User Settings
+user:
+  refresh_days: 0  # 0 = sempre chiedi aggiornamenti, 30 = ogni 30 giorni
+
+# Archetipi - Sistema a 3 Assi
+archetypes:
+  roles:
+    - id: builder
+      name: "Builder"
+      description: "Crea da zero (Dev, Founder, Maker)"
+    - id: designer
+      name: "Designer"
+      description: "Dà forma alle cose (UI, Product, Visual)"
+    - id: strategist
+      name: "Strategist"
+      description: "Pensa e pianifica (Consultant, PM)"
+    - id: communicator
+      name: "Communicator"
+      description: "Traduce e racconta (Writer, Marketing)"
+    - id: operator
+      name: "Operator"
+      description: "Fa funzionare (Ops, Data, DevOps)"
+    - id: guide
+      name: "Guide"
+      description: "Insegna e guida (Coach, Lead, Mentor)"
+  
+  personalities:
+    - id: chaos
+      name: "Chaos"
+      vibe: "Esplora, sperimenta, rompe"
+      layout: "Grafo, disordine controllato"
+      palette: ["#ff6b6b", "#4ecdc4", "#1a1a2e"]
+      font: "JetBrains Mono"
+    - id: order
+      name: "Order"
+      vibe: "Sistema, struttura, scala"
+      layout: "Griglia rigida, modulare"
+      palette: ["#2c3e50", "#3498db", "#ecf0f1"]
+      font: "Inter"
+    - id: minimal
+      name: "Minimal"
+      vibe: "Essenziale, silenzio, focus"
+      layout: "Quasi vuoto, una cosa alla volta"
+      palette: ["#000000", "#ffffff", "#888888"]
+      font: "Libre Baskerville"
+    - id: rebel
+      name: "Rebel"
+      vibe: "Sfida, provoca, polarizza"
+      layout: "Punk, glitch, manifesto"
+      palette: ["#ff0000", "#000000", "#ffffff"]
+      font: "Space Mono"
+    - id: warm
+      name: "Warm"
+      vibe: "Umano, empatico, accogliente"
+      layout: "Morbido, citazioni, foto"
+      palette: ["#f39c12", "#e74c3c", "#fff5e6"]
+      font: "Playfair Display"
+    - id: data
+      name: "Data"
+      vibe: "Numeri, prove, risultati"
+      layout: "Dashboard, KPI, tabelle"
+      palette: ["#27ae60", "#2c3e50", "#f8f9fa"]
+      font: "Roboto Mono"
+  
+  ai_styles:
+    - id: cyborg
+      name: "Cyborg"
+      description: "AI ovunque, trasparenza sui prompt"
+    - id: hybrid
+      name: "Hybrid"
+      description: "AI come assistente, umano al centro"
+    - id: artisan
+      name: "Artisan"
+      description: "Human Made, minimo uso AI"
+
+# Demo Profiles
+demo_profiles:
+  - id: "creative_tech_marco"
+    name: "Marco Rossi"
+    archetype: "Builder × Chaos × Cyborg"
+    role: "Creative Technologist"
+  - id: "pm_giulia"
+    name: "Giulia Bianchi"
+    archetype: "Strategist × Order × Hybrid"
+    role: "Project Manager"
+  - id: "writer_luca"
+    name: "Luca Verdi"
+    archetype: "Communicator × Minimal × Artisan"
+    role: "Writer & Thinker"

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="step-container">
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: #fff;">
+            🚀 Express Mode
+        </h1>
+        <p style="color: var(--text-muted);">5 domande essenziali per un Noofolio rapido</p>
+    </div>
+
+    <form hx-post="/api/generate-express" hx-target="#result" enctype="multipart/form-data">
+        <!-- 1. Identità -->
+        <div class="form-group">
+            <label>1️⃣ Chi sei? *</label>
+            <div class="form-row">
+                <input type="text" name="nome" placeholder="Nome" required>
+                <input type="text" name="cognome" placeholder="Cognome" required>
+            </div>
+        </div>
+
+        <!-- 2. CV Quick -->
+        <div class="form-group">
+            <label>2️⃣ Il tuo background in 3 righe *</label>
+            <textarea name="cv_content" rows="4" required 
+                      placeholder="Ruolo attuale, anni di esperienza, specializzazione principale..."></textarea>
+        </div>
+
+        <!-- 3. Superpotere -->
+        <div class="form-group">
+            <label>3️⃣ Il tuo superpotere professionale *</label>
+            <textarea name="superpotere" rows="3" required 
+                      placeholder="Quella cosa che fai meglio di chiunque altro..."></textarea>
+        </div>
+
+        <!-- 4. Una decisione chiave -->
+        <div class="form-group">
+            <label>4️⃣ Una decisione che ti ha formato *</label>
+            <textarea name="key_decision" rows="4" required 
+                      placeholder="Racconta una scelta difficile e cosa hai imparato..."></textarea>
+        </div>
+
+        <!-- 5. Human vs AI -->
+        <div class="form-group">
+            <label>5️⃣ Cosa fai che l'AI non può fare? *</label>
+            <textarea name="human_delta" rows="4" required 
+                      placeholder="Dove sei insostituibile rispetto all'AI..."></textarea>
+        </div>
+
+        <!-- Link (opzionale) -->
+        <div class="form-group">
+            <label>🔗 Un link (LinkedIn, GitHub, Portfolio...)</label>
+            <input type="url" name="main_link" placeholder="https://...">
+        </div>
+
+        <div class="encouragement-box">
+            <h4>⚡ Quasi fatto!</h4>
+            <p>Queste 5 risposte genereranno un Noofolio base. Potrai sempre arricchirlo dopo.</p>
+        </div>
+
+        <div class="form-actions">
+            <a href="/onboarding" class="btn btn-secondary">← Indietro</a>
+            <button type="submit" class="btn btn-primary">🚀 Genera Noofolio Express</button>
+        </div>
+    </form>
+
+    <div id="result" style="margin-top: 2rem;"></div>
+</div>
+{% endblock %}

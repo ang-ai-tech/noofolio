@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noofolio | Luca Verdi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Libre+Baskerville:wght@400;700&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Merriweather:wght@300;400;700&family=Roboto+Mono:wght@400;500&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Libre Baskerville', serif;
+            background: #ffffff;
+            color: #1a1a2e;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            
+        }
+        
+        .header h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            
+            
+        }
+        
+        .tagline {
+            font-size: 1.25rem;
+            color: #000000;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .archetype-badge {
+            display: inline-block;
+            background: #000000;
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            
+        }
+        
+        /* Section */
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #000000;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            
+            
+        }
+        
+        .section-title .icon {
+            font-size: 1.25rem;
+        }
+        
+        /* Cards */
+        .card {
+            background: rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: none; box-shadow: none;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #666666;
+        }
+        
+        .card p {
+            color: #64748b;
+            white-space: pre-line;
+        }
+        
+        /* Grid Layout */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        
+        /* Quote */
+        .quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            padding: 1.5rem;
+            border-left: 4px solid #000000;
+            background: rgba(0,0,0,0.03);
+            margin: 2rem 0;
+            font-family: 'Libre Baskerville', serif;
+        }
+        
+        /* Tags */
+        .tag {
+            display: inline-block;
+            background: #00000020;
+            color: #000000;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin: 0.25rem;
+            
+        }
+        
+        /* Links */
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .links a {
+            color: #000000;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .links a:hover {
+            background: #000000;
+            color: #fff;
+        }
+        
+        /* Delta Section */
+        .delta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        
+        .delta-col {
+            padding: 1.5rem;
+        }
+        
+        .delta-col.ai {
+            background: #fee2e2;
+            border-radius: 12px 0 0 12px;
+        }
+        
+        .delta-col.human {
+            background: #dcfce7;
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .delta-col h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        .delta-col.ai h4 {
+            color: #ef4444;
+        }
+        
+        .delta-col.human h4 {
+            color: #22c55e;
+        }
+        
+        /* Human API */
+        .api-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .api-icon {
+            font-size: 1.5rem;
+            min-width: 40px;
+        }
+        
+        .api-content h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .api-content p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .footer a {
+            color: #000000;
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .delta-grid {
+                grid-template-columns: 1fr;
+            }
+            .delta-col {
+                border-radius: 12px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1>Luca Verdi</h1>
+            <p class="tagline">Less noise, more signal</p>
+            <span class="archetype-badge">The Poet = Communicator × Minimal × Artisan</span>
+            
+            <div class="links"><a href="https://lucaverdi.substack.com" target="_blank">📝 Articolo</a><a href="https://linkedin.com/in/lucaverdi" target="_blank">💼 LinkedIn</a></div>
+        </header>
+        
+        <section class="section">
+            <div class="quote">
+                ⚡ Trasformo concetti complessi in frasi che rimangono. Quella frase che citi senza ricordarti dove l'hai letta? Probabilmente l'ho scritta io.
+            </div>
+            
+            <div class="card">
+                <p>Scrivo per chi non ha tempo di leggere. Ho lavorato con startup, corporates, istituzioni. In tutti i casi, il problema era lo stesso: troppo rumore, poco segnale. Il mio lavoro è togliere.</p>
+            </div>
+            </section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🌳</span> Decision Log</h2>
+        
+            <div class="card">
+                <div class="card-title">Decisione Contro Corrente</div>
+                <p>Una startup voleva un sito di 50 pagine. I dati (competitor, benchmark) supportavano quella scelta. Ma avevo parlato con i loro clienti: nessuno leggeva oltre la prima pagina. Ho consegnato 3 pagine. Il founder era furioso. Poi ha visto le conversioni: +340%.</p>
+            </div>
+            
+                    <div class="card">
+                        <div class="card-title">📁 Rebrand Manifesto - TechCorp</div>
+                        <p>Il CEO voleva un manifesto di 10.000 parole come Notion.
+Opzioni:
+A) Accontentarlo (10.000 parole, nessuno le leggerà)
+B) Convincerlo (300 parole, ogni parola pesa)
+
+Ho scelto B. Ho scritto una prima versione di 300 parole. L'ho letta ad alta voce in board meeting. Silenzio. Poi: 'Questo è quello che volevo dire da anni.' Il manifesto è stampato nella hall.</p>
+                        
+                    </div>
+                    
+            <div class="card">
+                <div class="card-title">💀 Peggior Decisione</div>
+                <p>Ho accettato di scrivere 'nel tone of voice del cliente' senza avere accesso ai clienti. 6 mesi di lavoro, 200 articoli, engagement zero. Ho imparato: senza accesso alla verità, scrivo finzione.</p>
+            </div>
+            </section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🚫</span> Anti-Skills & Fit Check</h2>
+            <div class="grid-2">
+        
+            <div class="card">
+                <div class="card-title">🔥 Eresia Professionale</div>
+                <p>Credo che il 90% del content marketing sia rumore inutile. Non esiste 'il calendario editoriale'. Esiste: hai qualcosa da dire? Dillo. Non hai niente? Taci. Il silenzio è sottovalutato.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🛑 Cosa NON Faccio</div>
+                <p>❌ 'Fammi un blog post a settimana' → Scrivo quando c'è qualcosa da dire
+❌ SEO-first content → Scrivo per umani, non per algoritmi
+❌ Contenuti senza accesso al cliente → Non scrivo nel vuoto
+❌ 'Rendi più corporate' → La mia forza è togliere corporate-speak</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">⛔ Mai Più</div>
+                <p>Ghost writing per CEO che non leggono quello che 'scrivono'. Ne ho fatto tanto. Paga bene. Ma ogni volta vedevo post con migliaia di like per parole che non avevano mai pensato. Non è onesto. Non lo faccio più.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🚩 Red Flags</div>
+                <p>Quando il brief è 'come X competitor'. Quando nessuno sa chi leggerà il testo. Quando le revisioni aggiungono invece di togliere. Quando 'urgente' significa 'non abbiamo pensato prima'.</p>
+            </div>
+            </div></section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💀</span> Failure Museum</h2>
+        
+            <div class="card">
+                <div class="card-title">💥 Il Fallimento</div>
+                <p>Ho scritto un libro. 300 pagine. 2 anni di lavoro. Non l'ha letto nessuno. Non perché fosse brutto - era troppo lungo. Avrei dovuto scrivere 50 pagine. Ho imparato che la lunghezza è nemica della lettura.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🔄 Pattern Ricorrente</div>
+                <p>Tendo a perfezionare troppo prima di pubblicare. 'Ancora una revisione'. È paura mascherata da cura. Sto imparando che 'abbastanza buono, pubblicato' batte 'perfetto, mai uscito'.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">💔 Credenza Assassinata</div>
+                <p>Credevo che le idee migliori emergessero da sole. Poi ho visto idee mediocri vincere perché ben comunicate, e idee geniali morire perché nessuno le capiva. Ora so: la comunicazione non è decorazione, è parte del valore.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🔪 Feedback Brutale</div>
+                <p>'Scrivi bene, ma non ascolti abbastanza.' Un cliente. Avevo ragione su tutto, ma non avevo costruito la relazione per farmi ascoltare. Le idee giuste non bastano se non sai venderle.</p>
+            </div>
+            </section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🤖</span> The Human Delta</h2>
+            <div class="delta-grid">
+                <div class="delta-col ai">
+                    <h4>🤖 AI</h4>
+        <p><strong>Uso per:</strong><br>Uso AI solo per: ricerche iniziali (poi verifico tutto), trascrizioni, compiti amministrativi. Meno del 5% del mio output.</p><p style="margin-top: 1rem;"><strong>È meglio di me:</strong><br>L'AI è meglio di me a: produrre volume, essere consistente, non stancarsi, non avere blocco dello scrittore. Ma 'meglio' a queste cose significa 'peggio' a ciò che conta.</p>
+                </div>
+                <div class="delta-col human">
+                    <h4>🧠 IO</h4>
+        <p><strong>Mai delegato:</strong><br>Mai per scrivere. Mai. Il mio valore è la voce. Se delego la voce all'AI, cosa resto? Un editor? Gli editor costano meno di me. La scrittura è pensiero reso visibile. Non delego il pensiero.</p><p style="margin-top: 1rem;"><strong>Sono meglio io:</strong><br>Io sono meglio a: sapere cosa NON scrivere, sentire il ritmo di una frase, capire quando una metafora funziona, intuire cosa il lettore sta pensando, trovare la parola che non sapevi di cercare.</p></div></div>
+            <div class="card" style="margin-top: 1rem;">
+                <div class="card-title">📖 La Storia del Delta</div>
+                <p>Cliente: 'Scrivi 10 headline per la nostra campagna.'
+AI avrebbe: generato 50 varianti in 30 secondi, tutte tecnicamente corrette.
+Io ho fatto: 2 ore a capire perché la campagna esisteva, chi avrebbe visto queste headline, in quale momento della giornata. Ho consegnato 3 headline. Una è diventata il loro slogan per 3 anni.</p>
+            </div>
+            </section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Curiosity Stack</h2>
+            <p style="opacity: 0.7; margin-bottom: 1.5rem; font-style: italic;">La mia Intellectual Supply Chain: da dove vengono le idee</p>
+        
+            <div class="card">
+                <div class="card-title">🎓 Masterclass Non-Lavorativa</div>
+                <p>Farei una masterclass sulla poesia giapponese - haiku, tanka. La disciplina di dire tutto in 17 sillabe. Nel copy uso lo stesso principio: se non entra in un tweet, probabilmente è troppo lungo.</p>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">📚 Libri</div>
+                    <p>On Writing (Stephen King) - ancora il miglior libro sulla scrittura
+The Elements of Style (Strunk & White) - bibbia del 'meno è più'
+Thinking, Fast and Slow - come la gente processa le informazioni
+Several Short Sentences About Writing (Klinkenborg) - ha cambiato come scrivo</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">🎬 Media</div>
+                    <p>Leggo più di quanto guardo. Ma: Mad Men (copywriting era), The West Wing (dialoghi perfetti). Ascolto: silenzio, principalmente. Il rumore uccide le idee.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">👤 Mentori</div>
+                    <p>Un professore di latino che mi ha insegnato che ogni parola ha un peso. Una editor che tagliava il 50% di tutto quello che scrivevo e aveva sempre ragione.</p>
+                </div>
+                </div>
+            <div class="card">
+                <div class="card-title">🔗 Connessione Inaspettata</div>
+                <p>Studio architettura minimalista giapponese - ma (spazi vuoti), wabi-sabi (imperfezione). Nella scrittura: gli spazi bianchi contano quanto le parole. Il non-detto comunica quanto il detto.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🐇 Rabbit Hole Attuale</div>
+                <p>Come le persone leggono su schermo vs carta. Eye-tracking, attention spans, F-pattern. La scrittura 'buona' è diversa a seconda del medium. Sto ripensando tutto quello che so.</p>
+            </div>
+            </section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🧬</span> Human API — My OS</h2>
+            <p style="opacity: 0.7; margin-bottom: 1.5rem; font-style: italic;">Come interfacciarsi con me: il mio manuale d'uso</p>
+        
+                <div class="api-item">
+                    <div class="api-icon">💬</div>
+                    <div class="api-content">
+                        <h4>Comunicazione</h4>
+                        <p>Email o documenti scritti. Non call per cose che possono essere scritte. Se devi dirmi qualcosa di importante, scrivilo - così posso pensarci prima di rispondere. Rispondo lentamente, ma rispondo bene.</p>
+                    </div>
+                </div>
+                
+                <div class="api-item">
+                    <div class="api-icon">📝</div>
+                    <div class="api-content">
+                        <h4>Feedback</h4>
+                        <p>Preferisco feedback scritto, specifico, con esempi. 'Non funziona' non è feedback. 'Questa frase è passiva, prova attiva' è feedback. Do feedback allo stesso modo: specifico, su cose concrete.</p>
+                    </div>
+                </div>
+                
+                <div class="api-item">
+                    <div class="api-icon">💥</div>
+                    <div class="api-content">
+                        <h4>Crash Triggers</h4>
+                        <p>Troppe revisioni senza criterio. 'Mi piace ma cambia tutto'. Deadline impossibili per lavoro che richiede pensiero. Interruzioni continue. Riunioni che potevano essere email.</p>
+                    </div>
+                </div>
+                
+                <div class="api-item">
+                    <div class="api-icon">⚠️</div>
+                    <div class="api-content">
+                        <h4>Bias Noti</h4>
+                        <p>Sottovaluto quanto le persone abbiano bisogno di spiegazioni. Per me è ovvio, per altri no. Tendo a preferire l'eleganza alla chiarezza. A volte la chiarezza vince.</p>
+                    </div>
+                </div>
+                
+                <div class="api-item">
+                    <div class="api-icon">✨</div>
+                    <div class="api-content">
+                        <h4>Condizioni Ideali</h4>
+                        <p>Brief chiaro con accesso al pubblico target. Tempo per pensare (non si scrive bene in fretta). Una sola persona che approva. Feedback specifico, non 'sensazioni'. Rispetto per il processo.</p>
+                    </div>
+                </div>
+                </section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🚀</span> What's Next</h2>
+        
+            <div class="card">
+                <div class="card-title">📖 Voglio Imparare</div>
+                <p>Narrativa lunga. Ho sempre scritto corto. Voglio capire se so costruire un arco narrativo di 200 pagine. Probabilmente no, ancora. Ma voglio provare.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🔮 Tra 2 Anni</div>
+                <p>Voglio aver pubblicato qualcosa che non sia per clienti. Qualcosa di mio. Un saggio, un libro, una raccolta. Qualcosa dove il mio nome significa che l'ho pensato io, non trascritto.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🌟 Progetto dei Sogni</div>
+                <p>Una scuola di scrittura dove insegni a togliere invece che aggiungere. Dove il successo si misura in parole eliminate, non aggiunte. Contro-intuitivo. Necessario.</p>
+            </div>
+            </section>
+        
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>Generated by <a href="#">Noofolio</a> — Your work, not your role.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">From the noosphere: decisions, judgment, and proof.</p>
+        </footer>
+    </div>
+</body>
+</html>

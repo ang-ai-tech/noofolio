@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section">
+    <div class="status-box" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(99, 102, 241, 0.1)); border-color: var(--accent-green);">
+        <h2 style="color: var(--accent-green); margin-bottom: 0.5rem;">✅ Noofolio pronto!</h2>
+        <p style="font-size: 1.1rem; color: var(--text);">
+            <strong>{{ archetype.get('combo_display', archetype.get('combo', '')) }}</strong>
+        </p>
+    </div>
+</div>
+
+<!-- Tabs -->
+<div class="section">
+    <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem;">
+        <button class="btn btn-primary" onclick="showTab('preview')">👁️ Preview</button>
+        <button class="btn btn-secondary" onclick="showTab('download')">📥 Download</button>
+    </div>
+    
+    <!-- Preview Tab -->
+    <div id="preview-tab" style="display: block;">
+        <iframe srcdoc="{{ portfolio_html | replace('\"', '&quot;') }}" 
+                style="width: 100%; height: 700px; border: 1px solid var(--border); border-radius: 12px;">
+        </iframe>
+    </div>
+    
+    <!-- Download Tab -->
+    <div id="download-tab" style="display: none; max-width: 600px; margin: 0 auto;">
+        <div class="encouragement-box">
+            <h4>📦 Download il tuo Noofolio</h4>
+            <p>Scarica HTML e JSON del tuo portfolio.</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+            <a href="/static/downloads/{{ profile_id }}.html" download class="btn btn-primary" style="text-align: center;">
+                📄 HTML
+            </a>
+            <a href="/static/downloads/{{ profile_id }}.json" download class="btn btn-primary" style="text-align: center;">
+                📊 JSON
+            </a>
+        </div>
+        
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem;">
+            <h4 style="margin-bottom: 1rem; color: var(--text);">JSON Data Preview</h4>
+            <pre style="background: var(--bg-dark); padding: 1rem; border-radius: 8px; overflow-x: auto; max-height: 400px; font-size: 0.85rem; color: var(--text-muted);">{{ portfolio_json }}</pre>
+        </div>
+    </div>
+    
+    <!-- Actions -->
+    <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+        <a href="/create" class="btn btn-secondary">← Modifica</a>
+        <button onclick="regenerate()" class="btn btn-secondary">🔄 Rigenera</button>
+        <a href="/" class="btn btn-secondary">🏠 Home</a>
+        <a href="/view/{{ profile_id }}" class="btn btn-primary">👁️ Visualizza con NooMe</a>
+    </div>
+</div>
+
+<script>
+function showTab(tab) {
+    document.getElementById('preview-tab').style.display = tab === 'preview' ? 'block' : 'none';
+    document.getElementById('download-tab').style.display = tab === 'download' ? 'block' : 'none';
+}
+
+function regenerate() {
+    if (confirm('Rigenerare il portfolio? (Questo sovrascriverà quello esistente)')) {
+        window.location.href = '/create';
+    }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "generated_at": "2025-01-15T10:00:00",
+    "archetype": {
+      "role": "builder",
+      "personality": "chaos",
+      "ai_style": "cyborg",
+      "combo": "Builder × Chaos × Cyborg",
+      "archetype_name": "The Alchemist",
+      "combo_display": "The Alchemist = Builder × Chaos × Cyborg",
+      "reasoning": "Sperimenta costantemente, rompe le regole, usa l'AI ovunque con trasparenza totale",
+      "tagline": "Breaking things to build better"
+    },
+    "version": "1.0"
+  },
+  "identity": {
+    "name": "Marco Rossi",
+    "tagline": "Breaking things to build better",
+    "superpotere": "Sono quello che alle 3 di notte trova il bug impossibile che tutti avevano ignorato. Vedo pattern nel caos dove altri vedono solo rumore.",
+    "presentazione": "Non ho un percorso lineare. Ho studiato filosofia, poi sono finito a programmare, poi a fare hardware, poi AI. Ogni 'poi' è stato un incidente felice. Non credo nei piani a 5 anni. Credo negli esperimenti a 5 giorni.",
+    "links": [
+      {"url": "https://github.com/marco-experiments", "type": "GitHub"},
+      {"url": "https://linkedin.com/in/marcorossi", "type": "LinkedIn"},
+      {"url": "https://marco.substack.com", "type": "Articolo"}
+    ]
+  },
+  "decision_log": {
+    "against_current": "Il CTO voleva riscrivere tutto in microservizi perché 'è best practice'. I dati mostravano che serviva. Ma io sapevo che il vero problema era il database. Ho fatto un POC di 2 giorni invece di 6 mesi di refactoring. Avevo ragione: 10x performance fix con 200 righe di codice.",
+    "projects": [
+      {
+        "name": "NeuroSync - Brain-Computer Interface Prototype",
+        "fork": "Dovevo scegliere:\nA) Hardware custom (18 mesi, $500k, risultato controllato)\nB) Hack di hardware consumer ($200, 2 settimane, risultato incerto)\n\nHo scelto B. Perché: volevo validare l'idea, non costruire un'azienda. Con $200 di Muse headband modificato ho dimostrato che funzionava. Il prototipo era brutto, ma ha convinto gli investitori più di qualsiasi pitch deck.",
+        "proof": "https://github.com/marco/neurosync-hack"
+      },
+      {
+        "name": "Chaos Garden - Generative Art Installation",
+        "fork": "L'artista voleva controllo totale. L'algoritmo generava output inaspettati. Bivio:\nA) Vincolare l'algoritmo (output prevedibili, artista felice)\nB) Lasciare il caos (output unici, artista nervoso)\n\nHo scelto B + compromise: ho aggiunto un 'curator layer' che filtrava gli output, ma non li controllava. L'installazione è stata esposta al MOMA.",
+        "proof": ""
+      }
+    ],
+    "worst_decision": "Ho rifiutato un'offerta da Google nel 2018 perché 'volevo restare indipendente'. In realtà avevo paura. Quei 2 anni lì mi avrebbero insegnato come scalare sistemi. Ho imparato comunque, ma più lentamente e dolorosamente."
+  },
+  "anti_skills": {
+    "heresy": "Credo che la maggior parte del codice 'clean' sia over-engineering. Il codice migliore è quello che risolve il problema e poi viene buttato. L'ossessione per la 'code quality' è spesso procrastinazione mascherata da professionalità.",
+    "never_again": "Documentazione enterprise. So scriverla perfettamente: 50 pagine di diagrammi UML, flussi, requisiti. Ma ogni volta che l'ho fatto, nessuno l'ha letta. Mai più. Preferisco un prototipo funzionante e 10 bullet point.",
+    "wont_do": "❌ Progetti 'strategici' senza budget per sperimentare → Senza spazio per fallire, non c'è innovazione\n❌ Team che non deployano in produzione almeno settimanalmente → Troppo lento\n❌ Riunioni di 'allineamento' > 30 minuti → Se serve allinearsi così tanto, c'è un problema più grande\n❌ NDA prima di parlare dell'idea → Se l'idea vale solo perché è segreta, non vale",
+    "red_flags": "Quando il primo incontro è con Legal invece che con Engineering. Quando chiedono 'Puoi garantire che funzionerà?' (no, è R&D). Quando il 'tech lead' non ha scritto codice negli ultimi 6 mesi."
+  },
+  "failure_museum": {
+    "biggest": "Ho costruito per 8 mesi una piattaforma che nessuno voleva. Non perché non avessi fatto ricerca - l'avevo fatta. Ma avevo chiesto alle persone sbagliate. Avevo chiesto ad altri sviluppatori invece che agli utenti finali. Gli sviluppatori dicevano 'wow, cool!' ma non erano loro a pagare.",
+    "pattern": "Tendo a innamorarmi della soluzione tecnica prima di validare il problema. È successo almeno 4 volte in forme diverse. Ora ho una regola: niente codice prima di 10 conversazioni con utenti veri. La rompo ancora, ma meno spesso.",
+    "belief_killed": "Credevo che la tecnologia migliore vincesse sempre. Poi ho visto tecnologie mediocri dominare perché avevano migliore distribuzione, timing, marketing. Ora so che la tecnologia è forse il 20% del successo. Il resto è tutto il resto.",
+    "brutal_feedback": "'Sei brillante ma ingestibile. Non sai quando fermarti.' - Un ex co-founder. Aveva ragione. La mia curiosità infinita era anche incapacità di focus. Ci ho lavorato. Non sono 'gestibile', ma sono migliore a gestire me stesso."
+  },
+  "human_delta": {
+    "ai_guilty": "Uso Claude per il 70% del codice boilerplate. Non me ne vergogno - è come usare una calcolatrice. Uso anche AI per prime bozze di documentazione, brainstorming iniziale, debug di errori stupidi. Tutto ciò che è 'commodity thinking'.",
+    "ai_never": "Mai per: decidere COSA costruire (l'AI non conosce il contesto umano), conversazioni difficili (licenziamenti, feedback duri), negoziazioni (richiede leggere micro-espressioni e silenzi), decidere quando FERMARSI (l'AI aggiunge sempre, io devo saper togliere).",
+    "ai_better": "L'AI è meglio di me a: ricordare sintassi di 15 linguaggi, generare varianti di codice, trovare bug pattern-matching, scrivere test ripetitivi, riassumere paper lunghi.",
+    "human_better": "Io sono meglio a: capire cosa il cliente non sta dicendo, sapere quando una soluzione 'corretta' è sbagliata per il contesto, intuire che un progetto è morto prima che i dati lo dicano, decidere cosa NON costruire, trovare connessioni tra domini distanti.",
+    "delta_story": "Cliente: 'Vogliamo un chatbot per customer service.'\nL'AI avrebbe: progettato il chatbot, scritto il codice, deployato.\nIo ho fatto: 3 ore al telefono con il supporto esistente. Ho scoperto che il 60% delle richieste era su 3 problemi UX dell'app. Ho proposto di fixare l'app invece del chatbot. Costo: 1/10. Risultato: -70% ticket."
+  },
+  "curiosity_stack": {
+    "masterclass": "Farei una masterclass sul fermentation hacking - come fare kimchi, kombucha, miso. C'entra col lavoro? Sì: la fermentazione è 'controlled chaos', creare le condizioni per far emergere qualcosa invece di controllare ogni step. È esattamente come faccio R&D.",
+    "books": "Antifragile (Taleb) - ha cambiato come penso ai sistemi\nGödel Escher Bach - la ricorsione è ovunque\nThe Design of Everyday Things - perché le porte sono difficili da aprire\nIl Gene Egoista - ha cambiato come penso agli incentivi",
+    "media": "Podcast: Lex Fridman (le interviste di 4 ore dove la gente dice la verità), Acquired (storia di aziende tech)\nFilm: Primer (complessità temporale), Her (AI e relazioni)\nYouTube: 3Blue1Brown (matematica visual), Stuff Made Here (engineering puro)",
+    "people": "Un prof di filosofia che mi ha insegnato a fare domande stupide. Un hacker che ho conosciuto a un DEF CON che mi ha mostrato che 'impossibile' è solo 'non ancora provato'. Mia nonna, che ripara tutto invece di buttarlo.",
+    "unexpected_connection": "Applico la filosofia stoica al debugging. Epitteto diceva 'controlla solo ciò che puoi controllare'. Nel debug, questo significa: non incolpare l'hardware, il linguaggio, il framework. Trova la TUA assunzione sbagliata. Il bug è sempre nel tuo modello mentale.",
+    "rabbit_hole": "Sto cercando di capire come funziona davvero l'attenzione nei transformer. Non a livello di paper - quelli li ho letti. A livello di 'perché questo pattern funziona e quest'altro no'. Ho costruito 3 mini-transformer da zero per capirlo. Non ho ancora risposte, solo domande migliori."
+  },
+  "human_api": {
+    "communication": "Async > sync. Messaggi scritti > call. Ho bisogno di processare prima di rispondere. Sono al meglio tra le 6-10 di mattina e dopo le 22. Nel mezzo, sono un essere umano mediocre. Call improvvisate = risposte mediocri.",
+    "feedback_style": "Dammi feedback brutale e specifico. 'Non mi convince' mi fa impazzire - dimmi COSA non ti convince. Accetto di avere torto, ma voglio capire PERCHÉ. Quando do feedback tendo a essere troppo diretto - sto lavorando per aggiungere più contesto.",
+    "crash_triggers": "Crash quando: più di 3 progetti paralleli, deadline imposte senza spiegazione del 'perché', micromanagement ('hai finito?' ogni giorno), riunioni senza agenda, 'facciamo una call veloce' che dura 2 ore.",
+    "known_biases": "Mi innamoro della prima soluzione elegante (sunk cost emotivo). Sottostimo i tempi del 30-50%, sempre. Sopravvaluto quanto gli altri capiscono quello che dico. Tendo a vedere possibilità ovunque, anche dove non ci sono.",
+    "ideal_conditions": "Autonomia totale sul 'come'. Check-in settimanali, non giornalieri. Accesso diretto agli utenti/stakeholder. Una deadline chiara ma negoziabile. Budget per sperimentare (anche 10% del tempo). Tolleranza per fallimenti documentati."
+  },
+  "whats_next": {
+    "learning": "Biologia sintetica - credo che il prossimo 'software' sarà scritto in DNA. Sto facendo un corso online del MIT. Voglio anche diventare più bravo a comunicare idee complesse a non-tecnici.",
+    "two_years": "Voglio aver lanciato almeno un prodotto che usi biocomputing. Anche piccolo. Anche un fallimento. Ma voglio aver provato. E voglio aver costruito un piccolo team di 'weirdos' come me.",
+    "dream_project": "Un laboratorio open-source dove chiunque possa sperimentare con wetware (biologia) + hardware + software insieme. Un hackerspace per il 21° secolo. Dove il 'fallimento' è il deliverable principale."
+  }
+}

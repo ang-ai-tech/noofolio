@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "generated_at": "2025-01-15T10:00:00",
+    "archetype": {
+      "role": "strategist",
+      "personality": "order",
+      "ai_style": "hybrid",
+      "combo": "Strategist × Order × Hybrid",
+      "archetype_name": "The Navigator",
+      "combo_display": "The Navigator = Strategist × Order × Hybrid",
+      "reasoning": "Struttura i processi, crea sistemi, usa l'AI come assistente mantenendo il controllo umano",
+      "tagline": "Turning chaos into systems"
+    },
+    "version": "1.0"
+  },
+  "identity": {
+    "name": "Giulia Bianchi",
+    "tagline": "Turning chaos into systems",
+    "superpotere": "Sono quella che entra in un progetto in fiamme e in 48 ore ha una roadmap che tutti capiscono. Trasformo il panico in passi concreti.",
+    "presentazione": "Ho iniziato come sviluppatrice, poi ho scoperto che mi piaceva di più far funzionare i team che scrivere codice. 12 anni di PM in startup e corporate. Ho visto cosa funziona e cosa no. Spoiler: non sono i tool.",
+    "links": [
+      {"url": "https://linkedin.com/in/giuliabianchi", "type": "LinkedIn"},
+      {"url": "https://medium.com/@giulia-pm", "type": "Articolo"}
+    ]
+  },
+  "decision_log": {
+    "against_current": "Il board voleva lanciare a giugno, qualunque cosa. I dati (velocity, burn rate) dicevano che era fattibile. Ma io vedevo il team: erano esausti, code quality in caduta libera, 2 senior pronti a licenziarsi. Ho convinto il CEO a slittare di 2 mesi. Il board era furioso. Ma abbiamo lanciato con il team intatto e zero critical bugs.",
+    "projects": [
+      {
+        "name": "Migrazione Cloud - Banca Nazionale",
+        "fork": "Opzioni:\nA) Big bang migration (3 mesi, alto rischio, tutti i vendor premevano per questa)\nB) Strangler pattern (18 mesi, basso rischio, nessun vendor lo voleva)\nC) Ibrido (6 mesi, rischio medio)\n\nHo scelto B. Perché: in una banca, il downtime costa milioni e reputazione. Ho presentato un business case che mostrava il costo del rischio. 18 mesi dopo: zero downtime, zero data loss.",
+        "proof": ""
+      },
+      {
+        "name": "Turnaround Team Prodotto",
+        "fork": "Team di 12 persone, delivery a zero, morale sottozero. Opzioni:\nA) Ristrutturare (licenziare metà, assumere nuovi)\nB) Coaching intensivo (mantenere tutti, cambiare processi)\n\nHo scelto B + 1 eccezione: ho rimosso un tech lead tossico. In 3 mesi: da 0 a 4 release, team satisfaction da 3.2 a 4.5.",
+        "proof": ""
+      }
+    ],
+    "worst_decision": "Ho promesso una deadline sapendo che era irrealistica perché volevo compiacere il CEO. Il team ha fatto 2 mesi di overtime, abbiamo consegnato un prodotto mediocre, 3 persone si sono licenziate. Ho imparato che dire 'no' è parte del mio lavoro."
+  },
+  "anti_skills": {
+    "heresy": "Credo che la maggior parte degli 'agile coach' faccia più danni che altro. Trasformano Agile in religione invece che in strumento. I team migliori che ho visto usano 'whatever works', non metodologie pure.",
+    "never_again": "Progetti di 'trasformazione digitale' guidati dal marketing. Ne ho fatti 3. Tutti hanno prodotto slide bellissime e zero cambiamento reale. Il cambiamento vero è noioso, incrementale, e non fa notizia. Mai più progetti dove il deliverable è una presentazione.",
+    "wont_do": "❌ PM senza accesso diretto al team → Non faccio il telefono senza fili\n❌ Progetti senza sponsor executive chiaro → Morirà alla prima difficoltà\n❌ 'Facciamo agile' senza volontà di cambiare → Cambiate nome alle riunioni non è agile\n❌ KPI imposti senza contesto → I numeri senza storia sono pericolosi",
+    "red_flags": "Quando nessuno sa chi prende le decisioni finali. Quando 'urgente' è lo stato normale. Quando il PM precedente 'non era adatto alla cultura' (traduzione: ha detto verità scomode). Quando i dev non partecipano alle demo."
+  },
+  "failure_museum": {
+    "biggest": "Ho lasciato che un progetto 'strategico' continuasse per 8 mesi nonostante tutti i segnali dicessero che era morto. Perché il CEO ci credeva. Ho imparato che proteggere il capo dalla realtà non è lealtà, è codardia.",
+    "pattern": "Tendo a evitare conflitti diretti, preferendo 'gestirli' diplomaticamente. A volte funziona. Ma a volte il conflitto diretto risolto in 1 ora evita 3 mesi di tensione passivo-aggressiva. Sto imparando a scegliere le battaglie.",
+    "belief_killed": "Credevo che con abbastanza pianificazione si potesse prevedere tutto. Poi ho visto piani perfetti distrutti da un tweet del CEO, un cambio di mercato, un competitor. Ora pianifico sapendo che il piano cambierà. Il valore è nel processo, non nel documento.",
+    "brutal_feedback": "'Sei bravissima a sistemare progetti in fiamme, ma non sei altrettanto brava a prevenire gli incendi.' Un mentor. Aveva ragione. Ero 'addicted' al problem-solving reattivo perché mi faceva sentire utile. Ora investo più tempo in prevenzione, anche se è meno gratificante."
+  },
+  "human_delta": {
+    "ai_guilty": "Uso AI per: primi draft di documentazione, riassunti di riunioni lunghe, template di comunicazione, analisi di dati grezzi. Risparmio ore a settimana.",
+    "ai_never": "Mai per: conversazioni di performance difficili, decisioni su persone (chi assume, promuove, licenzia), negoziazioni con stakeholder, intuire tensioni non dette in un team.",
+    "ai_better": "L'AI è meglio di me a: processare grandi quantità di dati, mantenere consistenza nei documenti, trovare pattern in feedback surveys, generare varianti di comunicazione.",
+    "human_better": "Io sono meglio a: leggere una stanza e capire chi non sta dicendo cosa, costruire fiducia con stakeholder difficili, sapere quando un processo 'ottimale' va ignorato, intuire quando qualcuno sta per lasciare l'azienda prima che lo sappia lui stesso.",
+    "delta_story": "Stakeholder chiede 'report sullo stato del progetto'.\nAI avrebbe: generato dashboard con metriche, grafici, percentuali di completamento.\nIo ho fatto: chiamata di 15 minuti. Ho scoperto che non voleva un report - voleva rassicurazione che non avremmo fallito come l'anno scorso. Gli ho dato quella, più un piano B documentato. Mai chiesto un report dopo."
+  },
+  "curiosity_stack": {
+    "masterclass": "Farei una masterclass sulla negoziazione negli acquisti al mercato contadino. Sembra stupido, ma è pura psicologia applicata: timing, rapport, reciprocità, anchoring. Uso gli stessi principi con stakeholder da milioni di euro.",
+    "books": "Thinking in Systems (Meadows) - ha cambiato come vedo le organizzazioni\nNever Split the Difference (Voss) - negoziazione pratica\nThe Manager's Path - manuale di sopravvivenza\nMeasure What Matters - OKR fatto bene",
+    "media": "Podcast: Lenny's Podcast (product management), Manager Tools (basics che nessuno insegna)\nSerie: The Bear (gestione del caos in cucina = gestione team)\nDocumentari: qualunque cosa su disastri aerei (failure analysis pura)",
+    "people": "Il mio primo capo che mi ha insegnato che 'gestire verso l'alto' è importante quanto gestire il team. Una coach che mi ha fatto capire che il mio bisogno di controllo era una debolezza mascherata.",
+    "unexpected_connection": "Studio improvvisazione teatrale. C'entra col PM? Totalmente: 'Yes, and...' invece di 'No, but...'. Ascoltare davvero invece di aspettare il turno per parlare. Costruire su quello che c'è invece di imporre la propria idea.",
+    "rabbit_hole": "Sto cercando di capire perché alcune team si auto-organizzano spontaneamente e altre hanno bisogno di micromanagement. Ho intervistato 20+ team leads. Ipotesi attuale: dipende da come vengono gestiti i primi 3 fallimenti. Se il fallimento è punito, il team smette di rischiare e aspetta ordini."
+  },
+  "human_api": {
+    "communication": "Preferisco comunicazione scritta per decisioni importanti (tracciabilità), call per brainstorming e situazioni emotive. Rispondo alle email entro 24h, Slack entro 4h, urgenze immediate. Se scrivi 'urgente', lo tratterò come tale - non abusarne.",
+    "feedback_style": "Voglio feedback diretto ma contestualizzato: cosa, quando, impatto, suggerimento. 'Sei stata brusca nella riunione' non aiuta. 'Quando hai interrotto Marco alla slide 3, si è chiuso - prova a lasciarlo finire' aiuta molto. Do feedback allo stesso modo.",
+    "crash_triggers": "Vado in crash quando: le priorità cambiano ogni settimana senza spiegazione, devo fare il 'messaggero' tra stakeholder che non si parlano, il team è sovraccaricato ma devo comunque aggiungere scope, le riunioni si moltiplicano senza decisioni.",
+    "known_biases": "Sovrastimo l'importanza dell'allineamento (a volte serve avanzare anche nel disaccordo). Tendo a preferire persone 'affidabili' rispetto a 'brillanti ma inconsistenti'. Sottovaluto quanto le relazioni personali influenzino le decisioni aziendali.",
+    "ideal_conditions": "Sponsor executive chiaro e accessibile. Team che ha voce nelle decisioni che li riguardano. Cadenza prevedibile (no fire drill continui). Permesso di dire 'no' o 'non ora'. Metriche condivise di successo, non imposte."
+  },
+  "whats_next": {
+    "learning": "Coaching sistemico - voglio saper facilitare non solo progetti, ma cambiamenti organizzativi. Sto anche esplorando come l'AI cambierà il ruolo del PM nei prossimi 5 anni.",
+    "two_years": "Voglio essere passata da 'PM di progetti' a 'PM di organizzazioni' - qualcuno che disegna come i team lavorano insieme, non solo come un singolo team consegna.",
+    "dream_project": "Un programma di mentorship gratuito per PM junior da background non-tech. Troppo il nostro campo è dominato da ex-developer. Servono prospettive diverse per costruire prodotti per persone diverse."
+  }
+}

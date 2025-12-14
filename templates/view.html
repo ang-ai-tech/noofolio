@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Portfolio Preview -->
+<div style="margin-bottom: 2rem;">
+    <iframe srcdoc="{{ portfolio_html | replace('\"', '&quot;') }}" 
+            style="width: 100%; height: 700px; border: 1px solid var(--border); border-radius: 12px;">
+    </iframe>
+</div>
+
+<!-- NooMe Chat Section -->
+<div class="section">
+    <div class="noome-intro">
+        <h4>🧠 NooMe - My MindMirror (Clone di {{ profile_name }})</h4>
+        <p>Ciao! Sono <strong>NooMe</strong>, il clone conversazionale di <strong>{{ profile_name }}</strong>.</p>
+        <p>Puoi chiedermi come affronterebbe un problema, esempi di progetti, o incollare una Job Description per valutare il fit.</p>
+        <p><em>Se trovi risposte non ottimali, {{ profile_name }} può correggermi per migliorare.</em></p>
+    </div>
+    
+    <!-- Chat Container -->
+    <div id="chat-container" style="max-width: 800px; margin: 2rem auto;">
+        <div id="chat-messages" style="
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            min-height: 300px;
+            max-height: 500px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        ">
+            <div class="chat-message assistant" style="margin-bottom: 1rem;">
+                <strong style="color: var(--accent);">NooMe:</strong>
+                <p style="margin: 0.5rem 0;">Ciao! Sono il clone di {{ profile_name }}. Come posso aiutarti?</p>
+            </div>
+        </div>
+        
+        <form id="chat-form" style="display: flex; gap: 1rem;">
+            <input type="text" 
+                   id="chat-input" 
+                   placeholder="Chatta con NooMe di {{ profile_name }}..." 
+                   style="flex: 1; padding: 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text);">
+            <button type="submit" class="btn btn-primary">Invia</button>
+        </form>
+    </div>
+    
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="/explore" class="btn btn-secondary">← Torna</a>
+    </div>
+</div>
+
+<style>
+.noome-intro {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+}
+
+.noome-intro h4 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.noome-intro p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.chat-message {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.chat-message.user {
+    background: rgba(99, 102, 241, 0.1);
+    border-left: 3px solid var(--primary);
+}
+
+.chat-message.assistant {
+    background: rgba(34, 211, 238, 0.1);
+    border-left: 3px solid var(--accent);
+}
+</style>
+
+<script>
+const chatForm = document.getElementById('chat-form');
+const chatInput = document.getElementById('chat-input');
+const chatMessages = document.getElementById('chat-messages');
+
+chatForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const message = chatInput.value.trim();
+    if (!message) return;
+    
+    // Add user message
+    const userMsg = document.createElement('div');
+    userMsg.className = 'chat-message user';
+    userMsg.innerHTML = `<strong style="color: var(--primary);">Tu:</strong><p style="margin: 0.5rem 0;">${message}</p>`;
+    chatMessages.appendChild(userMsg);
+    
+    // Clear input
+    chatInput.value = '';
+    
+    // Scroll to bottom
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+    // Show loading
+    const loadingMsg = document.createElement('div');
+    loadingMsg.className = 'chat-message assistant';
+    loadingMsg.innerHTML = `<strong style="color: var(--accent);">NooMe:</strong><p style="margin: 0.5rem 0;">Sto pensando...</p>`;
+    chatMessages.appendChild(loadingMsg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+    // Send to API
+    try {
+        const response = await fetch('/api/chat/{{ profile_id }}', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({message: message})
+        });
+        
+        const data = await response.json();
+        
+        // Remove loading
+        loadingMsg.remove();
+        
+        if (data.success) {
+            const assistantMsg = document.createElement('div');
+            assistantMsg.className = 'chat-message assistant';
+            assistantMsg.innerHTML = `<strong style="color: var(--accent);">NooMe:</strong><p style="margin: 0.5rem 0;">${data.response}</p>`;
+            chatMessages.appendChild(assistantMsg);
+        } else {
+            const errorMsg = document.createElement('div');
+            errorMsg.className = 'chat-message assistant';
+            errorMsg.innerHTML = `<strong style="color: var(--accent-red);">Errore:</strong><p style="margin: 0.5rem 0;">${data.error}</p>`;
+            chatMessages.appendChild(errorMsg);
+        }
+    } catch (error) {
+        loadingMsg.remove();
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'chat-message assistant';
+        errorMsg.innerHTML = `<strong style="color: var(--accent-red);">Errore:</strong><p style="margin: 0.5rem 0;">Errore di rete</p>`;
+        chatMessages.appendChild(errorMsg);
+    }
+    
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+</script>
+{% endblock %}

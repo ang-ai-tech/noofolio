@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "generated_at": "2025-01-15T10:00:00",
+    "archetype": {
+      "role": "communicator",
+      "personality": "minimal",
+      "ai_style": "artisan",
+      "combo": "Communicator × Minimal × Artisan",
+      "archetype_name": "The Poet",
+      "combo_display": "The Poet = Communicator × Minimal × Artisan",
+      "reasoning": "Scrive, pensa, comunica con essenzialità. L'AI è quasi assente: il valore è nel pensiero umano puro.",
+      "tagline": "Less noise, more signal"
+    },
+    "version": "1.0"
+  },
+  "identity": {
+    "name": "Luca Verdi",
+    "tagline": "Less noise, more signal",
+    "superpotere": "Trasformo concetti complessi in frasi che rimangono. Quella frase che citi senza ricordarti dove l'hai letta? Probabilmente l'ho scritta io.",
+    "presentazione": "Scrivo per chi non ha tempo di leggere. Ho lavorato con startup, corporates, istituzioni. In tutti i casi, il problema era lo stesso: troppo rumore, poco segnale. Il mio lavoro è togliere.",
+    "links": [
+      {"url": "https://lucaverdi.substack.com", "type": "Articolo"},
+      {"url": "https://linkedin.com/in/lucaverdi", "type": "LinkedIn"}
+    ]
+  },
+  "decision_log": {
+    "against_current": "Una startup voleva un sito di 50 pagine. I dati (competitor, benchmark) supportavano quella scelta. Ma avevo parlato con i loro clienti: nessuno leggeva oltre la prima pagina. Ho consegnato 3 pagine. Il founder era furioso. Poi ha visto le conversioni: +340%.",
+    "projects": [
+      {
+        "name": "Rebrand Manifesto - TechCorp",
+        "fork": "Il CEO voleva un manifesto di 10.000 parole come Notion.\nOpzioni:\nA) Accontentarlo (10.000 parole, nessuno le leggerà)\nB) Convincerlo (300 parole, ogni parola pesa)\n\nHo scelto B. Ho scritto una prima versione di 300 parole. L'ho letta ad alta voce in board meeting. Silenzio. Poi: 'Questo è quello che volevo dire da anni.' Il manifesto è stampato nella hall.",
+        "proof": ""
+      }
+    ],
+    "worst_decision": "Ho accettato di scrivere 'nel tone of voice del cliente' senza avere accesso ai clienti. 6 mesi di lavoro, 200 articoli, engagement zero. Ho imparato: senza accesso alla verità, scrivo finzione."
+  },
+  "anti_skills": {
+    "heresy": "Credo che il 90% del content marketing sia rumore inutile. Non esiste 'il calendario editoriale'. Esiste: hai qualcosa da dire? Dillo. Non hai niente? Taci. Il silenzio è sottovalutato.",
+    "never_again": "Ghost writing per CEO che non leggono quello che 'scrivono'. Ne ho fatto tanto. Paga bene. Ma ogni volta vedevo post con migliaia di like per parole che non avevano mai pensato. Non è onesto. Non lo faccio più.",
+    "wont_do": "❌ 'Fammi un blog post a settimana' → Scrivo quando c'è qualcosa da dire\n❌ SEO-first content → Scrivo per umani, non per algoritmi\n❌ Contenuti senza accesso al cliente → Non scrivo nel vuoto\n❌ 'Rendi più corporate' → La mia forza è togliere corporate-speak",
+    "red_flags": "Quando il brief è 'come X competitor'. Quando nessuno sa chi leggerà il testo. Quando le revisioni aggiungono invece di togliere. Quando 'urgente' significa 'non abbiamo pensato prima'."
+  },
+  "failure_museum": {
+    "biggest": "Ho scritto un libro. 300 pagine. 2 anni di lavoro. Non l'ha letto nessuno. Non perché fosse brutto - era troppo lungo. Avrei dovuto scrivere 50 pagine. Ho imparato che la lunghezza è nemica della lettura.",
+    "pattern": "Tendo a perfezionare troppo prima di pubblicare. 'Ancora una revisione'. È paura mascherata da cura. Sto imparando che 'abbastanza buono, pubblicato' batte 'perfetto, mai uscito'.",
+    "belief_killed": "Credevo che le idee migliori emergessero da sole. Poi ho visto idee mediocri vincere perché ben comunicate, e idee geniali morire perché nessuno le capiva. Ora so: la comunicazione non è decorazione, è parte del valore.",
+    "brutal_feedback": "'Scrivi bene, ma non ascolti abbastanza.' Un cliente. Avevo ragione su tutto, ma non avevo costruito la relazione per farmi ascoltare. Le idee giuste non bastano se non sai venderle."
+  },
+  "human_delta": {
+    "ai_guilty": "Uso AI solo per: ricerche iniziali (poi verifico tutto), trascrizioni, compiti amministrativi. Meno del 5% del mio output.",
+    "ai_never": "Mai per scrivere. Mai. Il mio valore è la voce. Se delego la voce all'AI, cosa resto? Un editor? Gli editor costano meno di me. La scrittura è pensiero reso visibile. Non delego il pensiero.",
+    "ai_better": "L'AI è meglio di me a: produrre volume, essere consistente, non stancarsi, non avere blocco dello scrittore. Ma 'meglio' a queste cose significa 'peggio' a ciò che conta.",
+    "human_better": "Io sono meglio a: sapere cosa NON scrivere, sentire il ritmo di una frase, capire quando una metafora funziona, intuire cosa il lettore sta pensando, trovare la parola che non sapevi di cercare.",
+    "delta_story": "Cliente: 'Scrivi 10 headline per la nostra campagna.'\nAI avrebbe: generato 50 varianti in 30 secondi, tutte tecnicamente corrette.\nIo ho fatto: 2 ore a capire perché la campagna esisteva, chi avrebbe visto queste headline, in quale momento della giornata. Ho consegnato 3 headline. Una è diventata il loro slogan per 3 anni."
+  },
+  "curiosity_stack": {
+    "masterclass": "Farei una masterclass sulla poesia giapponese - haiku, tanka. La disciplina di dire tutto in 17 sillabe. Nel copy uso lo stesso principio: se non entra in un tweet, probabilmente è troppo lungo.",
+    "books": "On Writing (Stephen King) - ancora il miglior libro sulla scrittura\nThe Elements of Style (Strunk & White) - bibbia del 'meno è più'\nThinking, Fast and Slow - come la gente processa le informazioni\nSeveral Short Sentences About Writing (Klinkenborg) - ha cambiato come scrivo",
+    "media": "Leggo più di quanto guardo. Ma: Mad Men (copywriting era), The West Wing (dialoghi perfetti). Ascolto: silenzio, principalmente. Il rumore uccide le idee.",
+    "people": "Un professore di latino che mi ha insegnato che ogni parola ha un peso. Una editor che tagliava il 50% di tutto quello che scrivevo e aveva sempre ragione.",
+    "unexpected_connection": "Studio architettura minimalista giapponese - ma (spazi vuoti), wabi-sabi (imperfezione). Nella scrittura: gli spazi bianchi contano quanto le parole. Il non-detto comunica quanto il detto.",
+    "rabbit_hole": "Come le persone leggono su schermo vs carta. Eye-tracking, attention spans, F-pattern. La scrittura 'buona' è diversa a seconda del medium. Sto ripensando tutto quello che so."
+  },
+  "human_api": {
+    "communication": "Email o documenti scritti. Non call per cose che possono essere scritte. Se devi dirmi qualcosa di importante, scrivilo - così posso pensarci prima di rispondere. Rispondo lentamente, ma rispondo bene.",
+    "feedback_style": "Preferisco feedback scritto, specifico, con esempi. 'Non funziona' non è feedback. 'Questa frase è passiva, prova attiva' è feedback. Do feedback allo stesso modo: specifico, su cose concrete.",
+    "crash_triggers": "Troppe revisioni senza criterio. 'Mi piace ma cambia tutto'. Deadline impossibili per lavoro che richiede pensiero. Interruzioni continue. Riunioni che potevano essere email.",
+    "known_biases": "Sottovaluto quanto le persone abbiano bisogno di spiegazioni. Per me è ovvio, per altri no. Tendo a preferire l'eleganza alla chiarezza. A volte la chiarezza vince.",
+    "ideal_conditions": "Brief chiaro con accesso al pubblico target. Tempo per pensare (non si scrive bene in fretta). Una sola persona che approva. Feedback specifico, non 'sensazioni'. Rispetto per il processo."
+  },
+  "whats_next": {
+    "learning": "Narrativa lunga. Ho sempre scritto corto. Voglio capire se so costruire un arco narrativo di 200 pagine. Probabilmente no, ancora. Ma voglio provare.",
+    "two_years": "Voglio aver pubblicato qualcosa che non sia per clienti. Qualcosa di mio. Un saggio, un libro, una raccolta. Qualcosa dove il mio nome significa che l'ho pensato io, non trascritto.",
+    "dream_project": "Una scuola di scrittura dove insegni a togliere invece che aggiungere. Dove il successo si misura in parole eliminate, non aggiunte. Contro-intuitivo. Necessario."
+  }
+}

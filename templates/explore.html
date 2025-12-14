@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section">
+    <h2 class="section-title">📁 Esplora Noofolio</h2>
+    <p class="section-subtitle">Visualizza i portfolio come un recruiter. Chatta con NooMe.</p>
+</div>
+
+{% if profiles %}
+<div class="profiles-grid">
+    {% for profile in profiles %}
+    <div class="profile-card">
+        <h4>{{ profile.name }}</h4>
+        <div class="role">{{ profile.archetype.get('archetype_name', 'Professional') }}</div>
+        <div class="archetype">{{ profile.archetype.get('combo', '') }}</div>
+        <a href="/view/{{ profile.id }}" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">
+            👁️ Visualizza
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="status-box">
+    <p>Nessun profilo trovato. Crea il primo!</p>
+    <a href="/create" class="btn btn-primary" style="margin-top: 1rem;">✨ Crea Noofolio</a>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noofolio | Marco Rossi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Libre+Baskerville:wght@400;700&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Merriweather:wght@300;400;700&family=Roboto+Mono:wght@400;500&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #ffffff;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            
+        }
+        
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            
+            color: #ff6b6b;
+        }
+        
+        .tagline {
+            font-size: 1.25rem;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            
+        }
+        
+        .archetype-badge {
+            display: inline-block;
+            background: #ff6b6b;
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            
+        }
+        
+        /* Section */
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #ff6b6b;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            
+            
+        }
+        
+        .section-title .icon {
+            font-size: 1.25rem;
+        }
+        
+        /* Cards */
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transform: rotate(-1deg);
+        }
+        
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #4ecdc4;
+        }
+        
+        .card p {
+            color: #94a3b8;
+            white-space: pre-line;
+        }
+        
+        /* Grid Layout */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        
+        /* Quote */
+        .quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            padding: 1.5rem;
+            border-left: 4px solid #ff6b6b;
+            background: rgba(255,255,255,0.05);
+            margin: 2rem 0;
+            
+        }
+        
+        /* Tags */
+        .tag {
+            display: inline-block;
+            background: #ff6b6b20;
+            color: #ff6b6b;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin: 0.25rem;
+            
+        }
+        
+        /* Links */
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .links a {
+            color: #ff6b6b;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ff6b6b;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .links a:hover {
+            background: #ff6b6b;
+            color: #fff;
+        }
+        
+        /* Delta Section */
+        .delta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        
+        .delta-col {
+            padding: 1.5rem;
+        }
+        
+        .delta-col.ai {
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 12px 0 0 12px;
+        }
+        
+        .delta-col.human {
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .delta-col h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        .delta-col.ai h4 {
+            color: #ef4444;
+        }
+        
+        .delta-col.human h4 {
+            color: #22c55e;
+        }
+        
+        /* Human API */
+        .api-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .api-icon {
+            font-size: 1.5rem;
+            min-width: 40px;
+        }
+        
+        .api-content h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .api-content p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        .footer a {
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .delta-grid {
+                grid-template-columns: 1fr;
+            }
+            .delta-col {
+                border-radius: 12px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1>Marco Rossi</h1>
+            <p class="tagline">Breaking things to build better</p>
+            <span class="archetype-badge">The Alchemist = Builder × Chaos × Cyborg</span>
+            
+            <div class="links"><a href="https://github.com/marco-experiments" target="_blank">💻 GitHub</a><a href="https://linkedin.com/in/marcorossi" target="_blank">💼 LinkedIn</a><a href="https://marco.substack.com" target="_blank">📝 Articolo</a></div>
+        </header>
+        
+        <section class="section">
+            <div class="quote">
+                ⚡ Sono quello che alle 3 di notte trova il bug impossibile che tutti avevano ignorato. Vedo pattern nel caos dove altri vedono solo rumore.
+            </div>
+            
+            <div class="card">
+                <p>Non ho un percorso lineare. Ho studiato filosofia, poi sono finito a programmare, poi a fare hardware, poi AI. Ogni 'poi' è stato un incidente felice. Non credo nei piani a 5 anni. Credo negli esperimenti a 5 giorni.</p>
+            </div>
+            </section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🌳</span> Decision Log</h2>
+        
+            <div class="card">
+                <div class="card-title">Decisione Contro Corrente</div>
+                <p>Il CTO voleva riscrivere tutto in microservizi perché 'è best practice'. I dati mostravano che serviva. Ma io sapevo che il vero problema era il database. Ho fatto un POC di 2 giorni invece di 6 mesi di refactoring. Avevo ragione: 10x performance fix con 200 righe di codice.</p>
+            </div>
+            
+                    <div class="card">
+                        <div class="card-title">📁 NeuroSync - Brain-Computer Interface Prototype</div>
+                        <p>Dovevo scegliere:
+A) Hardware custom (18 mesi, $500k, risultato controllato)
+B) Hack di hardware consumer ($200, 2 settimane, risultato incerto)
+
+Ho scelto B. Perché: volevo validare l'idea, non costruire un'azienda. Con $200 di Muse headband modificato ho dimostrato che funzionava. Il prototipo era brutto, ma ha convinto gli investitori più di qualsiasi pitch deck.</p>
+                        <p style="margin-top: 0.5rem;"><a href="https://github.com/marco/neurosync-hack" target="_blank" style="color: #ff6b6b;">🔗 Proof</a></p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">📁 Chaos Garden - Generative Art Installation</div>
+                        <p>L'artista voleva controllo totale. L'algoritmo generava output inaspettati. Bivio:
+A) Vincolare l'algoritmo (output prevedibili, artista felice)
+B) Lasciare il caos (output unici, artista nervoso)
+
+Ho scelto B + compromise: ho aggiunto un 'curator layer' che filtrava gli output, ma non li controllava. L'installazione è stata esposta al MOMA.</p>
+                        
+                    </div>
+                    
+            <div class="card">
+                <div class="card-title">💀 Peggior Decisione</div>
+                <p>Ho rifiutato un'offerta da Google nel 2018 perché 'volevo restare indipendente'. In realtà avevo paura. Quei 2 anni lì mi avrebbero insegnato come scalare sistemi. Ho imparato comunque, ma più lentamente e dolorosamente.</p>
+            </div>
+            </section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🚫</span> Anti-Skills & Fit Check</h2>
+            <div class="grid-2">
+        
+            <div class="card">
+                <div class="card-title">🔥 Eresia Professionale</div>
+                <p>Credo che la maggior parte del codice 'clean' sia over-engineering. Il codice migliore è quello che risolve il problema e poi viene buttato. L'ossessione per la 'code quality' è spesso procrastinazione mascherata da professionalità.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🛑 Cosa NON Faccio</div>
+                <p>❌ Progetti 'strategici' senza budget per sperimentare → Senza spazio per fallire, non c'è innovazione
+❌ Team che non deployano in produzione almeno settimanalmente → Troppo lento
+❌ Riunioni di 'allineamento' > 30 minuti → Se serve allinearsi così tanto, c'è un problema più grande
+❌ NDA prima di parlare dell'idea → Se l'idea vale solo perché è segreta, non vale</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">⛔ Mai Più</div>
+                <p>Documentazione enterprise. So scriverla perfettamente: 50 pagine di diagrammi UML, flussi, requisiti. Ma ogni volta che l'ho fatto, nessuno l'ha letta. Mai più. Preferisco un prototipo funzionante e 10 bullet point.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🚩 Red Flags</div>
+                <p>Quando il primo incontro è con Legal invece che con Engineering. Quando chiedono 'Puoi garantire che funzionerà?' (no, è R&D). Quando il 'tech lead' non ha scritto codice negli ultimi 6 mesi.</p>
+            </div>
+            </div></section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💀</span> Failure Museum</h2>
+        
+            <div class="card">
+                <div class="card-title">💥 Il Fallimento</div>
+                <p>Ho costruito per 8 mesi una piattaforma che nessuno voleva. Non perché non avessi fatto ricerca - l'avevo fatta. Ma avevo chiesto alle persone sbagliate. Avevo chiesto ad altri sviluppatori invece che agli utenti finali. Gli sviluppatori dicevano 'wow, cool!' ma non erano loro a pagare.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🔄 Pattern Ricorrente</div>
+                <p>Tendo a innamorarmi della soluzione tecnica prima di validare il problema. È successo almeno 4 volte in forme diverse. Ora ho una regola: niente codice prima di 10 conversazioni con utenti veri. La rompo ancora, ma meno spesso.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">💔 Credenza Assassinata</div>
+                <p>Credevo che la tecnologia migliore vincesse sempre. Poi ho visto tecnologie mediocri dominare perché avevano migliore distribuzione, timing, marketing. Ora so che la tecnologia è forse il 20% del successo. Il resto è tutto il resto.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🔪 Feedback Brutale</div>
+                <p>'Sei brillante ma ingestibile. Non sai quando fermarti.' - Un ex co-founder. Aveva ragione. La mia curiosità infinita era anche incapacità di focus. Ci ho lavorato. Non sono 'gestibile', ma sono migliore a gestire me stesso.</p>
+            </div>
+            </section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🤖</span> The Human Delta</h2>
+            <div class="delta-grid">
+                <div class="delta-col ai">
+                    <h4>🤖 AI</h4>
+        <p><strong>Uso per:</strong><br>Uso Claude per il 70% del codice boilerplate. Non me ne vergogno - è come usare una calcolatrice. Uso anche AI per prime bozze di documentazione, brainstorming iniziale, debug di errori stupidi. Tutto ciò che è 'commodity thinking'.</p><p style="margin-top: 1rem;"><strong>È meglio di me:</strong><br>L'AI è meglio di me a: ricordare sintassi di 15 linguaggi, generare varianti di codice, trovare bug pattern-matching, scrivere test ripetitivi, riassumere paper lunghi.</p>
+                </div>
+                <div class="delta-col human">
+                    <h4>🧠 IO</h4>
+        <p><strong>Mai delegato:</strong><br>Mai per: decidere COSA costruire (l'AI non conosce il contesto umano), conversazioni difficili (licenziamenti, feedback duri), negoziazioni (richiede leggere micro-espressioni e silenzi), decidere quando FERMARSI (l'AI aggiunge sempre, io devo saper togliere).</p><p style="margin-top: 1rem;"><strong>Sono meglio io:</strong><br>Io sono meglio a: capire cosa il cliente non sta dicendo, sapere quando una soluzione 'corretta' è sbagliata per il contesto, intuire che un progetto è morto prima che i dati lo dicano, decidere cosa NON costruire, trovare connessioni tra domini distanti.</p></div></div>
+            <div class="card" style="margin-top: 1rem;">
+                <div class="card-title">📖 La Storia del Delta</div>
+                <p>Cliente: 'Vogliamo un chatbot per customer service.'
+L'AI avrebbe: progettato il chatbot, scritto il codice, deployato.
+Io ho fatto: 3 ore al telefono con il supporto esistente. Ho scoperto che il 60% delle richieste era su 3 problemi UX dell'app. Ho proposto di fixare l'app invece del chatbot. Costo: 1/10. Risultato: -70% ticket.</p>
+            </div>
+            </section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Curiosity Stack</h2>
+            <p style="opacity: 0.7; margin-bottom: 1.5rem; font-style: italic;">La mia Intellectual Supply Chain: da dove vengono le idee</p>
+        
+            <div class="card">
+                <div class="card-title">🎓 Masterclass Non-Lavorativa</div>
+                <p>Farei una masterclass sul fermentation hacking - come fare kimchi, kombucha, miso. C'entra col lavoro? Sì: la fermentazione è 'controlled chaos', creare le condizioni per far emergere qualcosa invece di controllare ogni step. È esattamente come faccio R&D.</p>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">📚 Libri</div>
+                    <p>Antifragile (Taleb) - ha cambiato come penso ai sistemi
+Gödel Escher Bach - la ricorsione è ovunque
+The Design of Everyday Things - perché le porte sono difficili da aprire
+Il Gene Egoista - ha cambiato come penso agli incentivi</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">🎬 Media</div>
+                    <p>Podcast: Lex Fridman (le interviste di 4 ore dove la gente dice la verità), Acquired (storia di aziende tech)
+Film: Primer (complessità temporale), Her (AI e relazioni)
+YouTube: 3Blue1Brown (matematica visual), Stuff Made Here (engineering puro)</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">👤 Mentori</div>
+                    <p>Un prof di filosofia che mi ha insegnato a fare domande stupide. Un hacker che ho conosciuto a un DEF CON che mi ha mostrato che 'impossibile' è solo 'non ancora provato'. Mia nonna, che ripara tutto invece di buttarlo.</p>
+                </div>
+                </div>
+            <div class="card">
+                <div class="card-title">🔗 Connessione Inaspettata</div>
+                <p>Applico la filosofia stoica al debugging. Epitteto diceva 'controlla solo ciò che puoi controllare'. Nel debug, questo significa: non incolpare l'hardware, il linguaggio, il framework. Trova la TUA assunzione sbagliata. Il bug è sempre nel tuo modello mentale.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🐇 Rabbit Hole Attuale</div>
+                <p>Sto cercando di capire come funziona davvero l'attenzione nei transformer. Non a livello di paper - quelli li ho letti. A livello di 'perché questo pattern funziona e quest'altro no'. Ho costruito 3 mini-transformer da zero per capirlo. Non ho ancora risposte, solo domande migliori.</p>
+            </div>
+            </section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🧬</span> Human API — My OS</h2>
+            <p style="opacity: 0.7; margin-bottom: 1.5rem; font-style: italic;">Come interfacciarsi con me: il mio manuale d'uso</p>
+        
+                <div class="api-item">
+                    <div class="api-icon">💬</div>
+                    <div class="api-content">
+                        <h4>Comunicazione</h4>
+                        <p>Async > sync. Messaggi scritti > call. Ho bisogno di processare prima di rispondere. Sono al meglio tra le 6-10 di mattina e dopo le 22. Nel mezzo, sono un essere umano mediocre. Call improvvisate = risposte mediocri.</p>
+                    </div>
+                </div>
+                
+                <div class="api-item">
+                    <div class="api-icon">📝</div>
+                    <div class="api-content">
+                        <h4>Feedback</h4>
+                        <p>Dammi feedback brutale e specifico. 'Non mi convince' mi fa impazzire - dimmi COSA non ti convince. Accetto di avere torto, ma voglio capire PERCHÉ. Quando do feedback tendo a essere troppo diretto - sto lavorando per aggiungere più contesto.</p>
+                    </div>
+                </div>
+                
+                <div class="api-item">
+                    <div class="api-icon">💥</div>
+                    <div class="api-content">
+                        <h4>Crash Triggers</h4>
+                        <p>Crash quando: più di 3 progetti paralleli, deadline imposte senza spiegazione del 'perché', micromanagement ('hai finito?' ogni giorno), riunioni senza agenda, 'facciamo una call veloce' che dura 2 ore.</p>
+                    </div>
+                </div>
+                
+                <div class="api-item">
+                    <div class="api-icon">⚠️</div>
+                    <div class="api-content">
+                        <h4>Bias Noti</h4>
+                        <p>Mi innamoro della prima soluzione elegante (sunk cost emotivo). Sottostimo i tempi del 30-50%, sempre. Sopravvaluto quanto gli altri capiscono quello che dico. Tendo a vedere possibilità ovunque, anche dove non ci sono.</p>
+                    </div>
+                </div>
+                
+                <div class="api-item">
+                    <div class="api-icon">✨</div>
+                    <div class="api-content">
+                        <h4>Condizioni Ideali</h4>
+                        <p>Autonomia totale sul 'come'. Check-in settimanali, non giornalieri. Accesso diretto agli utenti/stakeholder. Una deadline chiara ma negoziabile. Budget per sperimentare (anche 10% del tempo). Tolleranza per fallimenti documentati.</p>
+                    </div>
+                </div>
+                </section>
+        
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🚀</span> What's Next</h2>
+        
+            <div class="card">
+                <div class="card-title">📖 Voglio Imparare</div>
+                <p>Biologia sintetica - credo che il prossimo 'software' sarà scritto in DNA. Sto facendo un corso online del MIT. Voglio anche diventare più bravo a comunicare idee complesse a non-tecnici.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🔮 Tra 2 Anni</div>
+                <p>Voglio aver lanciato almeno un prodotto che usi biocomputing. Anche piccolo. Anche un fallimento. Ma voglio aver provato. E voglio aver costruito un piccolo team di 'weirdos' come me.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🌟 Progetto dei Sogni</div>
+                <p>Un laboratorio open-source dove chiunque possa sperimentare con wetware (biologia) + hardware + software insieme. Un hackerspace per il 21° secolo. Dove il 'fallimento' è il deliverable principale.</p>
+            </div>
+            </section>
+        
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>Generated by <a href="#">Noofolio</a> — Your work, not your role.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">From the noosphere: decisions, judgment, and proof.</p>
+        </footer>
+    </div>
+</body>
+</html>

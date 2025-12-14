@@ -1,0 +1,148 @@
+{
+  "meta": {
+    "generated_at": "2025-12-14T02:47:23.128885",
+    "archetype": {
+      "role": "builder",
+      "personality": "order",
+      "ai_style": "hybrid",
+      "combo": "Builder × Order × Hybrid",
+      "archetype_name": "The Architect",
+      "combo_display": "The Architect = Builder × Order × Hybrid",
+      "reasoning": "Archetipo determinato da analisi keyword (fallback)",
+      "tagline": "The Order Builder"
+    },
+    "version": "1.0"
+  },
+  "identity": {
+    "name": "Angelo Casserino",
+    "tagline": "The Order Builder",
+    "superpotere": "",
+    "presentazione": "",
+    "links": []
+  },
+  "decision_log": {
+    "against_current": "",
+    "projects": [],
+    "worst_decision": ""
+  },
+  "anti_skills": {
+    "heresy": "",
+    "never_again": "",
+    "wont_do": "",
+    "red_flags": ""
+  },
+  "failure_museum": {
+    "biggest": "",
+    "pattern": "",
+    "belief_killed": "",
+    "brutal_feedback": ""
+  },
+  "human_delta": {
+    "ai_guilty": "",
+    "ai_never": "",
+    "ai_better": "",
+    "human_better": "",
+    "delta_story": ""
+  },
+  "curiosity_stack": {
+    "masterclass": "",
+    "books": "",
+    "media": "",
+    "people": "",
+    "unexpected_connection": "",
+    "rabbit_hole": ""
+  },
+  "human_api": {
+    "communication": "",
+    "feedback_style": "",
+    "crash_triggers": "",
+    "known_biases": "",
+    "ideal_conditions": ""
+  },
+  "whats_next": {
+    "learning": "",
+    "two_years": "",
+    "dream_project": ""
+  },
+  "analysis": {
+    "patterns": {
+      "decision_patterns": [],
+      "error_patterns": [],
+      "success_patterns": [],
+      "recurring_themes": [],
+      "contradictions": [],
+      "work_signature": "Professionista in analisi"
+    },
+    "decisions": {
+      "key_decisions": [],
+      "decision_style": {
+        "speed": "dipende",
+        "input_preference": "mix",
+        "risk_tolerance": "medio",
+        "social_preference": "consulta"
+      },
+      "implicit_values": [],
+      "decision_traps": []
+    },
+    "signature": {
+      "signature_moves": [],
+      "thinking_style": {
+        "processing": "mix",
+        "approach": "oscillante",
+        "mode": "iterativo",
+        "pace": "riflessivo"
+      },
+      "unique_lens": "In analisi",
+      "anti_signature": [],
+      "fingerprint_phrase": "",
+      "overall_signature": "Professionista con firma in definizione"
+    },
+    "narrative": {
+      "headline": "Angelo Casserino: The Order Builder",
+      "opening_story": "Portfolio in costruzione.",
+      "core_narrative": "",
+      "section_intros": {
+        "decision_log": "Le decisioni che mi hanno formato.",
+        "anti_skills": "Cosa scelgo di non fare.",
+        "failure_museum": "Dove ho sbagliato e cosa ho imparato.",
+        "human_delta": "Cosa faccio meglio dell'AI.",
+        "curiosity_stack": "Da dove vengono le mie idee.",
+        "human_api": "Come lavorare con me."
+      },
+      "closing_statement": "",
+      "meta_narrative": ""
+    }
+  },
+  "_raw_input": {
+    "nome": "Angelo",
+    "cognome": "Casserino",
+    "cv_content": "rrrrr",
+    "superpotere": "",
+    "presentazione": "",
+    "against_data": "",
+    "project_desc": "",
+    "worst_decision": "",
+    "heresy": "",
+    "anti_skills": "",
+    "red_flags": "",
+    "biggest_failure": "",
+    "pattern_failure": "",
+    "belief_murdered": "",
+    "ai_guilty": "",
+    "ai_never": "",
+    "ai_better": "",
+    "human_better": "",
+    "delta_story": "",
+    "masterclass": "",
+    "books": "",
+    "people": "",
+    "rabbit_hole": "",
+    "communication": "",
+    "crash_triggers": "",
+    "known_biases": "",
+    "ideal_conditions": "",
+    "learning_next": "",
+    "two_years": "",
+    "dream_project": ""
+  }
+}

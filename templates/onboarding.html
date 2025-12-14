@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="onboarding-container" style="max-width: 800px; margin: 3rem auto; padding: 2rem;">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <div style="font-size: 4rem; margin-bottom: 1rem;">🧠</div>
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #fff; margin-bottom: 1rem;">
+            Ciao! Benvenuto su Noofolio
+        </h1>
+        <p style="font-size: 1.2rem; color: var(--text-muted);">
+            Ti va di rispondere a un po' di domande casuali?
+        </p>
+    </div>
+
+    <div class="encouragement-box" style="margin-bottom: 2rem;">
+        <h4>🎯 Perché 30 minuti del tuo tempo?</h4>
+        <p style="margin-bottom: 1rem;">
+            <strong>Per fare ordine bisogna partire dal caos.</strong><br>
+            Più domande fai – anche scollegate e apparentemente non utili – più il tuo Noofolio si adatterà alla tua vera essenza professionale.
+        </p>
+        <p style="margin-bottom: 1rem;">
+            Se rispondi bene alle domande, troverai un <strong>chatbot NooMe</strong> più istruito su di te.
+        </p>
+        <p style="margin-bottom: 0; font-size: 0.9rem; color: var(--text-dim);">
+            💡 <em>I NooMe hanno diversi livelli di affidabilità. I NooMe di persone che hanno risposto a tante domande e fatto correzioni avranno un punteggio di affidabilità più alto.</em>
+        </p>
+    </div>
+
+    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 2rem;">
+        <h3 style="color: var(--primary-light); margin-bottom: 1.5rem; font-size: 1.3rem;">
+            📊 Cosa otterrai:
+        </h3>
+        
+        <div style="display: grid; gap: 1rem;">
+            <div style="display: flex; gap: 1rem; align-items: start;">
+                <span style="font-size: 1.5rem;">🎨</span>
+                <div>
+                    <strong style="color: var(--text);">Portfolio personalizzato</strong>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0.25rem 0 0 0;">
+                        Non un CV. Una mappa del tuo pensiero, decisioni, fallimenti e unicità.
+                    </p>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; align-items: start;">
+                <span style="font-size: 1.5rem;">🤖</span>
+                <div>
+                    <strong style="color: var(--text);">NooMe - Il tuo clone AI</strong>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0.25rem 0 0 0;">
+                        Un chatbot che risponde come te, disponibile 24/7 per recruiter e collaboratori.
+                    </p>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; align-items: start;">
+                <span style="font-size: 1.5rem;">🏆</span>
+                <div>
+                    <strong style="color: var(--text);">Punteggio affidabilità</strong>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0.25rem 0 0 0;">
+                        Più domande rispondi e correggi il tuo NooMe, più alto sarà il tuo score.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(34, 211, 238, 0.1)); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 16px; padding: 2rem; margin-bottom: 2rem;">
+        <h3 style="color: var(--accent); margin-bottom: 1rem; font-size: 1.2rem;">
+            ⚡ Scegli il tuo percorso:
+        </h3>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚀</div>
+                <h4 style="color: var(--text); margin-bottom: 0.5rem;">Express Mode</h4>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
+                    5 domande essenziali<br>
+                    ⏱️ ~5 minuti<br>
+                    NooMe affidabilità: ⭐⭐
+                </p>
+                <a href="/create/express" class="btn btn-secondary" style="width: 100%; text-align: center;">
+                    Veloce
+                </a>
+            </div>
+            
+            <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 2px solid var(--primary);">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+                <h4 style="color: var(--primary-light); margin-bottom: 0.5rem;">Deep Mode</h4>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
+                    10 step approfonditi<br>
+                    ⏱️ ~30 minuti<br>
+                    NooMe affidabilità: ⭐⭐⭐⭐⭐
+                </p>
+                <a href="/create" class="btn btn-primary" style="width: 100%; text-align: center;">
+                    Completo (Consigliato)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; color: var(--text-dim); font-size: 0.9rem;">
+        <p>💾 Puoi sempre salvare e continuare dopo.</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section">
+    <h2 class="section-title">🎓 Correggi il tuo NooMe</h2>
+    <p class="section-subtitle">
+        Rivedi le conversazioni e correggi le risposte per migliorare l'affidabilità del tuo clone AI
+    </p>
+
+    <!-- Affidabilità Score -->
+    <div style="max-width: 600px; margin: 2rem auto;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center;">
+            <h3 style="color: var(--primary-light); margin-bottom: 1rem;">Punteggio Affidabilità NooMe</h3>
+            
+            <div style="font-size: 4rem; margin: 1rem 0;">
+                {% if reliability_score >= 4 %}⭐⭐⭐⭐⭐
+                {% elif reliability_score >= 3 %}⭐⭐⭐⭐
+                {% elif reliability_score >= 2 %}⭐⭐⭐
+                {% elif reliability_score >= 1 %}⭐⭐
+                {% else %}⭐
+                {% endif %}
+            </div>
+            
+            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">
+                <strong style="color: var(--text);">{{ reliability_score }}/5</strong> - 
+                {% if reliability_score >= 4 %}
+                    NooMe molto affidabile!
+                {% elif reliability_score >= 3 %}
+                    NooMe affidabile
+                {% elif reliability_score >= 2 %}
+                    NooMe in formazione
+                {% else %}
+                    NooMe base - aggiungi correzioni
+                {% endif %}
+            </p>
+            
+            <div style="background: var(--bg-dark); padding: 1rem; border-radius: 12px;">
+                <p style="color: var(--text-dim); font-size: 0.85rem; margin: 0;">
+                    📊 Domande risposte: <strong style="color: var(--text);">{{ questions_answered }}</strong><br>
+                    ✏️ Correzioni fatte: <strong style="color: var(--text);">{{ corrections_made }}</strong><br>
+                    💬 Conversazioni totali: <strong style="color: var(--text);">{{ total_conversations }}</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conversazioni recenti -->
+    <div style="max-width: 900px; margin: 3rem auto;">
+        <h3 style="color: var(--text); margin-bottom: 1.5rem; font-size: 1.3rem;">
+            📜 Conversazioni recenti con visitatori
+        </h3>
+        
+        {% if conversations %}
+            {% for conv in conversations %}
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                    <div>
+                        <span style="color: var(--text-dim); font-size: 0.85rem;">{{ conv.timestamp }}</span>
+                    </div>
+                    <span style="background: rgba(34, 211, 238, 0.2); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem;">
+                        {{ conv.messages|length }} messaggi
+                    </span>
+                </div>
+                
+                <!-- Messaggi -->
+                {% for msg in conv.messages %}
+                <div style="margin-bottom: 1rem;">
+                    <div style="background: {% if msg.role == 'user' %}rgba(99, 102, 241, 0.1){% else %}rgba(34, 211, 238, 0.1){% endif %}; padding: 1rem; border-radius: 8px; border-left: 3px solid {% if msg.role == 'user' %}var(--primary){% else %}var(--accent){% endif %};">
+                        <strong style="color: {% if msg.role == 'user' %}var(--primary){% else %}var(--accent){% endif %}; font-size: 0.85rem;">
+                            {% if msg.role == 'user' %}Visitatore{% else %}NooMe{% endif %}
+                        </strong>
+                        <p style="margin: 0.5rem 0 0 0; color: var(--text); font-size: 0.9rem;">{{ msg.content }}</p>
+                        
+                        {% if msg.role == 'assistant' and not msg.corrected %}
+                        <button onclick="openCorrection('{{ conv.id }}', '{{ loop.index0 }}')" 
+                                style="background: var(--accent-green); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; margin-top: 0.75rem; cursor: pointer; font-size: 0.85rem;">
+                            ✏️ Correggi risposta
+                        </button>
+                        {% elif msg.corrected %}
+                        <span style="color: var(--accent-green); font-size: 0.85rem; margin-top: 0.5rem; display: inline-block;">
+                            ✅ Corretto
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        {% else %}
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 3rem; text-align: center;">
+            <p style="color: var(--text-muted);">Nessuna conversazione ancora. Condividi il tuo Noofolio!</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Modal correzione -->
+<div id="correction-modal" style="
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+">
+    <div style="
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+        max-width: 600px;
+        width: 90%;
+    ">
+        <h3 style="color: var(--text); margin-bottom: 1rem;">✏️ Correggi risposta NooMe</h3>
+        
+        <div id="correction-content"></div>
+        
+        <form id="correction-form">
+            <input type="hidden" id="conv-id" name="conv_id">
+            <input type="hidden" id="msg-index" name="msg_index">
+            
+            <div style="margin: 1.5rem 0;">
+                <label style="color: var(--text); display: block; margin-bottom: 0.5rem;">Risposta corretta:</label>
+                <textarea id="corrected-response" name="corrected_response" rows="5" 
+                          style="width: 100%; padding: 0.75rem; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; color: var(--text);"></textarea>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                <button type="button" onclick="closeCorrection()" class="btn btn-secondary">Annulla</button>
+                <button type="submit" class="btn btn-primary">💾 Salva correzione</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+function openCorrection(convId, msgIndex) {
+    document.getElementById('conv-id').value = convId;
+    document.getElementById('msg-index').value = msgIndex;
+    document.getElementById('correction-modal').style.display = 'flex';
+}
+
+function closeCorrection() {
+    document.getElementById('correction-modal').style.display = 'none';
+}
+
+document.getElementById('correction-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    
+    try {
+        const response = await fetch('/api/save-correction/{{ profile_id }}', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                conv_id: formData.get('conv_id'),
+                msg_index: formData.get('msg_index'),
+                corrected_response: formData.get('corrected_response')
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            alert('✅ Correzione salvata! Il tuo NooMe è ora più affidabile.');
+            location.reload();
+        } else {
+            alert('❌ Errore: ' + data.error);
+        }
+    } catch (error) {
+        alert('❌ Errore di rete');
+    }
+});
+</script>
+{% endblock %}
