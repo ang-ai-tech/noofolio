@@ -18,7 +18,17 @@
                 <a href="/">🏠 Home</a>
                 <a href="/onboarding">✨ Crea</a>
                 <a href="/explore">📁 Esplora</a>
-                <a href="/select-profile">👤 Accedi</a>
+                <a href="/dashboard/marco_rossi">📋 Il mio Noofolio</a>
+                <div class="user-dropdown" style="position: relative;">
+                    <button class="user-button" onclick="toggleUserMenu()" style="background: var(--bg-card); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 8px; color: var(--text); cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+                        👤 Marco Rossi
+                        <span style="font-size: 0.7rem;">▼</span>
+                    </button>
+                    <div id="user-menu" class="user-menu" style="display: none; position: absolute; right: 0; top: 100%; margin-top: 0.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; min-width: 200px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000;">
+                        <a href="/dashboard/marco_rossi" style="display: block; padding: 0.75rem 1rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border);">📋 Il mio Noofolio</a>
+                        <a href="/select-profile" style="display: block; padding: 0.75rem 1rem; color: var(--text); text-decoration: none;">🔄 Cambia utente</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -36,5 +46,20 @@
     {% endblock %}
 
     {% block extra_scripts %}{% endblock %}
+
+    <script>
+    function toggleUserMenu() {
+        const menu = document.getElementById('user-menu');
+        menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        const dropdown = document.querySelector('.user-dropdown');
+        if (dropdown && !dropdown.contains(event.target)) {
+            document.getElementById('user-menu').style.display = 'none';
+        }
+    });
+    </script>
 </body>
 </html>

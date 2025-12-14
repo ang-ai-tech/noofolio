@@ -15,10 +15,13 @@
     {% if step == 1 %}
     <!-- Step 1: Chi Sei -->
     <h2 class="step-header">📋 Step 1: Chi Sei</h2>
-    
+
     <div class="encouragement-box">
         <h4>✨ Prima di iniziare...</h4>
         <p>Ci vorrà pazienza ma ne varrà la pena. I recruiter potranno chattare col tuo profilo.</p>
+        <p style="margin-top: 1rem; padding: 0.75rem; background: rgba(99, 102, 241, 0.1); border-left: 3px solid var(--primary); border-radius: 4px; font-size: 0.9rem;">
+            ⏭️ <strong>Ricorda:</strong> Tutte le domande sono facoltative! Puoi skippare e andare avanti. Più rispondi, migliore sarà il risultato.
+        </p>
     </div>
     
     <form hx-post="/create/step/1" hx-target="main" hx-swap="innerHTML" enctype="multipart/form-data">

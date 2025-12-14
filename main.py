@@ -8,6 +8,7 @@ import yaml
 from typing import Optional, List
 from dotenv import load_dotenv
 import asyncio
+from datetime import datetime
 
 load_dotenv()
 
@@ -669,16 +670,16 @@ async def save_correction(request: Request, profile_id: str):
     """Save a correction for NooMe training"""
     try:
         data = await request.json()
-        
+
         # Load existing corrections
         corrections_path = Path(f"data/corrections/{profile_id}.json")
         corrections_path.parent.mkdir(parents=True, exist_ok=True)
-        
+
         corrections = []
         if corrections_path.exists():
             with open(corrections_path, 'r', encoding='utf-8') as f:
                 corrections = json.load(f)
-        
+
         # Add new correction
         correction = {
             "conv_id": data.get("conv_id"),
@@ -688,13 +689,134 @@ async def save_correction(request: Request, profile_id: str):
             "timestamp": datetime.now().isoformat()
         }
         corrections.append(correction)
-        
+
         # Save
         with open(corrections_path, 'w', encoding='utf-8') as f:
             json.dump(corrections, f, ensure_ascii=False, indent=2)
-        
+
         return JSONResponse({"success": True})
-        
+
+    except Exception as e:
+        return JSONResponse({
+            "success": False,
+            "error": str(e)
+        }, status_code=500)
+
+@app.get("/mind-sculptor/{profile_id}", response_class=HTMLResponse)
+async def mind_sculptor_page(request: Request, profile_id: str, from_creation: bool = False):
+    """Mind Sculptor page - Random question generator"""
+    return templates.TemplateResponse("mind_sculptor.html", {
+        "request": request,
+        "profile_id": profile_id,
+        "from_creation": from_creation
+    })
+
+@app.get("/api/mind-sculptor/question/{profile_id}")
+async def generate_random_question(profile_id: str):
+    """Generate a random contextual question"""
+    try:
+        from agents.mind_sculptor_agent import MindSculptorAgent
+
+        # Load profile data
+        profiles_dir = Path("data/profiles")
+        json_path = profiles_dir / f"{profile_id}.json"
+
+        if not json_path.exists():
+            raise HTTPException(status_code=404, detail="Profile not found")
+
+        with open(json_path, 'r', encoding='utf-8') as f:
+            portfolio_data = json.load(f)
+
+        # Load previous answers
+        answers_path = Path(f"data/mind_sculptor/{profile_id}_answers.json")
+        previous_answers = []
+        if answers_path.exists():
+            with open(answers_path, 'r', encoding='utf-8') as f:
+                previous_answers = json.load(f)
+
+        # Generate question
+        agent = MindSculptorAgent(provider=LLM_PROVIDER)
+        question = agent.generate_question(portfolio_data, previous_answers)
+
+        return JSONResponse({
+            "success": True,
+            "question": question
+        })
+
+    except Exception as e:
+        import traceback
+        return JSONResponse({
+            "success": False,
+            "error": str(e),
+            "traceback": traceback.format_exc()
+        }, status_code=500)
+
+@app.post("/api/mind-sculptor/answer/{profile_id}")
+async def save_random_answer(request: Request, profile_id: str):
+    """Save answer to a random question"""
+    try:
+        data = await request.json()
+
+        # Load existing answers
+        answers_path = Path(f"data/mind_sculptor/{profile_id}_answers.json")
+        answers_path.parent.mkdir(parents=True, exist_ok=True)
+
+        answers = []
+        if answers_path.exists():
+            with open(answers_path, 'r', encoding='utf-8') as f:
+                answers = json.load(f)
+
+        # Add new answer
+        from datetime import datetime
+        answer = {
+            "question": data.get("question"),
+            "answer": data.get("answer"),
+            "timestamp": datetime.now().isoformat()
+        }
+        answers.append(answer)
+
+        # Save
+        with open(answers_path, 'w', encoding='utf-8') as f:
+            json.dump(answers, f, ensure_ascii=False, indent=2)
+
+        return JSONResponse({"success": True})
+
+    except Exception as e:
+        return JSONResponse({
+            "success": False,
+            "error": str(e)
+        }, status_code=500)
+
+@app.post("/api/mind-sculptor/feedback/{profile_id}")
+async def save_question_feedback(request: Request, profile_id: str):
+    """Save feedback on a generated question"""
+    try:
+        data = await request.json()
+
+        # Load existing feedback
+        feedback_path = Path(f"data/mind_sculptor/{profile_id}_feedback.json")
+        feedback_path.parent.mkdir(parents=True, exist_ok=True)
+
+        feedbacks = []
+        if feedback_path.exists():
+            with open(feedback_path, 'r', encoding='utf-8') as f:
+                feedbacks = json.load(f)
+
+        # Add new feedback
+        from datetime import datetime
+        feedback = {
+            "question": data.get("question"),
+            "feedback": data.get("feedback"),
+            "timestamp": datetime.now().isoformat()
+        }
+        feedbacks.append(feedback)
+
+        # Save
+        with open(feedback_path, 'w', encoding='utf-8') as f:
+            json.dump(feedbacks, f, ensure_ascii=False, indent=2)
+
+        return JSONResponse({"success": True})
+
     except Exception as e:
         return JSONResponse({
             "success": False,

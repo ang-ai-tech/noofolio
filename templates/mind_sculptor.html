@@ -1,0 +1,237 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mind-sculptor-container" style="max-width: 900px; margin: 2rem auto; padding: 2rem;">
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <div style="font-size: 3.5rem; margin-bottom: 1rem;">🧠✨</div>
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #fff; margin-bottom: 0.5rem;">
+            Mind Sculptor
+        </h1>
+        <p style="font-size: 1.1rem; color: var(--text-muted);">
+            Per fare ordine bisogna partire dal caos
+        </p>
+    </div>
+
+    {% if from_creation %}
+    <div class="encouragement-box" style="margin-bottom: 2rem;">
+        <h4>🎉 Noofolio creato con successo!</h4>
+        <p>Prima di concludere, vuoi rispondere ad alcune domande casuali generate dall'AI?</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-dim);">
+            Più domande rispondi, più il tuo NooMe sarà accurato e affidabile. Puoi anche saltare e concludere.
+        </p>
+    </div>
+    {% else %}
+    <div class="encouragement-box" style="margin-bottom: 2rem;">
+        <h4>👋 Ciao, bentornato!</h4>
+        <p>Ti va di rispondere a un po' di domande casuali?</p>
+        <p style="margin-top: 1rem;">
+            <strong>Per fare ordine bisogna partire dal caos.</strong><br>
+            Più domande fai – anche scosse e apparentemente non utili – più il tuo Noofolio si adatterà a te.
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-dim);">
+            💡 Se rispondi bene alle domande, troverai un chatbot più istruito su di te. I NooMe di persone che hanno risposto a tante domande hanno un punteggio di affidabilità più alto.
+        </p>
+    </div>
+    {% endif %}
+
+    <!-- Current Question -->
+    <div id="question-card" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 2rem;">
+        <div id="question-content">
+            <div style="text-align: center; padding: 2rem;">
+                <div class="loading-spinner" style="font-size: 2rem; animation: spin 1s linear infinite;">⏳</div>
+                <p style="color: var(--text-muted); margin-top: 1rem;">Generazione domanda...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <button onclick="skipQuestion()" class="btn btn-secondary">⏭️ Salta</button>
+        <button onclick="newQuestion()" class="btn btn-secondary">🔄 Nuova domanda</button>
+        <button onclick="submitAnswer()" class="btn btn-primary" id="submit-btn" disabled>✅ Invia risposta</button>
+        {% if from_creation %}
+        <a href="/result/{{ profile_id }}" class="btn btn-secondary">🏁 Concludi</a>
+        {% else %}
+        <a href="/dashboard/{{ profile_id }}" class="btn btn-secondary">🏁 Concludi</a>
+        {% endif %}
+    </div>
+
+    <!-- Feedback Modal (Hidden by default) -->
+    <div id="feedback-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; max-width: 500px; width: 90%;">
+            <h3 style="margin-bottom: 1rem; color: var(--text);">📝 Perché vuoi saltare questa domanda?</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <button onclick="giveFeedback('inappropriate')" class="feedback-btn">🚫 Inopportuna</button>
+                <button onclick="giveFeedback('no_answer')" class="feedback-btn">🤷 Non voglio rispondere</button>
+                <button onclick="giveFeedback('offensive')" class="feedback-btn">😠 Offensiva</button>
+                <button onclick="giveFeedback('trivial')" class="feedback-btn">😴 Banale</button>
+                <button onclick="giveFeedback('nonsense')" class="feedback-btn">❓ Non ha senso</button>
+                <button onclick="giveFeedback('errors')" class="feedback-btn">⚠️ Contiene errori</button>
+                <button onclick="giveFeedback('not_useful')" class="feedback-btn">📉 Non utile</button>
+                <button onclick="closeFeedbackModal()" class="btn btn-secondary" style="margin-top: 1rem;">Annulla</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Domande risposte: <strong id="answered-count">0</strong> |
+            Punteggio affidabilità NooMe: <strong id="reliability-score">⭐⭐</strong>
+        </p>
+    </div>
+</div>
+
+<style>
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.feedback-btn {
+    padding: 0.75rem 1rem;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+}
+
+.feedback-btn:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--primary);
+}
+</style>
+
+<script>
+const profileId = "{{ profile_id }}";
+let currentQuestion = null;
+let answeredCount = 0;
+
+async function loadQuestion() {
+    try {
+        const response = await fetch(`/api/mind-sculptor/question/${profileId}`);
+        const data = await response.json();
+
+        if (data.success) {
+            currentQuestion = data.question;
+            displayQuestion(data.question);
+        } else {
+            document.getElementById('question-content').innerHTML = `
+                <div style="text-align: center; color: var(--accent-red);">
+                    <p>❌ Errore nel caricamento della domanda</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">${data.error}</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        document.getElementById('question-content').innerHTML = `
+            <div style="text-align: center; color: var(--accent-red);">
+                <p>❌ Errore di connessione</p>
+            </div>
+        `;
+    }
+}
+
+function displayQuestion(question) {
+    document.getElementById('question-content').innerHTML = `
+        <h3 style="color: var(--primary-light); margin-bottom: 1.5rem; font-size: 1.3rem;">
+            ${question.text}
+        </h3>
+        <textarea id="answer-input" rows="6"
+                  placeholder="Scrivi la tua risposta qui..."
+                  style="width: 100%; padding: 1rem; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'Inter', sans-serif; resize: vertical;"
+                  oninput="toggleSubmitButton()"></textarea>
+        ${question.hint ? `<p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem;">💡 ${question.hint}</p>` : ''}
+    `;
+    document.getElementById('submit-btn').disabled = true;
+}
+
+function toggleSubmitButton() {
+    const answer = document.getElementById('answer-input')?.value || '';
+    document.getElementById('submit-btn').disabled = answer.trim().length < 10;
+}
+
+async function submitAnswer() {
+    const answer = document.getElementById('answer-input')?.value;
+    if (!answer || answer.trim().length < 10) {
+        alert('Per favore scrivi una risposta di almeno 10 caratteri.');
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/mind-sculptor/answer/${profileId}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                question: currentQuestion.text,
+                answer: answer
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            answeredCount++;
+            document.getElementById('answered-count').innerText = answeredCount;
+            updateReliabilityScore();
+            showSuccessMessage();
+            setTimeout(() => loadQuestion(), 1500);
+        }
+    } catch (error) {
+        alert('Errore nel salvataggio della risposta');
+    }
+}
+
+function showSuccessMessage() {
+    document.getElementById('question-content').innerHTML = `
+        <div style="text-align: center; padding: 2rem;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+            <p style="color: var(--accent-green); font-size: 1.2rem;">Risposta salvata!</p>
+        </div>
+    `;
+}
+
+function skipQuestion() {
+    document.getElementById('feedback-modal').style.display = 'flex';
+}
+
+function closeFeedbackModal() {
+    document.getElementById('feedback-modal').style.display = 'none';
+}
+
+async function giveFeedback(feedbackType) {
+    try {
+        await fetch(`/api/mind-sculptor/feedback/${profileId}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                question: currentQuestion.text,
+                feedback: feedbackType
+            })
+        });
+
+        closeFeedbackModal();
+        loadQuestion();
+    } catch (error) {
+        console.error('Feedback error:', error);
+        closeFeedbackModal();
+        loadQuestion();
+    }
+}
+
+function newQuestion() {
+    loadQuestion();
+}
+
+function updateReliabilityScore() {
+    const stars = Math.min(5, Math.floor(2 + answeredCount / 5));
+    document.getElementById('reliability-score').innerText = '⭐'.repeat(stars);
+}
+
+// Load first question on page load
+loadQuestion();
+</script>
+{% endblock %}
