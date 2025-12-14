@@ -416,17 +416,19 @@
         <div class="form-group">
             <label for="against_data">🎯 Decisione Contro Corrente</label>
             <p class="form-help">L'ultima volta che sei andato CONTRO i dati o il team</p>
-            <textarea name="against_data" id="against_data" rows="6">{{ data.get('against_data', '') }}</textarea>
+            <textarea name="against_data" id="against_data" rows="6" placeholder="Es: 'Tutti i dati dicevano di fare X, ma io ho scelto Y perché...'">{{ data.get('against_data', '') }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="project_desc">📖 Progetto con Biforcazione</label>
-            <textarea name="project_desc" id="project_desc" rows="6">{{ data.get('project_desc', '') }}</textarea>
+            <p class="form-help">Descrivi un progetto dove hai dovuto scegliere tra opzioni contrastanti</p>
+            <textarea name="project_desc" id="project_desc" rows="6" placeholder="Es: 'Nel progetto X dovevo decidere tra approccio A (veloce ma rischioso) e approccio B (lento ma sicuro)...'">{{ data.get('project_desc', '') }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="worst_decision">💀 Peggior Decisione</label>
-            <textarea name="worst_decision" id="worst_decision" rows="4">{{ data.get('worst_decision', '') }}</textarea>
+            <p class="form-help">Qual è stata la tua peggior decisione professionale?</p>
+            <textarea name="worst_decision" id="worst_decision" rows="4" placeholder="Es: 'Ho scelto di ignorare i warning del team su...'">{{ data.get('worst_decision', '') }}</textarea>
         </div>
 
         <div class="form-actions">
@@ -442,17 +444,20 @@
     <form hx-post="/create/step/3" hx-target=".creation-layout" hx-swap="outerHTML">
         <div class="form-group">
             <label for="heresy">🔥 Eresia Professionale</label>
-            <textarea name="heresy" id="heresy" rows="5">{{ data.get('heresy', '') }}</textarea>
+            <p class="form-help">Qual è un'opinione controversa che hai nel tuo campo?</p>
+            <textarea name="heresy" id="heresy" rows="5" placeholder="Es: 'Penso che le metodologie agile siano sopravvalutate' oppure 'Credo che documentare troppo sia controproducente'">{{ data.get('heresy', '') }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="anti_skills">🚫 Cosa NON Fai</label>
-            <textarea name="anti_skills" id="anti_skills" rows="5">{{ data.get('anti_skills', '') }}</textarea>
+            <p class="form-help">Cosa scegli deliberatamente di NON fare?</p>
+            <textarea name="anti_skills" id="anti_skills" rows="5" placeholder="Es: 'Non faccio riunioni dopo le 17:00' oppure 'Non lavoro su progetti senza una chiara visione strategica'">{{ data.get('anti_skills', '') }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="red_flags">🚩 Red Flags</label>
-            <textarea name="red_flags" id="red_flags" rows="4">{{ data.get('red_flags', '') }}</textarea>
+            <p class="form-help">Quali red flags ti fanno scappare da un progetto o collaborazione?</p>
+            <textarea name="red_flags" id="red_flags" rows="4" placeholder="Es: 'Requisiti che cambiano continuamente', 'Mancanza di ownership', 'Micromanagement eccessivo'">{{ data.get('red_flags', '') }}</textarea>
         </div>
 
         <div class="form-actions">
@@ -468,17 +473,20 @@
     <form hx-post="/create/step/4" hx-target=".creation-layout" hx-swap="outerHTML">
         <div class="form-group">
             <label for="biggest_failure">💥 Fallimento Vero</label>
-            <textarea name="biggest_failure" id="biggest_failure" rows="6">{{ data.get('biggest_failure', '') }}</textarea>
+            <p class="form-help">Racconta un fallimento autentico, non un "punto debole camuffato"</p>
+            <textarea name="biggest_failure" id="biggest_failure" rows="6" placeholder="Es: 'Ho lanciato una feature che nessuno ha usato perché non avevo fatto abbastanza ricerca utenti' oppure 'Ho gestito male un conflitto nel team e una persona di valore se ne è andata'">{{ data.get('biggest_failure', '') }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="pattern_failure">🔄 Pattern di Errore</label>
-            <textarea name="pattern_failure" id="pattern_failure" rows="4">{{ data.get('pattern_failure', '') }}</textarea>
+            <p class="form-help">C'è un errore che tendi a ripetere?</p>
+            <textarea name="pattern_failure" id="pattern_failure" rows="4" placeholder="Es: 'Tendo a sottovalutare i tempi necessari per completare i task' oppure 'Mi butto nel codice prima di pensare all'architettura'">{{ data.get('pattern_failure', '') }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="belief_murdered">💔 Credenza Assassinata</label>
-            <textarea name="belief_murdered" id="belief_murdered" rows="4">{{ data.get('belief_murdered', '') }}</textarea>
+            <p class="form-help">Qual è una convinzione professionale che hai dovuto abbandonare?</p>
+            <textarea name="belief_murdered" id="belief_murdered" rows="4" placeholder="Es: 'Credevo che il codice perfetto fosse la cosa più importante, poi ho capito che consegnare valore è prioritario' oppure 'Pensavo che lavorare più ore significasse essere più produttivi'">{{ data.get('belief_murdered', '') }}</textarea>
         </div>
 
         <div class="form-actions">
@@ -533,23 +541,27 @@
     <form hx-post="/create/step/6" hx-target=".creation-layout" hx-swap="outerHTML">
         <div class="form-group">
             <label for="masterclass">🎓 Masterclass Non-Lavorativa</label>
-            <textarea name="masterclass" id="masterclass" rows="5">{{ data.get('masterclass', '') }}</textarea>
+            <p class="form-help">Se dovessi tenere una masterclass su qualcosa di NON legato al tuo lavoro, su cosa sarebbe?</p>
+            <textarea name="masterclass" id="masterclass" rows="5" placeholder="Es: 'Come preparare il caffè perfetto con la moka' oppure 'Storia della musica elettronica anni '90' oppure 'Giardinaggio urbano in spazi ridotti'">{{ data.get('masterclass', '') }}</textarea>
         </div>
 
         <div class="form-row">
             <div class="form-group">
                 <label for="books">📚 Libri formativi</label>
-                <textarea name="books" id="books" rows="4">{{ data.get('books', '') }}</textarea>
+                <p class="form-help">Quali libri hanno influenzato il tuo modo di pensare/lavorare?</p>
+                <textarea name="books" id="books" rows="4" placeholder="Es: 'Thinking, Fast and Slow di Kahneman', 'The Design of Everyday Things', ecc.">{{ data.get('books', '') }}</textarea>
             </div>
             <div class="form-group">
                 <label for="people">👤 Mentori</label>
-                <textarea name="people" id="people" rows="4">{{ data.get('people', '') }}</textarea>
+                <p class="form-help">Chi sono le persone (vive o morte, reali o fittizie) che ti hanno ispirato?</p>
+                <textarea name="people" id="people" rows="4" placeholder="Es: 'Richard Feynman per l'approccio alla curiosità', 'Il mio primo manager che...'">{{ data.get('people', '') }}</textarea>
             </div>
         </div>
 
         <div class="form-group">
             <label for="rabbit_hole">🐇 Rabbit Hole Attuale</label>
-            <textarea name="rabbit_hole" id="rabbit_hole" rows="4">{{ data.get('rabbit_hole', '') }}</textarea>
+            <p class="form-help">Qual è la tua ossessione intellettuale del momento?</p>
+            <textarea name="rabbit_hole" id="rabbit_hole" rows="4" placeholder="Es: 'Sto studiando i sistemi complessi e la teoria del caos' oppure 'Mi sono fissato con l'architettura brutalista'">{{ data.get('rabbit_hole', '') }}</textarea>
         </div>
 
         <div class="form-actions">
@@ -565,22 +577,26 @@
     <form hx-post="/create/step/7" hx-target=".creation-layout" hx-swap="outerHTML">
         <div class="form-group">
             <label for="communication">💬 Comunicazione</label>
-            <textarea name="communication" id="communication" rows="4">{{ data.get('communication', '') }}</textarea>
+            <p class="form-help">Come preferisci comunicare? (sincrono/asincrono, verbale/scritto, etc.)</p>
+            <textarea name="communication" id="communication" rows="4" placeholder="Es: 'Preferisco comunicazione asincrona per decisioni importanti, sincrona per brainstorming' oppure 'Mi esprimo meglio per iscritto che a voce'">{{ data.get('communication', '') }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="crash_triggers">💥 Crash Triggers</label>
-            <textarea name="crash_triggers" id="crash_triggers" rows="4">{{ data.get('crash_triggers', '') }}</textarea>
+            <p class="form-help">Cosa ti fa andare in tilt/frustrazione quando lavori?</p>
+            <textarea name="crash_triggers" id="crash_triggers" rows="4" placeholder="Es: 'Interruzioni continue durante il deep work', 'Decisioni prese senza coinvolgermi', 'Mancanza di contesto prima di un task'">{{ data.get('crash_triggers', '') }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="known_biases">⚠️ Bias Noti</label>
-            <textarea name="known_biases" id="known_biases" rows="4">{{ data.get('known_biases', '') }}</textarea>
+            <p class="form-help">Quali bias cognitivi sai di avere?</p>
+            <textarea name="known_biases" id="known_biases" rows="4" placeholder="Es: 'Overconfidence - tendo a sottovalutare la complessità', 'Confirmation bias quando difendo le mie idee', 'Sunk cost fallacy - fatico ad abbandonare progetti in cui ho investito tempo'">{{ data.get('known_biases', '') }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="ideal_conditions">✨ Condizioni Ideali</label>
-            <textarea name="ideal_conditions" id="ideal_conditions" rows="4">{{ data.get('ideal_conditions', '') }}</textarea>
+            <p class="form-help">In quali condizioni lavori al meglio? (ambiente, orari, team, autonomia, etc.)</p>
+            <textarea name="ideal_conditions" id="ideal_conditions" rows="4" placeholder="Es: 'Mattina presto, in silenzio, con obiettivi chiari ma libertà di metodo', 'Team piccolo, alta autonomia, feedback frequenti'">{{ data.get('ideal_conditions', '') }}</textarea>
         </div>
 
         <div class="form-actions">
@@ -596,17 +612,20 @@
     <form hx-post="/create/step/8" hx-target=".creation-layout" hx-swap="outerHTML">
         <div class="form-group">
             <label for="learning_next">🎯 Vuoi Imparare</label>
-            <textarea name="learning_next" id="learning_next" rows="4">{{ data.get('learning_next', '') }}</textarea>
+            <p class="form-help">Cosa vuoi imparare nei prossimi mesi?</p>
+            <textarea name="learning_next" id="learning_next" rows="4" placeholder="Es: 'Voglio approfondire machine learning e NLP', 'Sto studiando system design per grandi scale', 'Mi interessa imparare Rust'">{{ data.get('learning_next', '') }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="two_years">🔮 Tra 2 Anni</label>
-            <textarea name="two_years" id="two_years" rows="4">{{ data.get('two_years', '') }}</textarea>
+            <p class="form-help">Dove ti vedi professionalmente tra 2 anni?</p>
+            <textarea name="two_years" id="two_years" rows="4" placeholder="Es: 'Voglio essere tech lead in un team di 5-10 persone', 'Lavorare su prodotti che impattano milioni di utenti', 'Avere lanciato il mio side project'">{{ data.get('two_years', '') }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="dream_project">🌟 Progetto dei Sogni</label>
-            <textarea name="dream_project" id="dream_project" rows="4">{{ data.get('dream_project', '') }}</textarea>
+            <p class="form-help">Qual è il progetto che vorresti realizzare se avessi tempo/budget/risorse illimitate?</p>
+            <textarea name="dream_project" id="dream_project" rows="4" placeholder="Es: 'Una piattaforma che democratizza l'accesso all'educazione', 'Un tool che risolve [problema specifico] nel mio settore', 'Un progetto open source che...'">{{ data.get('dream_project', '') }}</textarea>
         </div>
 
         <div class="form-actions">
