@@ -14,61 +14,85 @@ class PortfolioGenerator:
     e i dati dell'utente.
     """
     
-    # Configurazioni per personalità
+    # Configurazioni per personalità con stili più accattivanti
     PERSONALITY_CONFIGS = {
         "chaos": {
             "bg_gradient": "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
             "accent": "#ff6b6b",
             "accent2": "#4ecdc4",
+            "accent3": "#ffd93d",
             "font_main": "'JetBrains Mono', monospace",
             "font_heading": "'Space Grotesk', sans-serif",
-            "card_style": "transform: rotate(-1deg);",
-            "layout": "chaotic"
+            "card_style": "transform: rotate(-0.5deg); transition: all 0.3s ease;",
+            "card_hover": "transform: rotate(0deg) translateY(-4px); box-shadow: 0 12px 24px rgba(255, 107, 107, 0.3);",
+            "layout": "chaotic",
+            "badge_style": "background: linear-gradient(135deg, #ff6b6b, #4ecdc4); animation: pulse 2s ease-in-out infinite;",
+            "section_decoration": "border-left: 3px solid #ff6b6b; padding-left: 1.5rem;"
         },
         "order": {
             "bg_gradient": "linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%)",
             "accent": "#3b82f6",
             "accent2": "#1e40af",
+            "accent3": "#60a5fa",
             "font_main": "'Inter', sans-serif",
             "font_heading": "'Inter', sans-serif",
-            "card_style": "",
-            "layout": "grid"
+            "card_style": "box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.3s ease;",
+            "card_hover": "box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2); transform: translateY(-2px);",
+            "layout": "grid",
+            "badge_style": "background: linear-gradient(135deg, #3b82f6, #1e40af); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);",
+            "section_decoration": "border-bottom: 2px solid #3b82f6; padding-bottom: 0.5rem;"
         },
         "minimal": {
             "bg_gradient": "#ffffff",
             "accent": "#000000",
             "accent2": "#666666",
+            "accent3": "#999999",
             "font_main": "'Libre Baskerville', serif",
             "font_heading": "'Libre Baskerville', serif",
-            "card_style": "border: none; box-shadow: none;",
-            "layout": "minimal"
+            "card_style": "border: none; border-bottom: 1px solid #e5e7eb; transition: all 0.3s ease;",
+            "card_hover": "border-bottom: 1px solid #000000; padding-left: 1rem;",
+            "layout": "minimal",
+            "badge_style": "background: #000000; border: 2px solid #000000;",
+            "section_decoration": "border-bottom: 1px solid #000000; padding-bottom: 0.25rem; margin-bottom: 2rem;"
         },
         "rebel": {
             "bg_gradient": "#000000",
             "accent": "#ff0000",
             "accent2": "#ffffff",
+            "accent3": "#ff6b6b",
             "font_main": "'Space Mono', monospace",
             "font_heading": "'Space Mono', monospace",
-            "card_style": "border: 2px solid #ff0000;",
-            "layout": "rebel"
+            "card_style": "border: 2px solid #ff0000; transition: all 0.3s ease; position: relative;",
+            "card_hover": "border-color: #fff; box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); transform: scale(1.02);",
+            "layout": "rebel",
+            "badge_style": "background: #ff0000; border: 2px solid #ff0000; text-transform: uppercase; letter-spacing: 0.15em; animation: glitch 3s infinite;",
+            "section_decoration": "border-left: 4px solid #ff0000; padding-left: 2rem; position: relative;"
         },
         "warm": {
             "bg_gradient": "linear-gradient(135deg, #fff5e6 0%, #ffecd2 100%)",
             "accent": "#e74c3c",
             "accent2": "#f39c12",
+            "accent3": "#e67e22",
             "font_main": "'Merriweather', serif",
             "font_heading": "'Playfair Display', serif",
-            "card_style": "border-radius: 20px;",
-            "layout": "warm"
+            "card_style": "border-radius: 20px; box-shadow: 0 4px 12px rgba(231, 76, 60, 0.1); transition: all 0.3s ease;",
+            "card_hover": "box-shadow: 0 8px 24px rgba(231, 76, 60, 0.2); transform: translateY(-4px);",
+            "layout": "warm",
+            "badge_style": "background: linear-gradient(135deg, #e74c3c, #f39c12); border-radius: 30px; box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);",
+            "section_decoration": "border-radius: 12px 0 0 0; border-top: 3px solid #e74c3c; border-left: 3px solid #f39c12; padding: 0.5rem 0 0 1rem;"
         },
         "data": {
             "bg_gradient": "#0f172a",
             "accent": "#22c55e",
             "accent2": "#3b82f6",
+            "accent3": "#8b5cf6",
             "font_main": "'Roboto Mono', monospace",
             "font_heading": "'Roboto', sans-serif",
-            "card_style": "",
-            "layout": "dashboard"
+            "card_style": "background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), rgba(59, 130, 246, 0.05)); border-left: 3px solid #22c55e; transition: all 0.3s ease;",
+            "card_hover": "background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1)); border-left-width: 5px; transform: translateX(4px);",
+            "layout": "dashboard",
+            "badge_style": "background: linear-gradient(135deg, #22c55e, #3b82f6); box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); font-family: 'Roboto Mono', monospace;",
+            "section_decoration": "border-left: 3px solid #22c55e; border-bottom: 1px solid rgba(34, 197, 94, 0.3); padding-left: 1.5rem; padding-bottom: 0.5rem;"
         }
     }
     
@@ -176,13 +200,63 @@ class PortfolioGenerator:
             padding: 0;
             box-sizing: border-box;
         }}
-        
+
+        @keyframes fadeInUp {{
+            from {{
+                opacity: 0;
+                transform: translateY(30px);
+            }}
+            to {{
+                opacity: 1;
+                transform: translateY(0);
+            }}
+        }}
+
+        @keyframes pulse {{
+            0%, 100% {{
+                transform: scale(1);
+            }}
+            50% {{
+                transform: scale(1.05);
+            }}
+        }}
+
+        @keyframes glitch {{
+            0%, 90%, 100% {{
+                transform: translate(0);
+            }}
+            92% {{
+                transform: translate(-2px, 2px);
+            }}
+            94% {{
+                transform: translate(2px, -2px);
+            }}
+            96% {{
+                transform: translate(-2px, -2px);
+            }}
+            98% {{
+                transform: translate(2px, 2px);
+            }}
+        }}
+
+        @keyframes slideIn {{
+            from {{
+                opacity: 0;
+                transform: translateX(-20px);
+            }}
+            to {{
+                opacity: 1;
+                transform: translateX(0);
+            }}
+        }}
+
         body {{
             font-family: {config['font_main']};
             background: {config['bg_gradient']};
             color: {text_color};
             line-height: 1.7;
             min-height: 100vh;
+            animation: fadeInUp 0.6s ease-out;
         }}
         
         .container {{
@@ -216,14 +290,14 @@ class PortfolioGenerator:
         
         .archetype-badge {{
             display: inline-block;
-            background: {config['accent']};
-            color: {"#000" if personality in ["warm", "order"] else "#fff"};
-            padding: 0.5rem 1.5rem;
+            color: #fff;
+            padding: 0.75rem 1.75rem;
             border-radius: {"0" if personality == "rebel" else "30px"};
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             letter-spacing: 0.05em;
             {"text-transform: uppercase;" if personality == "rebel" else ""}
+            {config['badge_style']}
         }}
         
         /* Section */
@@ -231,6 +305,17 @@ class PortfolioGenerator:
             margin-bottom: 3rem;
         }}
         
+        .section {{
+            animation: slideIn 0.6s ease-out;
+            animation-fill-mode: both;
+        }}
+
+        .section:nth-child(1) {{ animation-delay: 0.1s; }}
+        .section:nth-child(2) {{ animation-delay: 0.2s; }}
+        .section:nth-child(3) {{ animation-delay: 0.3s; }}
+        .section:nth-child(4) {{ animation-delay: 0.4s; }}
+        .section:nth-child(5) {{ animation-delay: 0.5s; }}
+
         .section-title {{
             font-family: {config['font_heading']};
             font-size: 1.5rem;
@@ -240,7 +325,7 @@ class PortfolioGenerator:
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            {"border-bottom: 2px solid " + config['accent'] + "; padding-bottom: 0.5rem;" if personality in ["order", "data"] else ""}
+            {config['section_decoration']}
             {"text-transform: uppercase; letter-spacing: 0.1em;" if personality == "rebel" else ""}
         }}
         
@@ -257,13 +342,18 @@ class PortfolioGenerator:
             margin-bottom: 1rem;
             {config['card_style']}
         }}
-        
+
+        .card:hover {{
+            {config['card_hover']}
+        }}
+
         .card-title {{
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: {config['accent2']};
+            font-size: 1.05rem;
         }}
-        
+
         .card p {{
             color: {text_muted};
             white-space: pre-line;

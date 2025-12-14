@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section" style="max-width: 800px; margin: 2rem auto;">
+    <h2 class="section-title">⚙️ Configurazione Demo - Già Funzionante</h2>
+    <p class="section-subtitle">✅ La demo è già configurata con API key valide. Puoi usare tranquillamente il prodotto!</p>
+
+    <div class="encouragement-box" style="margin-top: 2rem; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1)); border-left: 3px solid var(--accent-green);">
+        <h4>🎉 Demo Pronta all'Uso</h4>
+        <p><strong>Angelo ha messo a disposizione un budget di €5 su Anthropic</strong> per permettere ai giudici di testare il prodotto senza bisogno di configurare le proprie API key.</p>
+        <p style="margin-top: 0.5rem; color: var(--text-dim); font-size: 0.9rem;">💡 Se il credito dovesse finire, aggiungi la tua API key qui sotto. Le impostazioni sono già precompilate e funzionanti.</p>
+    </div>
+
+    <form id="settings-form" style="margin-top: 2rem;">
+        <div class="form-group">
+            <label for="provider">🤖 Provider LLM</label>
+            <select name="provider" id="provider" onchange="updateProviderInfo()" style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
+                <option value="anthropic">Anthropic (Claude)</option>
+                <option value="google">Google (Gemini)</option>
+                <option value="openai">OpenAI (GPT-4)</option>
+            </select>
+        </div>
+
+        <div class="form-group" style="margin-top: 1.5rem;">
+            <label for="api_key">🔐 API Key <span style="color: var(--accent-green); font-size: 0.85rem;">(Preconfigurata)</span></label>
+            <input type="password" name="api_key" id="api_key"
+                   placeholder="••••••••••••••••••••••••••••"
+                   style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
+            <p class="form-help" id="provider-help" style="margin-top: 0.5rem; color: var(--text-dim); font-size: 0.9rem;">
+                ✅ API key già configurata e funzionante. Cambiala solo se necessario.
+            </p>
+        </div>
+
+        <div class="form-group" style="margin-top: 1.5rem;">
+            <label for="model">🎯 Modello <span style="color: var(--accent-green); font-size: 0.85rem;">(da config.yaml)</span></label>
+            <input type="text" name="model" id="model"
+                   placeholder="claude-sonnet-4-5-20250929"
+                   style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
+            <p class="form-help" style="margin-top: 0.5rem; color: var(--text-dim); font-size: 0.9rem;">
+                ✅ Modello configurato da config.yaml. Claude Sonnet 4.5 (più recente e performante)
+            </p>
+        </div>
+
+        <!-- Current Settings Display -->
+        <div id="current-settings" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-top: 2rem;">
+            <h4 style="color: var(--accent); margin-bottom: 1rem;">📊 Configurazione Attuale</h4>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">
+                <p><strong>Provider:</strong> <span id="current-provider">Anthropic</span></p>
+                <p><strong>API Key:</strong> <span id="current-api-key" style="color: var(--accent-green);">✅ Configurata (Angelo's budget)</span></p>
+                <p><strong>Modello:</strong> <span id="current-model">claude-sonnet-4-5-20250929</span></p>
+            </div>
+        </div>
+
+        <div class="form-actions" style="margin-top: 2rem; display: flex; gap: 1rem;">
+            <button type="submit" class="btn btn-primary" style="flex: 1;">💾 Aggiorna Impostazioni</button>
+            <button type="button" onclick="resetToDefault()" class="btn btn-secondary">🔄 Ripristina Default</button>
+        </div>
+    </form>
+
+    <div id="message" style="margin-top: 1rem; padding: 1rem; border-radius: 8px; display: none;"></div>
+
+    <!-- Info Box -->
+    <div style="background: rgba(99, 102, 241, 0.1); border-left: 3px solid var(--primary); padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+        <h4 style="color: var(--primary-light); margin-bottom: 0.75rem;">ℹ️ Note per i Giudici</h4>
+        <ul style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; padding-left: 1.5rem;">
+            <li><strong>La demo è già configurata e funzionante</strong> - non serve aggiungere API key</li>
+            <li>Budget disponibile: <strong>€5 su Anthropic</strong> (sufficiente per testare tutte le funzionalità)</li>
+            <li>Se il credito finisce, è possibile aggiungere la propria API key qui</li>
+            <li>Le API key sono salvate solo nel browser (sessionStorage) e non vengono inviate a server esterni</li>
+            <li>Modello utilizzato: <code>claude-sonnet-4-5-20250929</code> (ultimo modello Claude, configurato in config.yaml)</li>
+            <li>File .env fornito nella consegna contiene le chiavi preconfigurate</li>
+        </ul>
+    </div>
+
+    <!-- Budget Monitor -->
+    <div style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1)); border: 1px solid var(--accent-green); padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+        <h4 style="color: var(--accent-green); margin-bottom: 0.75rem;">💰 Budget Demo</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+            Angelo ha messo a disposizione <strong>€5 di credito Anthropic</strong> per questa demo.<br>
+            Se dovesse esaurirsi durante la valutazione, ti chiediamo gentilmente di aggiungere una tua API key temporanea.<br>
+            <br>
+            <strong>Come ottenere una API key gratuita:</strong><br>
+            • Anthropic: <a href="https://console.anthropic.com/" target="_blank" style="color: var(--primary-light);">console.anthropic.com</a> (5$ di credito gratuito)<br>
+            • Google: <a href="https://makersuite.google.com/app/apikey" target="_blank" style="color: var(--primary-light);">makersuite.google.com</a> (gratuito)<br>
+            • OpenAI: <a href="https://platform.openai.com/api-keys" target="_blank" style="color: var(--primary-light);">platform.openai.com</a> (credito iniziale)
+        </p>
+    </div>
+</div>
+
+<script>
+// Default settings from .env and config.yaml
+const DEFAULT_SETTINGS = {
+    anthropic: {
+        api_key: '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',
+        model: 'claude-sonnet-4-5-20250929'
+    },
+    google: {
+        api_key: 'AIzaSyBoXTSphNgqgPXJGxyJmOcisfuKkumq140',
+        model: 'gemini-2.0-flash'
+    },
+    openai: {
+        api_key: '',
+        model: 'gpt-4-turbo-preview'
+    }
+};
+
+// Load current settings on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadCurrentSettings();
+});
+
+function loadCurrentSettings() {
+    // Get from sessionStorage or use defaults
+    const provider = sessionStorage.getItem('llm_provider') || 'anthropic';
+    const apiKey = sessionStorage.getItem('llm_api_key') || DEFAULT_SETTINGS[provider].api_key;
+    const model = sessionStorage.getItem('llm_model') || DEFAULT_SETTINGS[provider].model;
+
+    // Set form values
+    document.getElementById('provider').value = provider;
+    document.getElementById('api_key').value = apiKey;
+    document.getElementById('model').value = model;
+
+    // Update display
+    updateCurrentDisplay(provider, apiKey, model);
+    updateProviderInfo();
+}
+
+function updateCurrentDisplay(provider, apiKey, model) {
+    const providerName = provider.charAt(0).toUpperCase() + provider.slice(1);
+    document.getElementById('current-provider').textContent = providerName;
+
+    if (apiKey) {
+        const masked = '••••••' + apiKey.slice(-4);
+        const isDefault = apiKey === DEFAULT_SETTINGS[provider].api_key;
+        document.getElementById('current-api-key').innerHTML = isDefault
+            ? `✅ Configurata (Angelo's budget) - ${masked}`
+            : `🔑 Personalizzata - ${masked}`;
+    } else {
+        document.getElementById('current-api-key').textContent = '❌ Non configurata';
+    }
+
+    document.getElementById('current-model').textContent = model || 'Default';
+}
+
+function updateProviderInfo() {
+    const provider = document.getElementById('provider').value;
+    const helpText = document.getElementById('provider-help');
+
+    const isDefault = document.getElementById('api_key').value === DEFAULT_SETTINGS[provider].api_key
+                   || document.getElementById('api_key').value === '';
+
+    if (isDefault) {
+        helpText.innerHTML = '✅ API key già configurata e funzionante. Cambiala solo se necessario.';
+    } else {
+        helpText.innerHTML = '🔑 Stai usando una API key personalizzata.';
+    }
+
+    // Update model placeholder
+    document.getElementById('model').placeholder = DEFAULT_SETTINGS[provider].model;
+}
+
+document.getElementById('settings-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const provider = document.getElementById('provider').value;
+    const apiKey = document.getElementById('api_key').value.trim() || DEFAULT_SETTINGS[provider].api_key;
+    const model = document.getElementById('model').value.trim() || DEFAULT_SETTINGS[provider].model;
+
+    // Save to sessionStorage
+    sessionStorage.setItem('llm_provider', provider);
+    sessionStorage.setItem('llm_api_key', apiKey);
+    sessionStorage.setItem('llm_model', model);
+
+    // Update display
+    updateCurrentDisplay(provider, apiKey, model);
+
+    showMessage('✅ Impostazioni aggiornate con successo!', 'success');
+});
+
+function resetToDefault() {
+    const provider = document.getElementById('provider').value;
+
+    // Reset to defaults
+    sessionStorage.setItem('llm_provider', provider);
+    sessionStorage.setItem('llm_api_key', DEFAULT_SETTINGS[provider].api_key);
+    sessionStorage.setItem('llm_model', DEFAULT_SETTINGS[provider].model);
+
+    // Reload display
+    loadCurrentSettings();
+
+    showMessage('🔄 Impostazioni ripristinate ai valori di default', 'success');
+}
+
+function showMessage(text, type) {
+    const messageDiv = document.getElementById('message');
+    messageDiv.textContent = text;
+    messageDiv.style.display = 'block';
+    messageDiv.style.background = type === 'success' ? 'rgba(34, 197, 94, 0.2)' : 'rgba(239, 68, 68, 0.2)';
+    messageDiv.style.color = type === 'success' ? 'var(--accent-green)' : 'var(--accent-red)';
+    messageDiv.style.border = type === 'success' ? '1px solid var(--accent-green)' : '1px solid var(--accent-red)';
+
+    setTimeout(() => {
+        messageDiv.style.display = 'none';
+    }, 3000);
+}
+</script>
+{% endblock %}

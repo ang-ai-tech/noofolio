@@ -8,6 +8,23 @@
             <strong>{{ archetype.get('combo_display', archetype.get('combo', '')) }}</strong>
         </p>
     </div>
+
+    <!-- Mind Sculptor CTA -->
+    <div class="encouragement-box" style="margin-top: 2rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(34, 211, 238, 0.15)); border: 2px solid var(--primary);">
+        <div style="text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🧠✨</div>
+            <h3 style="color: var(--primary-light); margin-bottom: 0.75rem;">Vuoi migliorare il tuo NooMe?</h3>
+            <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                Rispondi ad alcune domande casuali generate dall'AI per rendere il tuo chatbot ancora più accurato e affidabile.
+            </p>
+            <a href="/mind-sculptor/{{ profile_id }}?from_creation=true" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                🎯 Inizia Mind Sculptor
+            </a>
+            <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-dim);">
+                ⏭️ Puoi anche saltare e farlo dopo
+            </p>
+        </div>
+    </div>
 </div>
 
 <!-- Tabs -->
@@ -56,6 +73,27 @@
 </div>
 
 <script>
+// Update logged user after portfolio creation
+document.addEventListener('DOMContentLoaded', function() {
+    const profileId = '{{ profile_id }}';
+    const archetype = {{ archetype | tojson }};
+
+    // Extract name from archetype or profile_id
+    const userName = archetype.combo_display || profileId.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+    // Update session storage
+    sessionStorage.setItem('current_user', userName);
+    sessionStorage.setItem('current_user_id', profileId);
+
+    // Trigger navbar update
+    window.dispatchEvent(new CustomEvent('userChanged', {
+        detail: {
+            userName: userName,
+            userId: profileId
+        }
+    }));
+});
+
 function showTab(tab) {
     document.getElementById('preview-tab').style.display = tab === 'preview' ? 'block' : 'none';
     document.getElementById('download-tab').style.display = tab === 'download' ? 'block' : 'none';

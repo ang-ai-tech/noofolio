@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "generated_at": "2025-01-15T11:30:00",
+    "archetype": {
+      "role": "builder",
+      "personality": "chaos",
+      "ai_style": "pragmatist",
+      "combo": "Builder × Chaos × Pragmatist",
+      "archetype_name": "The Hacker",
+      "combo_display": "The Hacker = Builder × Chaos × Pragmatist",
+      "reasoning": "Costruisce soluzioni pratiche, abbraccia l'iterazione caotica, usa AI come strumento quando serve",
+      "tagline": "Breaking things until they work"
+    },
+    "version": "1.0"
+  },
+  "identity": {
+    "name": "Marco Rossi",
+    "tagline": "Breaking things until they work",
+    "superpotere": "Trovare bug impossibili seguendo pattern invisibili. Tipo quando tutti dicono 'funziona sulla mia macchina' e io trovo quel race condition che si verifica solo martedì alle 3 di notte.",
+    "presentazione": "Full-stack developer da 5 anni. Ho iniziato in consulenza (impara a fare tutto velocemente), poi startup (impara che niente funziona come dovrebbe), ora founder di un side project (impara a dire no). Stack: Python, JavaScript, React, FastAPI. Philosophy: il codice migliore è quello che risolve il problema dell'utente, non quello che vince premi di architettura.",
+    "links": [
+      {"url": "https://github.com/marcorossi", "type": "GitHub"},
+      {"url": "https://linkedin.com/in/marco-rossi-dev", "type": "LinkedIn"}
+    ]
+  },
+  "decision_log": {
+    "against_current": "Team voleva microservizi perché 'scalabile' e tutti i blog dicevano che era il futuro. I dati dicevano: 200 utenti/giorno, 3 sviluppatori, zero esperienza con distributed systems. Ho proposto monolite modulare. Mi hanno detto che ero 'stuck in the past'. Ho fatto vedere i numeri: 3 settimane di setup vs 3 giorni, 40% del tempo in debugging di comunicazione tra servizi. Abbiamo fatto il monolite. 18 mesi dopo: deployment 3x più veloce della concorrenza, zero downtime, team ancora sano di mente.",
+    "projects": [
+      {
+        "name": "Sistema di Caching Ibrido",
+        "fork": "Opzioni:\nA) Redis cluster (standard, documentato, tutti lo conoscono)\nB) In-memory + file cache (weird, custom, fragile)\n\nDati: 90% delle query erano read-only, infra budget limitato, deploy su server singolo.\n\nHo scelto B con un twist: in-memory per hot data, SQLite per persistence, Redis solo per invalidation signals.\n\nRisultato: 99.9% hit rate, $500/mese risparmiati, 1 dipendenza in meno. Il tech lead mi odiava ma gli utenti erano felici.",
+        "proof": ""
+      },
+      {
+        "name": "Refactoring o Rewrite?",
+        "fork": "Codebase legacy di 50k righe in jQuery. Team split:\nA) Rewrite totale in React (sexy, portfolio-worthy)\nB) Refactor incrementale (noioso, sicuro)\n\nHo scelto C: rewrite graduale con strangler pattern.\n\nPerché: ogni 'big rewrite' che ho visto è fallito. Ma il codice era davvero brutto. Soluzione: nuove feature in React, vecchie feature solo se si rompono.\n\n6 mesi dopo: 60% migrato, zero down, utenti non se ne sono accorti.",
+        "proof": ""
+      }
+    ],
+    "worst_decision": "Ho scelto MongoDB perché era 'flessibile' e non volevo pensare allo schema. 6 mesi dopo: dati inconsistenti, query impossibili, migrations a mano. Ho speso 2 settimane a migrare tutto su PostgreSQL con proper schema. Lezione: la flessibilità senza disciplina è solo caos rimandato."
+  },
+  "anti_skills": {
+    "heresy": "Credo che il 90% dei design patterns siano over-engineering. Factory di factory? Strategy pattern per 2 casi? No. YAGNI non è pigrizia, è saggezza. Il miglior codice è quello che puoi capire alle 3 di notte dopo 3 birre.",
+    "never_again": "Mai più progetti dove 'Agile' significa 'nessun piano, cambiamo idea ogni giorno'. Vero agile = iterazioni veloci con direzione chiara. Fake agile = caos con standup. Ne ho fatti 2 così, entrambi finiti in burnout e turnover.",
+    "wont_do": "❌ Progetti senza staging environment → Production è per utenti, non per testing\n❌ 'Fix this quick' senza capire la root cause → Fixing symptoms crea zombie bugs\n❌ Codice senza tests per 'andare veloce' → Lentezza viene dopo, con gli interessi\n❌ Build tool che nessuno nel team capisce → Se si rompe alle 2am, voglio fixarlo",
+    "red_flags": "Quando il CTO non fa code review. Quando 'move fast' significa 'skip tests'. Quando nessuno sa cosa gira in produzione. Quando l'ultimo deploy è stato 3 mesi fa. Quando 'tech debt' è una parolaccia."
+  },
+  "failure_museum": {
+    "biggest": "Analytics Platform Perfetto Che Nessuno Ha Usato. 3 mesi di lavoro. Dashboard bellissime. Metriche sophisticated. Zero adoption. Perché? Non avevo chiesto agli utenti cosa volevano. Avevo assunto che 'più dati = meglio'. Falso. Volevano 3 numeri grossi e un alert se qualcosa va male. Ho imparato: talk to users before writing code, not after.",
+    "pattern": "Tendo a over-engineer quando sono insicuro. Se non so la soluzione, aggiungo layers finché mi sento safe. Risultato: codice complicato che nasconde il fatto che non ho capito il problema. Sto imparando a scrivere la soluzione più stupida che funziona, THEN iterare.",
+    "belief_killed": "Credevo che 'clean code' fosse il valore supremo. Poi ho lavorato su un codebase 'sporco' che generava 50M€/anno e un codebase 'pulito' che nessuno usava. Ho capito: clean code è un mezzo, non un fine. Il fine è risolvere problemi. Se il codice brutto funziona e quello bello no, vince il brutto.",
+    "brutal_feedback": "'Sei bravissimo a fixare problemi tecnici, ma ignori quelli umani. Quel bug che hai fixato? Il vero problema era che il PM e il designer non si parlavano.' — Senior dev. Aveva ragione. Ora debuggo anche le comunicazioni, non solo il codice."
+  },
+  "human_delta": {
+    "ai_guilty": "Uso AI per: boilerplate (React components, API endpoints), documentazione, code reviews automatici, refactoring suggestions. Ha trasformato le parti noiose da ore a minuti. Non mi vergogno.",
+    "ai_never": "Mai per: capire requirement ambigui (AI inventa plausibilmente), decisioni architetturali strategiche (AI non sa il contesto), debugging di race conditions (AI guessa, io ragiono), valutare trade-off di performance (AI cita best practices, io misuro).",
+    "ai_better": "L'AI è meglio di me a: generare varianti di codice, ricordare sintassi obscure, scrivere tests tedious ma importanti, mantenere consistenza in codebase grossi.",
+    "human_better": "Io sono meglio a: capire PERCHÉ un bug esiste (non solo DOVE), intuire quale parte del codice nasconde complessità, sapere quando fermarmi invece di aggiungere features, leggere tra le righe dei requirement del cliente.",
+    "delta_story": "Cliente: 'Il sistema è lento, ottimizza il database.'\nAI avrebbe: generato query ottimizzate, suggerito indici, proposto caching.\nIo ho fatto: aperto browser dev tools. Il bottleneck era un'immagine 15MB che caricavano in ogni pagina.\n\nFix: 5 minuti di image optimization.\nValore: problema risolto senza toccare il database.\n\nL'AI ottimizza quello che gli chiedi. L'umano trova il vero problema."
+  },
+  "curiosity_stack": {
+    "masterclass": "Farei una masterclass su 'Debugging Esistenziale': come trovare bug che non dovrebbero esistere. Tipo: 'funziona in dev, staging, ma non in prod'. 'Si rompe solo per questo cliente'. 'Era funzionante ieri, codice non è cambiato'. Debugging è filosofia applicata.",
+    "books": "The Pragmatic Programmer - bibbia pratica\nDesigning Data-Intensive Applications - capire cosa succede sotto\nA Philosophy of Software Design - complessità spiegata bene\nRelease It! - produzione non è dev con utenti",
+    "media": "Podcast: Software Engineering Daily, Changelog\nYouTube: ThePrimeagen (hot takes su tech), Fireship (memes con sostanza)\nBlog: Hillel Wayne (formal methods reso umano), Dan Luu (performance deep dives)",
+    "people": "Un senior che mi ha insegnato: 'Leggi il codice come leggi il codice degli altri. Anche se è tuo.' Un PM che mi ha fatto capire che 'funziona' non basta, deve risolvere il problema giusto. Un founder che mi ha mostrato che shipping imperfetto batte perfetto mai rilasciato.",
+    "unexpected_connection": "Studio scacchi. C'entra col coding? Più di quanto pensassi: pattern recognition, pensare 3 mosse avanti, quando sacrificare eleganza per tattica, accettare che non puoi calcolare tutto. Debugging complesso è come endgame: meno pezzi, più conta ogni mossa.",
+    "rabbit_hole": "Sto esplorando come Rust gestisce memory safety senza garbage collection. Non perché devo usarlo, ma perché cambia come penso alla ownership anche in Python/JS. Ogni linguaggio che impari ti mostra blind spots degli altri."
+  },
+  "human_api": {
+    "communication": "Preferisco async (Slack, email, GitHub issues) per cose che richiedono pensiero. Call per brainstorming o quando c'è troppo context-switching. Se mi scrivi alle 23:00 rispondo, ma non aspettartelo. Se serve urgente, chiamami, non messaggiare 'ciao' e aspettare.",
+    "feedback_style": "Voglio feedback specifico con esempi. 'Questo codice è confuso' non aiuta. 'Questa funzione fa 3 cose, splittala' aiuta. Do feedback allo stesso modo: non giudizio, ma osservazioni + suggerimenti. Pull request sono per imparare, non per flex.",
+    "crash_triggers": "Vado in crash quando: priorità cambiano ogni 2 giorni senza spiegazione, 'urgent' diventa il default, meeting senza agenda che potevano essere email, mi chiedono stime su progetti che non ho capito.",
+    "known_biases": "Preferisco soluzioni tecniche a soluzioni umane (automazione vs comunicazione). Sottovaluto il tempo di documentazione. Sovrastimo quanto gli altri sanno di contesto che io do per scontato. Tendo a fixare sintomi prima di capire root cause.",
+    "ideal_conditions": "Blocchi di 3-4 ore senza interruzioni per deep work. Autonomia su 'come', allineamento su 'cosa' e 'perché'. Deployment frequency alta (paura viene da deploy rari). Team che fa code review costruttive. Accesso a produzione per debuggare (con safety nets)."
+  },
+  "whats_next": {
+    "learning": "Voglio capire meglio system design e distributed systems. Non per fare microservizi ovunque, ma per sapere quando servono davvero. Anche: come scrivere codice che altri possono mantenere facilmente (il me tra 6 mesi è 'altri').",
+    "two_years": "Voglio essere passato da 'developer che scrive codice' a 'developer che abilita altri developer'. Questo significa: mentorship, migliori processi, meno hero coding. E vorrei aver lanciato il mio side project a revenue sostenibile.",
+    "dream_project": "Una piattaforma di 'debugging condiviso' - tipo Stack Overflow ma per bug specifici, con timeline, ipotesi testate, dead ends documentati. Quante volte risolvi un bug obscure e quel knowledge si perde? Voglio catturare quel processo."
+  }
+}

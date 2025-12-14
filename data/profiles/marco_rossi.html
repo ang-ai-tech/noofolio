@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marco Rossi - Noofolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0a0a0f;
+            color: #e2e8f0;
+            line-height: 1.7;
+            padding: 2rem;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+            margin-bottom: 3rem;
+        }
+        .archetype {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #6366f1, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        .tagline {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            font-style: italic;
+        }
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(18, 18, 26, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            color: #818cf8;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .narrative {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+        .highlight {
+            background: rgba(99, 102, 241, 0.15);
+            padding: 1.5rem;
+            border-left: 3px solid #6366f1;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .decision-card {
+            background: rgba(10, 10, 15, 0.8);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin: 0.25rem;
+        }
+        ul { list-style: none; padding-left: 0; }
+        li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+        li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #6366f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">Marco Rossi</h1>
+            <p class="archetype">Problem Solver × Pragmatist</p>
+            <p class="tagline">The Builder — Trasforma idee in prodotti funzionanti</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">💬 Opening</h2>
+            <p class="narrative">
+                Non sono il migliore a scrivere codice elegante. Ma se hai un bug che nessuno riesce a trovare, chiamami.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">⚡ Superpotere</h2>
+            <div class="highlight">
+                <strong>Trovare bug impossibili seguendo pattern invisibili</strong>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">🌳 Decision Log</h2>
+            <div class="decision-card">
+                <h3 style="color: #22d3ee; margin-bottom: 0.75rem;">Contro corrente: Microservizi vs Monolite</h3>
+                <p style="margin-bottom: 0.5rem;"><strong>Contesto:</strong> Il team voleva microservizi, i dati suggerivano overhead eccessivo</p>
+                <p style="margin-bottom: 0.5rem;"><strong>Scelta:</strong> Monolite modulare</p>
+                <p style="color: #22c55e;"><strong>Risultato:</strong> 3x più veloce deployment, meno complessità</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">💀 Failure Museum</h2>
+            <p class="narrative">
+                Ho passato 3 mesi a costruire una piattaforma perfetta di analytics che nessuno ha mai usato.
+                Avrei dovuto chiedere agli utenti cosa volevano prima di scrivere una riga di codice.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">🤖 Human Delta</h2>
+            <div style="display: grid; gap: 1rem;">
+                <div>
+                    <h4 style="color: #818cf8; margin-bottom: 0.5rem;">AI: Uso per...</h4>
+                    <p>Boilerplate e documentazione. Non mi vergogno.</p>
+                </div>
+                <div>
+                    <h4 style="color: #818cf8; margin-bottom: 0.5rem;">AI: Mai per...</h4>
+                    <p>Decisioni architetturali o per capire il dominio del problema</p>
+                </div>
+                <div>
+                    <h4 style="color: #22c55e; margin-bottom: 0.5rem;">Io meglio dell'AI</h4>
+                    <p>Debugging, intuizione su dove cercare, feeling su cosa è rotto</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">🧬 Firma Cognitiva</h2>
+            <div>
+                <h4 style="color: #22c55e; margin-bottom: 0.5rem;">✅ Strengths</h4>
+                <span class="badge">Debugging impossibile</span>
+                <span class="badge">Prototipazione rapida</span>
+                <span class="badge">Architetture pragmatiche</span>
+            </div>
+            <div style="margin-top: 1rem;">
+                <h4 style="color: #ef4444; margin-bottom: 0.5rem;">❌ Anti-Skills</h4>
+                <span class="badge">Design pixel-perfect</span>
+                <span class="badge">Long-term planning oltre 6 mesi</span>
+            </div>
+            <div style="margin-top: 1rem;">
+                <h4 style="color: #818cf8; margin-bottom: 0.5rem;">💎 Core Belief</h4>
+                <p class="narrative">
+                    Il miglior codice è quello che risolve il problema dell'utente, non quello che vince premi di architettura.
+                </p>
+            </div>
+        </div>
+
+        <footer style="text-align: center; padding: 2rem; color: #64748b; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 3rem;">
+            <p>Generated by <strong>Noofolio</strong> – Your work, not your role.</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">From the noosphere: decisions, judgment, and proof.</p>
+        </footer>
+    </div>
+</body>
+</html>

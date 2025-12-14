@@ -1,6 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Mind Sculptor Welcome Modal -->
+<div id="mind-sculptor-modal" style="display: flex; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 3000; align-items: center; justify-content: center;">
+    <div style="background: var(--bg-card); border: 2px solid var(--primary); border-radius: 20px; padding: 2.5rem; max-width: 600px; width: 90%; box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">🧠✨</div>
+            <h2 style="font-family: 'Playfair Display', serif; color: var(--primary-light); margin-bottom: 1rem; font-size: 2rem;">
+                Ciao, bentornato!
+            </h2>
+            <p style="color: var(--text); font-size: 1.1rem; margin-bottom: 1.5rem;">
+                Ti va di rispondere a un po' di domande casuali?
+            </p>
+        </div>
+
+        <div style="background: rgba(99, 102, 241, 0.1); border-left: 3px solid var(--primary); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+            <p style="color: var(--text); margin-bottom: 1rem;">
+                <strong>Per fare ordine bisogna partire dal caos.</strong>
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                Più domande fai – anche scosse e apparentemente non utili – più il tuo Noofolio si adatterà alla tua vera essenza.
+            </p>
+            <p style="color: var(--text-dim); font-size: 0.9rem; margin: 0;">
+                💡 <em>Se rispondi bene alle domande, troverai un chatbot più istruito su di te. I NooMe di persone che hanno risposto a tante domande hanno un punteggio di affidabilità più alto.</em>
+            </p>
+        </div>
+
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+            <a href="/mind-sculptor/{{ profile_id }}" class="btn btn-primary" style="padding: 1rem 2rem;">
+                ✨ Inizia ora
+            </a>
+            <button onclick="closeModal()" class="btn btn-secondary" style="padding: 1rem 2rem;">
+                📋 Più tardi
+            </button>
+        </div>
+    </div>
+</div>
+
 <div class="section">
     <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: #fff; margin-bottom: 0.5rem;">
         👋 Ciao, {{ name.split()[0] if name else 'User' }}!
@@ -25,21 +61,21 @@
             <h3 style="color: var(--text); margin-bottom: 1rem;">⚡ Azioni</h3>
             
             <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <a href="/view/{{ profile_id }}" class="btn btn-primary" style="text-align: center;">
-                    👁️ Visualizza Portfolio
+                <a href="/view/{{ profile_id }}" class="btn btn-primary" style="text-align: center;" title="Visualizza il tuo Noofolio completo come lo vedono gli altri">
+                    👁️ Visualizza il mio Noofolio
                 </a>
-                
-                <a href="/corrections/{{ profile_id }}" class="btn btn-secondary" style="text-align: center;">
-                    🎓 Correggi NooMe
+
+                <a href="/corrections/{{ profile_id }}" class="btn btn-secondary" style="text-align: center;" title="Aumenta la conoscenza del tuo MindMirror correggendo le risposte del chatbot. Le correzioni influenzano anche il Mind Sculptor.">
+                    🎓 Correggi il mio NooMe
                 </a>
-                
-                <a href="/create" class="btn btn-secondary" style="text-align: center;">
-                    ✏️ Modifica
+
+                <a href="/create" class="btn btn-secondary" style="text-align: center;" title="Rivedi e aggiorna le informazioni del tuo Noofolio">
+                    ✏️ Rivedi il tuo Noofolio
                 </a>
-                
-                <button onclick="alert('Coming soon!')" class="btn btn-secondary">
+
+                <a href="/mind-sculptor/{{ profile_id }}" class="btn btn-secondary" style="text-align: center;" title="Generatore di domande casuali AI per migliorare il tuo profilo e rilevare potenziali cambiamenti">
                     🎲 Mind-Sculptor
-                </button>
+                </a>
             </div>
             
             <!-- Quick Stats -->
@@ -79,4 +115,10 @@
         </div>
     </div>
 </div>
+
+<script>
+function closeModal() {
+    document.getElementById('mind-sculptor-modal').style.display = 'none';
+}
+</script>
 {% endblock %}

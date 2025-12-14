@@ -10,6 +10,7 @@ import openai
 from pathlib import Path
 import json
 import random
+import os
 
 
 class MindSculptorAgent:
@@ -72,6 +73,8 @@ Genera la domanda:"""
             return self._generate_anthropic(prompt)
         elif self.provider == "openai":
             return self._generate_openai(prompt)
+        elif self.provider == "google":
+            return self._generate_google(prompt)
         else:
             raise ValueError(f"Provider not supported: {self.provider}")
 
@@ -114,7 +117,7 @@ Genera la domanda:"""
         client = anthropic.Client(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
         response = client.messages.create(
-            model="claude-3-5-sonnet-20241022",
+            model="claude-sonnet-4-5-20250929",
             max_tokens=500,
             messages=[{"role": "user", "content": prompt}]
         )
@@ -144,7 +147,6 @@ Genera la domanda:"""
 
     def _generate_openai(self, prompt):
         """Generate using OpenAI"""
-        import os
         client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
         response = client.chat.completions.create(
@@ -173,4 +175,40 @@ Genera la domanda:"""
                 "text": content.strip(),
                 "hint": "",
                 "category": "general"
+            }
+
+    def _generate_google(self, prompt):
+        """Generate using Google Gemini"""
+        try:
+            import google.generativeai as genai
+            genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+
+            model = genai.GenerativeModel('gemini-pro')
+            response = model.generate_content(prompt)
+
+            content = response.text
+
+            try:
+                start = content.find('{')
+                end = content.rfind('}') + 1
+                if start >= 0 and end > start:
+                    json_str = content[start:end]
+                    return json.loads(json_str)
+                else:
+                    return {
+                        "text": content.strip(),
+                        "hint": "",
+                        "category": "general"
+                    }
+            except:
+                return {
+                    "text": content.strip(),
+                    "hint": "",
+                    "category": "general"
+                }
+        except ImportError:
+            return {
+                "text": "Errore: Google Generative AI SDK non installato. Esegui: pip install google-generativeai",
+                "hint": "",
+                "category": "error"
             }

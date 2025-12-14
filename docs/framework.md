@@ -1,278 +1,658 @@
 # Noofolio Framework
-## Anti-Portfolio Manifesto
 
-*"Your work, not your role."*
-
----
-
-## 1. Assunti Base: Cosa rende un portfolio "anti-traditional"?
-
-### Il Problema
-
-Il portfolio tradizionale è obsoleto. In un mondo AI-native:
-- Le **competenze tecniche sono commodity** — l'AI può eseguire quasi tutto "bene"
-- I **job titles sono rumore** — "Senior UX Designer" non dice nulla di unico
-- Gli **output sono replicabili** — qualsiasi risultato può essere generato
-
-### Il Ribaltamento
-
-```
-MONDO PRE-AI:
-Valore = Competenze rare × Velocità di esecuzione
-
-MONDO AI-NATIVE:
-Valore = Qualità delle domande × Unicità del giudizio × Capacità di orchestrazione
-```
-
-### La Domanda Fondamentale
-
-Un portfolio tradizionale risponde a: *"Cosa sai fare?"*
-
-Noofolio risponde a: ***"Perché TU e non un altro?"***
+## Your Work, Not Your Role
 
 ---
 
-## 2. Pattern e Domande: Quali informazioni raccogliamo e perché?
+## Premessa Filosofica
 
-### Domande Tradizionali vs Domande Divergenti
+In un mondo dove l'AI esiste da sempre, il valore professionale non si misura più dai titoli o dalle liste di competenze. Si misura dall'**impronta cognitiva** unica che ogni persona lascia sul lavoro che fa.
 
-| ❌ Domande Tradizionali | ✅ Domande Noofolio |
-|------------------------|---------------------|
-| "Descrivi la tua esperienza" | "Cosa fai meglio del 90% delle persone nel tuo ruolo?" |
-| "Elenca le tue competenze" | "Cosa RIFIUTI di fare anche se paga bene?" |
-| "Quali sono i tuoi punti di forza?" | "Raccontami un fallimento che ti ha cambiato" |
-| "Descrivi un progetto di successo" | "Quando avevi 3 opzioni, quale hai scelto e perché?" |
-| "Come lavori in team?" | "Quando vai in crash? Quali sono i tuoi bias noti?" |
-
-### Le 6 Aree di Indagine
-
-**🔥 FRIZIONI**
-- Cosa ti fa incazzare nel tuo settore?
-- Quale "best practice" pensi sia sbagliata?
-
-**🧭 BUSSOLA DECISIONALE**
-- Qual è la tua "regola d'oro"?
-- Come riconosci un progetto "tuo"?
-
-**💀 CICATRICI**
-- Il tuo fallimento più istruttivo
-- Una credenza che hai dovuto abbandonare
-
-**🔮 OSSESSIONI**
-- Cosa stai esplorando ora?
-- Quale domanda non riesci a smettere di farti?
-
-**🤖 SIMBIOSI AI**
-- Cosa deleghi all'AI?
-- Cosa NON deleghi mai e perché?
-
-**📚 SUPPLY CHAIN**
-- Chi/cosa ti ha formato?
-- Quali connessioni fai tra mondi diversi?
-
-### Perché Queste Domande?
-- **Rivelano valori**, non skill
-- **Mostrano evoluzione**, non stato
-- **Sono impossibili da fabbricare** (autenticità)
-- **Differenziano davvero** le persone
+Noofolio non è un curriculum migliorato. È un sistema di cattura e rappresentazione dell'**essenza professionale** di una persona — il modo in cui pensa, decide, fallisce, impara e si differenzia.
 
 ---
 
-## 3. Principi di Design: Unicità vs Standardizzazione
+## Fondamenti
 
-### Principio 1: "Fingerprint over Template"
-Ogni portfolio ha una struttura che **EMERGE dalle risposte**, non una griglia pre-fatta dove infilare contenuti. Due persone con lo stesso ruolo avranno Noofolio radicalmente diversi.
+### 1. Perché "Noofolio"?
 
-### Principio 2: "Navigazione per Curiosità"
-Chi visita il portfolio naviga per **domande che si pone**:
-- "Come affronterebbe il mio problema?"
-- "Perché dovrei fidarmi di questa persona?"
-- "Cosa la rende diversa dagli altri 50?"
+Il nome è un triplo gioco di parole:
 
-Non per sezioni tipo "Esperienze > Skills > Contatti"
+**Noofolio = No-Portfolio**
+L'idea centrale: questo **non è** un portfolio tradizionale. È una provocazione contro il formato vetrina che domina il mercato del lavoro. Basta screenshot, liste di job titles e "competenze". Noofolio è l'**anti-portfolio** che si oppone al vecchio modo di mostrarsi.
 
-### Principio 3: "Show the Git of Thinking"
-Come Git traccia le versioni del codice, il portfolio traccia l'**EVOLUZIONE del pensiero**. "2 anni fa pensavo X, poi è successo Y, ora penso Z".
+**Noofolio ← Noosfera**
+Per chi vuole approfondire: il nome deriva anche da **noosfera** (νόος, "pensiero"), la sfera del pensiero umano collettivo teorizzata da Teilhard de Chardin. Mentre l'AI colonizza la produzione, a noi resta il territorio del pensiero. Ogni professionista contribuisce alla noosfera con pattern decisionali, metodologie e lezioni uniche — e Noofolio li cattura.
 
-### Principio 4: "Proof over Claim"
-Zero affermazioni non dimostrabili. Ogni "sono bravo in X" diventa "ecco cosa è successo quando ho fatto X" — con link, screenshot, testimonial, o marcato "non verificato".
+**Il Territorio Umano**
+In sintesi: Noofolio estrae e cristallizza pattern che rivelano:
+- **COME** pensi (archetipi decisionali)
+- **PERCHÉ** certe scelte funzionano per te
+- **COSA** ti rende insostituibile in contesti specifici
 
-### Principio 5: "Context-First"
-Il portfolio non è statico. Può **adattarsi al contesto** di chi lo guarda (Relevance Engine).
+Il problema? Questi pattern sono **invisibili** nei CV tradizionali.
 
----
+### 2. L'Anti-Curriculum
 
-## 4. Elementi Distintivi: 10 Caratteristiche che Differenziano Noofolio
+Un CV ti chiede: "Cosa hai fatto?"
+Noofolio ti chiede: "Quando hai deciso **contro** i dati?"
 
-### 1. 🌳 Decision Tree — L'Albero delle Scelte
-Ogni progetto come **grafo delle biforcazioni**. Non solo il risultato, ma tutte le strade possibili — incluse quelle scartate.
+Questa inversione non è cosmetica. Rivela:
+- **Decision Log**: Le biforcazioni dove hai scelto A invece di B, e perché
+- **Failure Museum**: I fallimenti veri, non "punti deboli camuffati da punti di forza"
+- **Anti-Skills**: Cosa rifiuti di fare, non cosa sai fare
+- **Human Delta**: Dove sei insostituibile rispetto all'AI
 
-```
-        ┌─ Opzione A [scartata]
-BIVIO ──┼─ Opzione B [SCELTA] ✓ → Perché → Conseguenza
-        └─ Opzione C [scartata]
-```
-
-*Perché è distintivo*: Mostra il PROCESSO decisionale, non solo l'output.
+Risultato: Non "sono un esperto di X", ma "ecco la prova di come risolvo problemi che l'AI non vede"
 
 ---
 
-### 2. 🚫 Anti-Skills — I Confini Scelti
-Non cosa sai fare, ma cosa **SCEGLI di non fare**.
+## Architettura del Sistema
+
+### Pipeline Multi-Agente AI
+
+Noofolio usa **7 agenti AI specializzati**, 5 per la generazione iniziale + 2 per l'evoluzione continua:
 
 ```
-❌ Non faccio: Dark patterns → Perché: rispetto > fatturato
-❌ Non faccio: Progetti senza user access → Perché: non progetto nel vuoto
+                     Input Utente
+                          ↓
+        ╔════════════════════════════════════╗
+        ║   GENERAZIONE INIZIALE PORTFOLIO   ║
+        ╚════════════════════════════════════╝
+                          ↓
+        ┌─────────────────────────────────────┐
+        │ 1. Archetype Detector               │
+        │    Identifica pattern comportamentali│
+        │    → 72 archetipi possibili         │
+        │    (Ruolo × Modalità × AI-Relation) │
+        └─────────────────────────────────────┘
+                          ↓
+        ┌─────────────────────────────────────┐
+        │ 2. Pattern Extractor                │
+        │    Estrae ricorrenze decisionali    │
+        │    e metodologie personali          │
+        └─────────────────────────────────────┘
+                          ↓
+        ┌─────────────────────────────────────┐
+        │ 3. Decision Archaeologist           │
+        │    Analizza momenti di biforcazione │
+        │    e scelte contro corrente         │
+        └─────────────────────────────────────┘
+                          ↓
+        ┌─────────────────────────────────────┐
+        │ 4. Signature Detector               │
+        │    Identifica la "firma" unica      │
+        │    nel modo di lavorare             │
+        └─────────────────────────────────────┘
+                          ↓
+        ┌─────────────────────────────────────┐
+        │ 5. Narrative Composer               │
+        │    Compone tutto in una storia      │
+        │    coerente e unica                 │
+        └─────────────────────────────────────┘
+                          ↓
+        ╔═══════════════════════════════════════════════╗
+        ║  OUTPUT: Portfolio HTML + JSON + NooMe Ready  ║
+        ╚═══════════════════════════════════════════════╝
+                          ↓
+                ┌─────────┴─────────┐
+                ↓                   ↓
+
+╔══════════════════════╗      ╔════════════════════════╗
+║ 6. NooMe             ║      ║ 7. Mind Sculptor       ║
+║ (Clone Conv.)        ║      ║ (Question Generator)   ║
+╚══════════════════════╝      ╚════════════════════════╝
+         ↓                             ↓
+  Risponde a Visitatori      Genera domande random
+  basandosi su Portfolio     per approfondire profilo
+         ↓                             ↓
+  Feedback Visitatore        Utente risponde/skippa
+         ↓                             ↓
+  Correzione in              Risposta arricchisce
+  MindMirror (owner)         Portfolio e NooMe
+         ↓                             ↓
+  Aggiornamento NooMe        Loop continuo
+  (Affidabilità ↑)           (Evoluzione profilo)
+         ↓                             ↓
+      ╔═══════════════════════════════════════╗
+      ║  RISULTATO: Portfolio che EVOLVE      ║
+      ║  con la persona nel tempo             ║
+      ╚═══════════════════════════════════════╝
 ```
 
-*Perché è distintivo*: Chi dice "questo no" è più credibile di chi dice "so fare tutto".
+**Perché multi-agente?**
+Ogni agente ha un compito specifico e un prompt ottimizzato. Questo permette:
+- Specializzazione (ogni agente è esperto nel suo dominio)
+- Parallelizzazione potenziale
+- Debug e miglioramento incrementale
+- Prompt engineering modulare
+
+### Archetipi: Il Sistema Dimensionale
+
+Invece di categorizzare con job titles, Noofolio identifica un **archetipo tridimensionale**:
+
+**Dimensione 1: Ruolo Cognitivo**
+- `Strategist` → Vede sistemi e pattern
+- `Maker` → Costruisce e crea tangibilmente
+- `Communicator` → Traduce e connette idee
+- `Analyst` → Scompone e valida con dati
+
+**Dimensione 2: Modalità Operativa**
+- `Order` → Struttura, processi, sistemi
+- `Chaos` → Creatività, esplorazione, rottura delle regole
+- `Minimal` → Essenzialità, sottrazione, focus
+- `Rebel` → Controtendenza, sfida dello status quo
+- `Warm` → Empatia, relazioni, connessione umana
+- `Data` → Numeri, metriche, evidenze quantitative
+
+**Dimensione 3: Rapporto con l'AI**
+- `AI-Augmented` → L'AI potenzia, l'umano controlla
+- `AI-Artisan` → L'AI è quasi assente, valore nel pensiero puro
+- `AI-Hybrid` → Collaborazione bilanciata umano-AI
+
+**Risultato: 72 archetipi possibili**
+Esempio: `The Navigator` = Strategist × Order × AI-Hybrid
+
+Ogni archetipo genera:
+- **Tagline** unica
+- **Combo display** (es: "The Navigator = Strategist × Order × Hybrid")
+- **Reasoning** che spiega perché questo archetipo
+- **Stile visivo** personalizzato nel portfolio finale
 
 ---
 
-### 3. 💀 Failure Museum — Il Museo dei Fallimenti
-Non progetti falliti generici, ma **pattern di errori** + le regole estratte.
+## Le Sezioni Non-Convenzionali
 
-```
-FALLIMENTO: Ho perfezionato 3 mesi una feature che nessuno voleva
-PATTERN: "Perfezionismo come procrastinazione"
-REGOLA: "Ship ugly, learn fast. Mai 2+ settimane senza feedback."
+### 1. Decision Log
+**Domanda chiave**: "Quando hai scelto contro i dati o il consensus?"
+
+Non interessa *cosa* hai fatto, ma **perché** hai fatto quella scelta specifica quando le alternative erano diverse.
+
+Struttura:
+```json
+{
+  "against_current": "La volta che ho scelto contro team/dati/best practice",
+  "projects": [
+    {
+      "name": "Progetto X",
+      "fork": "Opzione A vs Opzione B vs Opzione C - Ho scelto X perché...",
+      "proof": "Link a risultato tangibile"
+    }
+  ],
+  "worst_decision": "Il fallimento vero, senza filtri"
+}
 ```
 
-*Perché è distintivo*: I fallimenti sono impossibili da fabbricare.
+**Valore**: Rivela il processo decisionale, non solo l'output.
+
+### 2. Failure Museum
+**Domanda chiave**: "Qual è il fallimento che ti ha cambiato?"
+
+La sezione più innovativa. Mentre i CV nascondono i fallimenti ("il mio difetto è che lavoro troppo"), il Failure Museum li celebra come prove di evoluzione.
+
+```json
+{
+  "biggest": "Il fallimento vero, senza eufemismi",
+  "pattern": "L'errore che ripeto (con onestà)",
+  "belief_killed": "Una certezza professionale che ho dovuto abbandonare",
+  "brutal_feedback": "Il feedback più duro ricevuto, e cosa ne ho fatto"
+}
+```
+
+**Valore**: Dimostra auto-consapevolezza e capacità di apprendimento. Chi ammette i fallimenti veri è chi cresce davvero.
+
+### 3. Anti-Skills & Fit Check
+**Domanda chiave**: "Cosa NON fai mai, e perché?"
+
+Definirsi per sottrazione è più onesto che per addizione.
+
+```json
+{
+  "heresy": "L'opinione professionale impopolare che difendo",
+  "never_again": "Progetti/ruoli che non accetterò più",
+  "wont_do": "Lista di cosa rifiuto di fare",
+  "red_flags": "Segnali che mi fanno scappare da un progetto/azienda"
+}
+```
+
+**Valore**: Permette un **fit check** immediato. Se un'azienda lavora proprio così, meglio saperlo subito.
+
+### 4. The Human Delta
+**Domanda chiave**: "Dove sei insostituibile rispetto all'AI?"
+
+Sezione AI-native per eccellenza. In un mondo dove l'AI sa fare "tutto", cosa rimane di umano?
+
+```json
+{
+  "ai_guilty": "Cosa delego all'AI senza vergogna",
+  "ai_never": "Cosa non delegherò mai",
+  "ai_better": "Dove l'AI fa meglio di me",
+  "human_better": "Dove io faccio meglio dell'AI",
+  "delta_story": "Un esempio concreto di problema risolto con intuizione umana"
+}
+```
+
+**Valore**: Onestà sul rapporto con l'AI + evidenza di dove l'umano conta ancora.
+
+### 5. Curiosity Stack
+**Domanda chiave**: "Da dove vengono le tue idee?"
+
+La "intellectual supply chain" personale.
+
+```json
+{
+  "masterclass": "La masterclass non-lavorativa che potresti fare",
+  "books": "Libri che ti hanno formato",
+  "media": "Fonti di ispirazione non-convenzionali",
+  "people": "Mentori e influenze",
+  "unexpected_connection": "Il collegamento inaspettato tra due campi",
+  "rabbit_hole": "L'ossessione attuale"
+}
+```
+
+**Valore**: Mostra profondità e connessioni interdisciplinari. Le idee migliori nascono fuori dal proprio campo.
+
+### 6. Human API
+**Domanda chiave**: "Come si lavora con te?"
+
+Il manuale d'uso personale.
+
+```json
+{
+  "communication": "Preferenze di comunicazione",
+  "feedback_style": "Come dare/ricevere feedback con me",
+  "crash_triggers": "Cosa mi manda in tilt",
+  "known_biases": "I miei bias consapevoli",
+  "ideal_conditions": "Quando funziono al meglio"
+}
+```
+
+**Valore**: Trasparenza operativa. Facilita il match e riduce frizioni.
+
+### 7. What's Next
+**Domanda chiave**: "Dove stai andando?"
+
+Non "obiettivi di carriera generici", ma direzione di crescita specifica.
+
+```json
+{
+  "learning": "Cosa sto imparando ora",
+  "two_years": "Dove voglio essere tra 2 anni",
+  "dream_project": "Il progetto che vorrei realizzare"
+}
+```
+
+**Valore**: Attrare opportunità allineate alla direzione.
 
 ---
 
-### 4. ✨ Work Signature — La Firma Inconscia
-Un pattern ricorrente estratto dall'AI analizzando i progetti.
+## NooMe: Il Clone Conversazionale
 
+### My MindMirror — Il Tuo Gemello Digitale
+
+Ogni Noofolio include **NooMe**, il tuo clone conversazionale che lavora 24/7.
+
+**Genesi del Nome**:
+Il nome NooMe è un gioco di parole stratificato:
+- **Noo** (da Noofolio) + **Me** (io)
+- **Not Me** (non sono io, ma quasi) → suggerisce l'ambivalenza "sono io, ma non io"
+- **MindMirror** → lo specchio della mente che riflette il tuo pensiero
+
+In sintesi: NooMe è il tuo **gemello digitale** che rispecchia il tuo modo di pensare e comunicare.
+
+**Funzionamento**:
 ```
-📊 PATTERN: "Semplificazione Brutale"
-In 7/10 progetti hai rimosso 60%+ delle feature → adoption +40%
-→ Il tuo superpotere: vedi l'essenziale dove altri vedono complessità.
+Visitatore → Chat NooMe → LLM + Contesto Portfolio → Risposta "as if you were the person"
 ```
 
-*Perché è distintivo*: L'AI come specchio che rivela pattern che non vedevi.
+NooMe non è un "FAQ bot". È un **clone conversazionale** addestrato su:
+- Tutti i dati del portfolio (decision log, failure museum, curiosity stack)
+- Tono di voce e pattern comunicativi rilevati dall'archetype
+- Metodologie e approcci personali descritti
+- Correzioni fatte dal proprietario (MindMirror)
+
+**Caso d'uso**:
+Un recruiter può "intervistare" il tuo NooMe alle 3 di notte, chiedere come affronteresti problemi specifici, e ottenere risposte che riflettono il tuo vero approccio — senza aspettare un colloquio.
+
+**Il portfolio non è statico, è interrogabile.**
+
+### Sistema di Affidabilità
+
+Ogni NooMe ha un **punteggio di affidabilità** (1-5 stelle) basato su:
+- Numero di domande risposte in Mind Sculptor
+- Correzioni fatte dal proprietario via MindMirror
+- Feedback ricevuto dai visitatori
+
+**Formula**:
+```python
+score = min(2, questions_answered / 5)  # Base da domande (max 2 stelle)
+score += min(3, corrections_made / 5 * 0.5)  # Correzioni (max 3 stelle)
+reliability = round(score, 1)  # Punteggio finale 0-5
+```
+
+**Valore**: Un NooMe con 5 stelle è più affidabile di uno con 2 stelle. Incentiva la qualità.
 
 ---
 
-### 5. 📚 Intellectual Supply Chain — La Filiera delle Idee
-Non output, ma **input**. Da dove vengono le tue idee?
+## Mind Sculptor: Il Miglioramento Continuo
 
+### Problema
+
+Un portfolio è **statico**. La persona evolve, ma il portfolio no.
+
+### Soluzione
+
+**Mind Sculptor** è un generatore di domande casuali AI-powered che:
+1. Analizza il portfolio esistente
+2. Identifica "white spaces" (aree poco esplorate)
+3. Genera domande strategiche per approfondire
+
+**Flusso**:
 ```
-FILOSOFIA → METODO → OUTPUT
-Stoicismo → "Via Negativa" → Design minimal
-     ↑
-HOBBY: Bonsai → "Crescita attraverso potatura"
+Portfolio Corrente
+    ↓
+Analisi AI → Identifica gap/ambiguità
+    ↓
+Genera domanda contestuale
+    ↓
+Utente risponde (o skippa)
+    ↓
+Risposta salvata → Arricchisce portfolio → Migliora NooMe
 ```
 
-*Perché è distintivo*: Distrugge il mito del genio solitario. Mostra sintesi multidisciplinare.
+**Esempio di domanda generata**:
+```
+"Hai menzionato di lavorare meglio 'in condizioni di pressione'.
+Raccontami un'occasione dove la pressione ti ha fatto prendere
+una decisione sbagliata. Cosa hai imparato?"
+```
+
+**Tipi di domande**:
+- Approfondimenti su pattern vaghi
+- Richieste di proof mancanti
+- Domande che sfidano contraddizioni
+- Esplorazione di nuove aree (hobby, interessi, progetti)
+
+### Feedback Loop
+
+Mind Sculptor non genera domande a caso. Usa **7 tipi di feedback** per migliorare:
+
+| Feedback | Significato | Azione |
+|----------|------------|--------|
+| `inappropriate` | Domanda fuori luogo | Skip + non rigenerare simili |
+| `no_answer` | Non ho risposta ora | Riprova dopo con diversa angolazione |
+| `offensive` | Domanda offensiva | Blocca categoria |
+| `trivial` | Troppo banale | Alza complessità |
+| `nonsense` | Non ha senso | Rivedi contesto |
+| `errors` | Contiene errori fattuali | Correggi fonte dati |
+| `not_useful` | Non serve | Cambia tipo di domanda |
+
+**Valore**: Sistema auto-correttivo che impara quali domande funzionano per quali archetipi.
 
 ---
 
-### 6. 🧬 Collaboration DNA — Come Funziono
-Un approccio ingegneristico (ma umano) alle relazioni lavorative.
+## MindMirror: La Correzione del Clone
 
+### Problema
+
+NooMe risponde basandosi sul portfolio, ma potrebbe:
+- Fraintendere il tono
+- Dare risposte imprecise
+- Mancare sfumature importanti
+
+### Soluzione
+
+**MindMirror** è l'interfaccia dove il proprietario del portfolio:
+1. Vede tutte le conversazioni NooMe ↔ Visitatori
+2. Può correggere risposte sbagliate/imprecise
+3. Ogni correzione → addestra NooMe
+
+**Flusso**:
 ```
-COMUNICAZIONE: Async > call improvvise
-FEEDBACK: Critiche specifiche, non "non mi convince"
-CRASH: Troppi task paralleli → qualità crolla
-BIAS NOTI: Over-engineering, sottostimo tempi 20%
+Visitatore chiede → NooMe risponde
+    ↓
+Proprietario vede conversazione in MindMirror
+    ↓
+"Questa risposta è imprecisa" → Corregge
+    ↓
+Correzione salvata in data/corrections/
+    ↓
+NooMe futuro usa correzioni come esempi (few-shot learning)
 ```
 
-*Perché è distintivo*: Nessun CV dice "come lavorare con me".
+**Esempio**:
+```
+Visitatore: "Come gestisci i conflitti nel team?"
+NooMe (originale): "Preferisco evitare conflitti diretti."
+Proprietario corregge: "Non evito i conflitti - li affronto direttamente
+ma con empatia. La differenza è che non cerco conflitti inutili."
+```
+
+**Valore**: NooMe diventa progressivamente più accurato. Il punteggio di affidabilità sale.
 
 ---
 
-### 7. 🤖 Delta AI vs ME — Il Valore Aggiunto Umano
-Per ogni situazione: cosa farebbe l'AI vs cosa ho fatto io.
+## Stile Visivo Adattivo
 
-| 🤖 AI farebbe | 🧠 Io ho fatto |
-|--------------|----------------|
-| "Genera landing convincente" | Ho intervistato 10 clienti prima |
-| "Ottimizza il funnel" | Ho scoperto che il problema era il pricing |
+### Problema
 
-*Perché è distintivo*: Risponde direttamente a "cosa ti rende insostituibile in un mondo AI?"
+Ogni persona ha un modo diverso di presentarsi. Un designer e un data analyst non dovrebbero avere lo stesso layout.
 
----
+### Soluzione
 
-### 8. ✅ Proof Ledger — Il Registro delle Prove
-Ogni claim con verifica esplicita.
+Il **PortfolioGenerator** adatta stile, font, colori e layout basandosi sull'archetipo:
 
-```
-✅ VERIFICATO: "Retention +40%" → [screenshot dashboard]
-⚠️ NON VERIFICATO: "Bravo a gestire team" → nessuna prova
-```
+| Personality | Bg Gradient | Font | Layout | Card Style |
+|-------------|------------|------|--------|------------|
+| `chaos` | Dark blue gradient | JetBrains Mono | Chaotic | Rotated cards |
+| `order` | Light gray | Inter | Grid | Clean structure |
+| `minimal` | Pure white | Libre Baskerville | Minimal | No borders |
+| `rebel` | Pure black | Space Mono | Rebel | Red borders |
+| `warm` | Warm beige | Playfair Display | Warm | Round corners |
+| `data` | Dark slate | Roboto Mono | Dashboard | Code-like |
 
-*Perché è distintivo*: Brutale onestà. Separa fatti da opinioni.
+**Esempio**:
+Un `Communicator × Minimal × AI-Artisan` (The Poet) riceve:
+- Sfondo bianco puro
+- Font serif elegante
+- Layout essenziale
+- Nessun bordo sulle card
+- Focus sul testo
 
----
+Un `Analyst × Data × AI-Augmented` (The Metrics Machine) riceve:
+- Sfondo scuro
+- Font monospaced
+- Layout dashboard-like
+- Sezioni con bordi netti
+- Enfasi su numeri e dati
 
-### 9. 💬 What If Simulator — Il Clone Conversazionale
-Chatbot addestrato su tono, metodologie, progetti dell'utente.
-
-```
-Recruiter: "Come affronteresti un redesign con budget limitato?"
-Clone: "La mia metodologia: 1) Identifico il 20% che genera 80%..."
-
-[CORREGGI] → Il proprietario può correggere risposte errate
-```
-
-*Perché è distintivo*: Portfolio interrogabile. Si evolve con feedback.
-
----
-
-### 10. 🎯 Relevance Engine — Il Portfolio Contestuale
-Il portfolio si adatta alla Job Description.
-
-```
-INPUT: [incolla JD]
-OUTPUT: 
-✅ Match: "Esperienza fintech" → Progetto X, Y
-⚠️ Gap onesto: "Non ho esperienza B2B enterprise"
-```
-
-*Perché è distintivo*: Risponde ai bisogni del recruiter invece di farlo cercare.
+**Valore**: Ogni portfolio è **visivamente unico** senza configurazione manuale.
 
 ---
 
-## 5. Visione AI-Native: Il Portfolio in un Mondo dove l'AI è Sempre Esistita
+## Stack Tecnologico
 
-### Se l'AI fosse sempre esistita...
+### Backend
+- **Framework**: FastAPI (Python)
+  - Async support per performance
+  - Auto-generated API docs
+  - Type hints nativi
+  - SSE (Server-Sent Events) per generazione live
 
-1. **Il portfolio sarebbe CONVERSAZIONALE** — Non documento statico, ma interfaccia che risponde (What If Simulator).
+- **LLM Integration**:
+  - Anthropic Claude (via SDK)
+  - OpenAI GPT-4 (via SDK)
+  - Google Gemini (via SDK)
+  - Multi-provider con fallback automatico
 
-2. **L'AI sarebbe SPECCHIO, non autore** — Non "scrivi il mio portfolio" ma "rivelami pattern che non vedo".
+- **File Processing**:
+  - PyPDF2 per CV PDF
+  - python-docx per Word
+  - PIL per immagini
+  - Base64 encoding per embed
 
-3. **Il focus sarebbe su PROOF OF HUMAN** — Elementi che solo un umano può produrre: opinioni controversie, fallimenti ammessi, cambiamenti di idea.
+### Frontend
+- **Template Engine**: Jinja2
+  - Server-side rendering
+  - Componenti riusabili (base.html extends)
+  - Escape automatico XSS
 
-4. **Sarebbe DINAMICO** — Si aggiorna, impara, si adatta al contesto.
+- **Interattività**: HTMX
+  - Zero JavaScript build
+  - Progressive enhancement
+  - Partial page updates senza SPA complexity
 
-5. **Mostrerebbe la FILIERA** — Non nascondi le fonti, le esibisci.
+- **Styling**: CSS Custom Properties
+  - Dark theme nativo
+  - Variabili CSS per theming dinamico
+  - Responsive design mobile-first
 
-### Il Nuovo Paradigma
+### Data Storage
+- **File-based JSON**:
+  ```
+  data/
+    profiles/           # Portfolio JSON + HTML
+    conversations/      # Chat logs NooMe
+    corrections/        # Correzioni MindMirror
+    mind_sculptor/      # Risposte Mind Sculptor
+    visitor_feedback/   # Feedback visitatori
+  ```
 
-```
-VECCHIO: Portfolio = Vetrina di risultati
-NUOVO:   Noofolio = Sistema operativo cognitivo
+**Perché JSON e non DB?**
+- Portabilità immediata (tutto in una cartella)
+- No setup database
+- Git-friendly per versioning
+- Export/import triviale
+- Sufficiente per MVP e demo
 
-VECCHIO: "Guarda cosa ho fatto"
-NUOVO:   "Ecco come penso, decido, imparo, fallisco"
+### Deployment
+- **Server**: Uvicorn (ASGI)
+- **Host**: Localhost (porta configurabile via .env)
+- **Auto-open**: Browser launch automatico al `python main.py`
 
-VECCHIO: Valore nell'OUTPUT
-NUOVO:   Valore nel PROCESSO
-```
+---
+
+## Differenziatori Chiave
+
+### 1. Zero Job Titles
+Non "Senior Product Manager" ma "The Navigator = Strategist × Order × Hybrid"
+
+**Perché**: I job titles sono arbitrari e cambiano tra aziende. Gli archetipi cognitivi no.
+
+### 2. Failure as Feature
+Sezione dedicata ai fallimenti, pattern di errore, credenze assassinate.
+
+**Perché**: I fallimenti veri dimostrano crescita. Chi non ammette errori non impara.
+
+### 3. Decision Proofs
+Ogni progetto non è "cosa ho fatto" ma "opzione A vs B vs C → ho scelto X perché → ecco il risultato"
+
+**Perché**: Il processo decisionale è più prezioso del CV.
+
+### 4. Conversational Clone (NooMe)
+Un chatbot AI che risponde come te, addestrato sul tuo portfolio.
+
+**Perché**: Accessibilità 24/7. Un recruiter può "intervistarti" senza aspettare.
+
+### 5. Continuous Improvement (Mind Sculptor + MindMirror)
+Non un portfolio statico ma un sistema che evolve:
+- Mind Sculptor genera domande per approfondire
+- MindMirror permette correzione delle risposte NooMe
+- Punteggio di affidabilità incentiva la qualità
+
+**Perché**: Le persone cambiano. Il portfolio deve cambiare con loro.
+
+### 6. Human API Section
+Manuale d'uso personale: comunicazione, feedback style, crash triggers, bias noti.
+
+**Perché**: Trasparenza operativa. Riduce frizioni collaborative.
+
+### 7. Anti-Skills prominenti
+"Cosa NON faccio" allo stesso livello di "cosa faccio".
+
+**Perché**: Fit negativo è importante quanto fit positivo.
+
+### 8. Visual Adaptation
+Stile, font, colori e layout cambiano in base all'archetipo.
+
+**Perché**: Un designer e un data scientist comunicano in modi diversi. Il portfolio deve riflettere questo.
+
+---
+
+## Visione AI-Native
+
+### Assunzione Base
+**"Se l'AI fosse sempre esistita, come comunicheremmo valore professionale?"**
+
+Risposta: Non tramite **cosa sai fare** (l'AI lo sa fare), ma tramite:
+1. **Come pensi** (archetipi decisionali)
+2. **Perché scegli** (decision log)
+3. **Da dove vengono le idee** (curiosity stack)
+4. **Dove fallisci** (failure museum)
+5. **Dove sei insostituibile** (human delta)
+
+### Inversione dei Paradigmi
+
+| CV Tradizionale | Noofolio (AI-Native) |
+|----------------|----------------------|
+| "Ho fatto X" | "Ho scelto X invece di Y perché..." |
+| "Competenze: Python, React" | "L'AI scrive codice meglio di me. Io sono meglio a..." |
+| "Punti di forza" | "Fallimenti veri e cosa ho imparato" |
+| "Esperienze" | "Pattern decisionali attraverso le esperienze" |
+| Statico (PDF) | Dinamico (chatbot clone + improvement continuo) |
+| "Cosa so fare" | "Come penso e dove sono unico" |
+
+### Il Ruolo dell'AI nel Processo
+
+**Multi-layered AI usage**:
+
+1. **Input Analysis** (Archetype Detector)
+   - Analizza CV, risposte, stile comunicativo
+   - Identifica pattern nascosti
+   - Assegna archetipo tridimensionale
+
+2. **Pattern Recognition** (Pattern Extractor)
+   - Trova ricorrenze decisionali
+   - Estrae metodologie personali
+   - Rivela bias e preferenze
+
+3. **Narrative Synthesis** (Narrative Composer)
+   - Unisce tutti i pezzi in storia coerente
+   - Mantiene voce autentica
+   - Evita template-speak
+
+4. **Interactive Clone** (NooMe)
+   - Risponde come la persona
+   - Usa portfolio come knowledge base
+   - Impara da correzioni
+
+5. **Continuous Deepening** (Mind Sculptor)
+   - Genera domande strategiche
+   - Riempie white spaces
+   - Evolve con la persona
+
+**L'AI non sostituisce l'umano**. L'AI **amplifica** l'umano estraendo e comunicando ciò che è già lì ma invisibile.
 
 ---
 
 ## Conclusione
 
-Noofolio non è un portfolio migliore.
-È un formato che non dovrebbe nemmeno chiamarsi portfolio.
+Noofolio non è un miglioramento incrementale del CV. È un **formato radicalmente diverso** progettato per un mondo dove:
+- L'AI sa fare "tutto"
+- Il valore umano è nel **processo, non nell'output**
+- La verità (anche sui fallimenti) vale più del marketing
+- L'evoluzione continua batte la perfezione statica
 
-È una **firma cognitiva** — la mappa di come una persona pensa, non di cosa ha fatto.
+In questo mondo, il tuo portfolio non è un documento.
+È un **sistema vivente** che:
+- Cattura come pensi
+- Evolve quando evolvi tu
+- Parla per te quando non ci sei
+- Dimostra dove sei insostituibile
 
-In un mondo dove l'AI può fare quasi tutto, l'unica cosa che resta unica sei **tu**.
+**Your work, not your role.**
+**From the noosphere: decisions, judgment, and proof.**
 
 ---
 
-*Noofolio — Your work, not your role.*
+*Documento v1.0 - Generato per AI Works Challenge 2025*

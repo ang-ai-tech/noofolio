@@ -2,17 +2,28 @@
 
 {% block content %}
 <div class="onboarding-container" style="max-width: 800px; margin: 3rem auto; padding: 2rem;">
-    <div style="text-align: center; margin-bottom: 3rem;">
-        <div style="font-size: 4rem; margin-bottom: 1rem;">🧠</div>
-        <h1 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #fff; margin-bottom: 1rem;">
-            Ciao! Benvenuto su Noofolio
-        </h1>
-        <p style="font-size: 1.2rem; color: var(--text-muted);">
-            Ti va di rispondere a un po' di domande casuali?
-        </p>
+    <!-- User Switch Notice -->
+    <div id="logout-notice" class="encouragement-box" style="margin-bottom: 2rem; background: rgba(239, 68, 68, 0.1); border-left: 3px solid var(--accent-red);">
+        <h4>⚠️ Cambio Utente Richiesto</h4>
+        <p>Sei attualmente connesso come <strong><span id="current-user-display">Marco Rossi</span></strong>.</p>
+        <p>Per creare un nuovo Noofolio, devi disconnetterti e accedere come nuovo utente.</p>
+        <button onclick="logoutAndProceed()" class="btn btn-primary" style="margin-top: 1rem;">
+            🔄 Disconnetti e Procedi come Nuovo Utente
+        </button>
     </div>
 
-    <div class="encouragement-box" style="margin-bottom: 2rem;">
+    <div id="onboarding-content" style="display: none;">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">🧠</div>
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #fff; margin-bottom: 1rem;">
+                Ciao! Benvenuto su Noofolio
+            </h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted);">
+                Ti va di rispondere a un po' di domande casuali?
+            </p>
+        </div>
+
+        <div class="encouragement-box" style="margin-bottom: 2rem;">
         <h4>🎯 Perché 30 minuti del tuo tempo?</h4>
         <p style="margin-bottom: 1rem;">
             <strong>Per fare ordine bisogna partire dal caos.</strong><br>
@@ -101,8 +112,42 @@
         </div>
     </div>
 
-    <div style="text-align: center; color: var(--text-dim); font-size: 0.9rem;">
-        <p>💾 Puoi sempre salvare e continuare dopo.</p>
+        <div style="text-align: center; color: var(--text-dim); font-size: 0.9rem;">
+            <p>💾 Puoi sempre salvare e continuare dopo.</p>
+        </div>
     </div>
 </div>
+
+<script>
+// Check if user is logged in
+document.addEventListener('DOMContentLoaded', function() {
+    const currentUser = sessionStorage.getItem('current_user');
+    if (currentUser) {
+        document.getElementById('current-user-display').textContent = currentUser;
+        document.getElementById('logout-notice').style.display = 'block';
+        document.getElementById('onboarding-content').style.display = 'none';
+    } else {
+        document.getElementById('logout-notice').style.display = 'none';
+        document.getElementById('onboarding-content').style.display = 'block';
+    }
+});
+
+function logoutAndProceed() {
+    // Remove current user
+    sessionStorage.removeItem('current_user');
+    sessionStorage.setItem('current_user', 'Nuovo Utente');
+
+    // Update navbar
+    updateNavbar('Nuovo Utente');
+
+    // Show onboarding content
+    document.getElementById('logout-notice').style.display = 'none';
+    document.getElementById('onboarding-content').style.display = 'block';
+}
+
+function updateNavbar(userName) {
+    // Trigger a custom event to update navbar
+    window.dispatchEvent(new CustomEvent('userChanged', { detail: { userName: userName } }));
+}
+</script>
 {% endblock %}

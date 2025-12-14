@@ -5,6 +5,7 @@ from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse, Fil
 from pathlib import Path
 import json
 import yaml
+import os
 from typing import Optional, List
 from dotenv import load_dotenv
 import asyncio
@@ -84,6 +85,11 @@ def save_portfolio(user_data, html, json_data):
 async def landing(request: Request):
     """Landing page"""
     return templates.TemplateResponse("index.html", {"request": request})
+
+@app.get("/demo-settings", response_class=HTMLResponse)
+async def demo_settings(request: Request):
+    """Demo settings page for LLM configuration"""
+    return templates.TemplateResponse("demo_settings.html", {"request": request})
 
 @app.get("/onboarding", response_class=HTMLResponse)
 async def onboarding(request: Request):
@@ -703,12 +709,15 @@ async def save_correction(request: Request, profile_id: str):
         }, status_code=500)
 
 @app.get("/mind-sculptor/{profile_id}", response_class=HTMLResponse)
-async def mind_sculptor_page(request: Request, profile_id: str, from_creation: bool = False):
+async def mind_sculptor_page(request: Request, profile_id: str, from_creation: Optional[bool] = False):
     """Mind Sculptor page - Random question generator"""
+    # Check query param
+    from_creation_param = request.query_params.get('from_creation', 'false').lower() == 'true'
+
     return templates.TemplateResponse("mind_sculptor.html", {
         "request": request,
         "profile_id": profile_id,
-        "from_creation": from_creation
+        "from_creation": from_creation or from_creation_param
     })
 
 @app.get("/api/mind-sculptor/question/{profile_id}")
@@ -803,9 +812,43 @@ async def save_question_feedback(request: Request, profile_id: str):
                 feedbacks = json.load(f)
 
         # Add new feedback
-        from datetime import datetime
         feedback = {
             "question": data.get("question"),
+            "feedback": data.get("feedback"),
+            "timestamp": datetime.now().isoformat()
+        }
+        feedbacks.append(feedback)
+
+        # Save
+        with open(feedback_path, 'w', encoding='utf-8') as f:
+            json.dump(feedbacks, f, ensure_ascii=False, indent=2)
+
+        return JSONResponse({"success": True})
+
+    except Exception as e:
+        return JSONResponse({
+            "success": False,
+            "error": str(e)
+        }, status_code=500)
+
+@app.post("/api/chat-feedback/{profile_id}")
+async def save_chat_feedback(request: Request, profile_id: str):
+    """Save feedback from visitors on chat responses"""
+    try:
+        data = await request.json()
+
+        # Load existing visitor feedback
+        feedback_path = Path(f"data/visitor_feedback/{profile_id}.json")
+        feedback_path.parent.mkdir(parents=True, exist_ok=True)
+
+        feedbacks = []
+        if feedback_path.exists():
+            with open(feedback_path, 'r', encoding='utf-8') as f:
+                feedbacks = json.load(f)
+
+        # Add new feedback
+        feedback = {
+            "message_id": data.get("message_id"),
             "feedback": data.get("feedback"),
             "timestamp": datetime.now().isoformat()
         }
@@ -826,4 +869,22 @@ async def save_question_feedback(request: Request, profile_id: str):
 # Run: uvicorn main:app --reload
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    import webbrowser
+    import threading
+    import time
+
+    # Get port from environment variable or use default
+    port = int(os.getenv("PORT", 8000))
+
+    # Function to open browser after server starts
+    def open_browser():
+        time.sleep(1.5)  # Wait for server to start
+        webbrowser.open(f'http://localhost:{port}')
+
+    # Start browser opening in a separate thread
+    threading.Thread(target=open_browser, daemon=True).start()
+
+    # Run server
+    print(f"\n🚀 Starting Noofolio on http://localhost:{port}")
+    print(f"📖 Opening browser automatically...\n")
+    uvicorn.run(app, host="0.0.0.0", port=port)
