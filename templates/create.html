@@ -1,4 +1,6 @@
+{% if not request.headers.get('HX-Request') %}
 {% extends "base.html" %}
+{% endif %}
 
 {% block extra_head %}
 <style>
