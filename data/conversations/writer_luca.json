@@ -16,5 +16,23 @@
         "corrected": false
       }
     ]
+  },
+  {
+    "id": "1",
+    "session_id": "1765728950.18798",
+    "timestamp": "2025-12-14T17:15:50.187980",
+    "messages": [
+      {
+        "role": "user",
+        "content": "ciao",
+        "timestamp": "2025-12-14T17:15:50.187980"
+      },
+      {
+        "role": "assistant",
+        "content": "Ciao. \n\nSono Luca Verdi. Scrivo per chi non ha tempo di leggere.\n\nSe sei qui, immagino tu abbia una domanda o stia cercando qualcosa di specifico. Vai dritto al punto - apprezzo chi non gira intorno.\n\nCosa ti serve?",
+        "timestamp": "2025-12-14T17:15:50.187980",
+        "corrected": false
+      }
+    ]
   }
 ]

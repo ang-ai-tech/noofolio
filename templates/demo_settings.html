@@ -2,13 +2,13 @@
 
 {% block content %}
 <div class="section" style="max-width: 800px; margin: 2rem auto;">
-    <h2 class="section-title">⚙️ Configurazione Demo - Già Funzionante</h2>
-    <p class="section-subtitle">✅ La demo è già configurata con API key valide. Puoi usare tranquillamente il prodotto!</p>
+    <h2 class="section-title">⚙️ Configurazione Demo</h2>
+    <p class="section-subtitle">✅ Gestisci le tue API keys in modo sicuro</p>
 
     <div class="encouragement-box" style="margin-top: 2rem; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1)); border-left: 3px solid var(--accent-green);">
-        <h4>🎉 Demo Pronta all'Uso</h4>
-        <p><strong>Angelo ha messo a disposizione un budget di €5 su Anthropic</strong> per permettere ai giudici di testare il prodotto senza bisogno di configurare le proprie API key.</p>
-        <p style="margin-top: 0.5rem; color: var(--text-dim); font-size: 0.9rem;">💡 Se il credito dovesse finire, aggiungi la tua API key qui sotto. Le impostazioni sono già precompilate e funzionanti.</p>
+        <h4>🔒 Sicurezza</h4>
+        <p><strong>Le API keys sono salvate solo nel backend (.env file)</strong></p>
+        <p style="margin-top: 0.5rem; color: var(--text-dim); font-size: 0.9rem;">💡 Le chiavi non vengono mai esposte nel codice frontend e sono al sicuro su Git.</p>
     </div>
 
     <form id="settings-form" style="margin-top: 2rem;">
@@ -22,22 +22,22 @@
         </div>
 
         <div class="form-group" style="margin-top: 1.5rem;">
-            <label for="api_key">🔐 API Key <span style="color: var(--accent-green); font-size: 0.85rem;">(Preconfigurata)</span></label>
+            <label for="api_key">🔐 API Key <span id="key-status"></span></label>
             <input type="password" name="api_key" id="api_key"
-                   placeholder="••••••••••••••••••••••••••••"
+                   placeholder="Lascia vuoto per mantenere la chiave attuale"
                    style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
             <p class="form-help" id="provider-help" style="margin-top: 0.5rem; color: var(--text-dim); font-size: 0.9rem;">
-                ✅ API key già configurata e funzionante. Cambiala solo se necessario.
+                Inserisci una nuova chiave solo se vuoi cambiarla
             </p>
         </div>
 
         <div class="form-group" style="margin-top: 1.5rem;">
-            <label for="model">🎯 Modello <span style="color: var(--accent-green); font-size: 0.85rem;">(da config.yaml)</span></label>
+            <label for="model">🎯 Modello</label>
             <input type="text" name="model" id="model"
                    placeholder="claude-sonnet-4-5-20250929"
                    style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
             <p class="form-help" style="margin-top: 0.5rem; color: var(--text-dim); font-size: 0.9rem;">
-                ✅ Modello configurato da config.yaml. Claude Sonnet 4.5 (più recente e performante)
+                Modello LLM da utilizzare
             </p>
         </div>
 
@@ -45,15 +45,16 @@
         <div id="current-settings" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-top: 2rem;">
             <h4 style="color: var(--accent); margin-bottom: 1rem;">📊 Configurazione Attuale</h4>
             <div style="color: var(--text-muted); font-size: 0.9rem;">
-                <p><strong>Provider:</strong> <span id="current-provider">Anthropic</span></p>
-                <p><strong>API Key:</strong> <span id="current-api-key" style="color: var(--accent-green);">✅ Configurata (Angelo's budget)</span></p>
-                <p><strong>Modello:</strong> <span id="current-model">claude-sonnet-4-5-20250929</span></p>
+                <p><strong>Provider:</strong> <span id="current-provider">Caricamento...</span></p>
+                <p><strong>Anthropic API Key:</strong> <span id="current-api-anthropic">Caricamento...</span></p>
+                <p><strong>Google API Key:</strong> <span id="current-api-google">Caricamento...</span></p>
+                <p><strong>OpenAI API Key:</strong> <span id="current-api-openai">Caricamento...</span></p>
             </div>
         </div>
 
         <div class="form-actions" style="margin-top: 2rem; display: flex; gap: 1rem;">
             <button type="submit" class="btn btn-primary" style="flex: 1;">💾 Aggiorna Impostazioni</button>
-            <button type="button" onclick="resetToDefault()" class="btn btn-secondary">🔄 Ripristina Default</button>
+            <button type="button" onclick="reloadSettings()" class="btn btn-secondary">🔄 Ricarica</button>
         </div>
     </form>
 
@@ -61,147 +62,147 @@
 
     <!-- Info Box -->
     <div style="background: rgba(99, 102, 241, 0.1); border-left: 3px solid var(--primary); padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
-        <h4 style="color: var(--primary-light); margin-bottom: 0.75rem;">ℹ️ Note per i Giudici</h4>
+        <h4 style="color: var(--primary-light); margin-bottom: 0.75rem;">ℹ️ Come Funziona</h4>
         <ul style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; padding-left: 1.5rem;">
-            <li><strong>La demo è già configurata e funzionante</strong> - non serve aggiungere API key</li>
-            <li>Budget disponibile: <strong>€5 su Anthropic</strong> (sufficiente per testare tutte le funzionalità)</li>
-            <li>Se il credito finisce, è possibile aggiungere la propria API key qui</li>
-            <li>Le API key sono salvate solo nel browser (sessionStorage) e non vengono inviate a server esterni</li>
-            <li>Modello utilizzato: <code>claude-sonnet-4-5-20250929</code> (ultimo modello Claude, configurato in config.yaml)</li>
-            <li>File .env fornito nella consegna contiene le chiavi preconfigurate</li>
+            <li><strong>Le API keys sono salvate in .env sul server</strong> - mai esposte nel browser</li>
+            <li>Le chiavi vengono mascherate quando visualizzate (mostri solo gli ultimi 4 caratteri)</li>
+            <li>Quando aggiorni una chiave, viene salvata nel file .env e applicata immediatamente</li>
+            <li>Il provider viene salvato in config.yaml</li>
+            <li><strong>Nessuna API key viene mai committata su Git</strong> (.env è in .gitignore)</li>
         </ul>
     </div>
 
-    <!-- Budget Monitor -->
+    <!-- Quick Links -->
     <div style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1)); border: 1px solid var(--accent-green); padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
-        <h4 style="color: var(--accent-green); margin-bottom: 0.75rem;">💰 Budget Demo</h4>
+        <h4 style="color: var(--accent-green); margin-bottom: 0.75rem;">🔗 Ottieni API Keys Gratuite</h4>
         <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
-            Angelo ha messo a disposizione <strong>€5 di credito Anthropic</strong> per questa demo.<br>
-            Se dovesse esaurirsi durante la valutazione, ti chiediamo gentilmente di aggiungere una tua API key temporanea.<br>
-            <br>
-            <strong>Come ottenere una API key gratuita:</strong><br>
-            • Anthropic: <a href="https://console.anthropic.com/" target="_blank" style="color: var(--primary-light);">console.anthropic.com</a> (5$ di credito gratuito)<br>
-            • Google: <a href="https://makersuite.google.com/app/apikey" target="_blank" style="color: var(--primary-light);">makersuite.google.com</a> (gratuito)<br>
-            • OpenAI: <a href="https://platform.openai.com/api-keys" target="_blank" style="color: var(--primary-light);">platform.openai.com</a> (credito iniziale)
+            <strong>Opzioni disponibili:</strong><br>
+            • <a href="https://console.anthropic.com/" target="_blank" style="color: var(--primary-light);">Anthropic</a> - €5 di credito gratuito (migliore qualità)<br>
+            • <a href="https://makersuite.google.com/app/apikey" target="_blank" style="color: var(--primary-light);">Google Gemini</a> - 100% gratuito e illimitato ⭐<br>
+            • <a href="https://platform.openai.com/api-keys" target="_blank" style="color: var(--primary-light);">OpenAI</a> - Credito iniziale disponibile
         </p>
     </div>
 </div>
 
 <script>
-// Default settings from .env and config.yaml
-const DEFAULT_SETTINGS = {
-    anthropic: {
-        api_key: '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',
-        model: 'claude-sonnet-4-5-20250929'
-    },
-    google: {
-        api_key: 'AIzaSyBoXTSphNgqgPXJGxyJmOcisfuKkumq140',
-        model: 'gemini-2.0-flash'
-    },
-    openai: {
-        api_key: '',
-        model: 'gpt-4-turbo-preview'
-    }
-};
-
 // Load current settings on page load
 document.addEventListener('DOMContentLoaded', function() {
     loadCurrentSettings();
 });
 
-function loadCurrentSettings() {
-    // Get from sessionStorage or use defaults
-    const provider = sessionStorage.getItem('llm_provider') || 'anthropic';
-    const apiKey = sessionStorage.getItem('llm_api_key') || DEFAULT_SETTINGS[provider].api_key;
-    const model = sessionStorage.getItem('llm_model') || DEFAULT_SETTINGS[provider].model;
+async function loadCurrentSettings() {
+    try {
+        const response = await fetch('/api/settings/current');
+        const data = await response.json();
 
-    // Set form values
-    document.getElementById('provider').value = provider;
-    document.getElementById('api_key').value = apiKey;
-    document.getElementById('model').value = model;
+        // Update provider
+        document.getElementById('provider').value = data.provider;
+        document.getElementById('current-provider').textContent = data.provider.charAt(0).toUpperCase() + data.provider.slice(1);
 
-    // Update display
-    updateCurrentDisplay(provider, apiKey, model);
-    updateProviderInfo();
-}
+        // Update model placeholder
+        document.getElementById('model').placeholder = data.models[data.provider] || '';
 
-function updateCurrentDisplay(provider, apiKey, model) {
-    const providerName = provider.charAt(0).toUpperCase() + provider.slice(1);
-    document.getElementById('current-provider').textContent = providerName;
+        // Update API key displays
+        const anthropicKey = data.keys.anthropic;
+        const googleKey = data.keys.google;
+        const openaiKey = data.keys.openai;
 
-    if (apiKey) {
-        const masked = '••••••' + apiKey.slice(-4);
-        const isDefault = apiKey === DEFAULT_SETTINGS[provider].api_key;
-        document.getElementById('current-api-key').innerHTML = isDefault
-            ? `✅ Configurata (Angelo's budget) - ${masked}`
-            : `🔑 Personalizzata - ${masked}`;
-    } else {
-        document.getElementById('current-api-key').textContent = '❌ Non configurata';
+        document.getElementById('current-api-anthropic').innerHTML = anthropicKey.configured 
+            ? `✅ Configurata - ${anthropicKey.masked}` 
+            : '<span style="color: var(--accent-red);">❌ Non configurata</span>';
+
+        document.getElementById('current-api-google').innerHTML = googleKey.configured 
+            ? `✅ Configurata - ${googleKey.masked}` 
+            : '<span style="color: var(--accent-red);">❌ Non configurata</span>';
+
+        document.getElementById('current-api-openai').innerHTML = openaiKey.configured 
+            ? `✅ Configurata - ${openaiKey.masked}` 
+            : '<span style="color: var(--accent-red);">❌ Non configurata</span>';
+
+        updateProviderInfo();
+
+    } catch (error) {
+        console.error('Error loading settings:', error);
+        showMessage('❌ Errore nel caricamento delle impostazioni', 'error');
     }
-
-    document.getElementById('current-model').textContent = model || 'Default';
 }
 
 function updateProviderInfo() {
     const provider = document.getElementById('provider').value;
     const helpText = document.getElementById('provider-help');
 
-    const isDefault = document.getElementById('api_key').value === DEFAULT_SETTINGS[provider].api_key
-                   || document.getElementById('api_key').value === '';
+    const providerInfo = {
+        'anthropic': '💡 Claude Sonnet 4.5 - Migliore qualità, €5 credito gratuito',
+        'google': '🎉 Gemini 2.0 Flash - Completamente gratuito e veloce',
+        'openai': '💳 GPT-4 - Ottima qualità, a pagamento dopo credito iniziale'
+    };
 
-    if (isDefault) {
-        helpText.innerHTML = '✅ API key già configurata e funzionante. Cambiala solo se necessario.';
-    } else {
-        helpText.innerHTML = '🔑 Stai usando una API key personalizzata.';
-    }
-
-    // Update model placeholder
-    document.getElementById('model').placeholder = DEFAULT_SETTINGS[provider].model;
+    helpText.innerHTML = providerInfo[provider] || 'Seleziona un provider';
 }
 
-document.getElementById('settings-form').addEventListener('submit', function(e) {
+async function reloadSettings() {
+    showMessage('🔄 Ricaricamento...', 'info');
+    await loadCurrentSettings();
+    showMessage('✅ Impostazioni ricaricate', 'success');
+}
+
+document.getElementById('settings-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const provider = document.getElementById('provider').value;
-    const apiKey = document.getElementById('api_key').value.trim() || DEFAULT_SETTINGS[provider].api_key;
-    const model = document.getElementById('model').value.trim() || DEFAULT_SETTINGS[provider].model;
+    const apiKey = document.getElementById('api_key').value.trim();
+    const model = document.getElementById('model').value.trim();
 
-    // Save to sessionStorage
-    sessionStorage.setItem('llm_provider', provider);
-    sessionStorage.setItem('llm_api_key', apiKey);
-    sessionStorage.setItem('llm_model', model);
+    try {
+        const response = await fetch('/api/settings/update', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                provider: provider,
+                api_key: apiKey,
+                model: model
+            })
+        });
 
-    // Update display
-    updateCurrentDisplay(provider, apiKey, model);
+        const data = await response.json();
 
-    showMessage('✅ Impostazioni aggiornate con successo!', 'success');
+        if (data.success) {
+            showMessage('✅ Impostazioni aggiornate con successo! Le modifiche sono attive.', 'success');
+            // Clear API key input
+            document.getElementById('api_key').value = '';
+            // Reload to show updated values
+            setTimeout(() => loadCurrentSettings(), 1000);
+        } else {
+            showMessage('❌ Errore: ' + data.error, 'error');
+        }
+
+    } catch (error) {
+        console.error('Error updating settings:', error);
+        showMessage('❌ Errore di connessione', 'error');
+    }
 });
-
-function resetToDefault() {
-    const provider = document.getElementById('provider').value;
-
-    // Reset to defaults
-    sessionStorage.setItem('llm_provider', provider);
-    sessionStorage.setItem('llm_api_key', DEFAULT_SETTINGS[provider].api_key);
-    sessionStorage.setItem('llm_model', DEFAULT_SETTINGS[provider].model);
-
-    // Reload display
-    loadCurrentSettings();
-
-    showMessage('🔄 Impostazioni ripristinate ai valori di default', 'success');
-}
 
 function showMessage(text, type) {
     const messageDiv = document.getElementById('message');
     messageDiv.textContent = text;
     messageDiv.style.display = 'block';
-    messageDiv.style.background = type === 'success' ? 'rgba(34, 197, 94, 0.2)' : 'rgba(239, 68, 68, 0.2)';
-    messageDiv.style.color = type === 'success' ? 'var(--accent-green)' : 'var(--accent-red)';
-    messageDiv.style.border = type === 'success' ? '1px solid var(--accent-green)' : '1px solid var(--accent-red)';
+    
+    const colors = {
+        'success': {bg: 'rgba(34, 197, 94, 0.2)', color: 'var(--accent-green)', border: 'var(--accent-green)'},
+        'error': {bg: 'rgba(239, 68, 68, 0.2)', color: 'var(--accent-red)', border: 'var(--accent-red)'},
+        'info': {bg: 'rgba(59, 130, 246, 0.2)', color: 'var(--primary)', border: 'var(--primary)'}
+    };
 
-    setTimeout(() => {
-        messageDiv.style.display = 'none';
-    }, 3000);
+    const style = colors[type] || colors.info;
+    messageDiv.style.background = style.bg;
+    messageDiv.style.color = style.color;
+    messageDiv.style.border = `1px solid ${style.border}`;
+
+    if (type !== 'info') {
+        setTimeout(() => {
+            messageDiv.style.display = 'none';
+        }, 5000);
+    }
 }
 </script>
 {% endblock %}

@@ -91,6 +91,120 @@ async def demo_settings(request: Request):
     """Demo settings page for LLM configuration"""
     return templates.TemplateResponse("demo_settings.html", {"request": request})
 
+"""
+API Endpoints per gestire le impostazioni in modo sicuro
+Aggiungi questi endpoint a main.py dopo l'endpoint /demo-settings
+"""
+
+@app.get("/api/settings/current")
+async def get_current_settings():
+    """Get current LLM settings (with masked API keys)"""
+    def mask_key(key: str) -> str:
+        """Mask API key showing only last 4 chars"""
+        if not key or len(key) < 8:
+            return ""
+        return "•" * (len(key) - 4) + key[-4:]
+    
+    anthropic_key = os.getenv("ANTHROPIC_API_KEY", "")
+    google_key = os.getenv("GOOGLE_API_KEY", "")
+    openai_key = os.getenv("OPENAI_API_KEY", "")
+    
+    return JSONResponse({
+        "provider": LLM_PROVIDER,
+        "models": CONFIG["llm"]["models"],
+        "keys": {
+            "anthropic": {
+                "masked": mask_key(anthropic_key),
+                "configured": bool(anthropic_key)
+            },
+            "google": {
+                "masked": mask_key(google_key),
+                "configured": bool(google_key)
+            },
+            "openai": {
+                "masked": mask_key(openai_key),
+                "configured": bool(openai_key)
+            }
+        }
+    })
+
+
+@app.post("/api/settings/update")
+async def update_settings(request: Request):
+    """Update LLM settings and .env file"""
+    try:
+        data = await request.json()
+        provider = data.get("provider")
+        api_key = data.get("api_key", "").strip()
+        model = data.get("model", "").strip()
+        
+        if not provider:
+            raise HTTPException(status_code=400, detail="Provider is required")
+        
+        # Update .env file
+        env_path = Path(".env")
+        
+        # Read current .env
+        env_lines = []
+        if env_path.exists():
+            with open(env_path, 'r', encoding='utf-8') as f:
+                env_lines = f.readlines()
+        else:
+            # Create basic .env structure
+            env_lines = [
+                "# API Keys per Noofolio\n",
+                "# Le chiavi qui sono quelle configurate\n",
+                "\n",
+                "ANTHROPIC_API_KEY=\n",
+                "GOOGLE_API_KEY=\n",
+                "OPENAI_API_KEY=\n"
+            ]
+        
+        # Update API key if provided
+        if api_key:
+            key_name = f"{provider.upper()}_API_KEY"
+            updated = False
+            
+            for i, line in enumerate(env_lines):
+                if line.startswith(f"{key_name}="):
+                    env_lines[i] = f"{key_name}={api_key}\n"
+                    updated = True
+                    break
+            
+            if not updated:
+                env_lines.append(f"\n{key_name}={api_key}\n")
+            
+            # Update environment variable immediately
+            os.environ[key_name] = api_key
+        
+        # Save .env
+        with open(env_path, 'w', encoding='utf-8') as f:
+            f.writelines(env_lines)
+        
+        # Update config.yaml for provider
+        if provider:
+            CONFIG["llm"]["provider"] = provider
+            with open(CONFIG_PATH, 'w', encoding='utf-8') as f:
+                yaml.dump(CONFIG, f, allow_unicode=True)
+        
+        # Update global LLM_PROVIDER
+        global LLM_PROVIDER
+        LLM_PROVIDER = provider
+        
+        return JSONResponse({
+            "success": True,
+            "message": "Settings updated successfully. Changes applied immediately.",
+            "provider": provider
+        })
+        
+    except Exception as e:
+        import traceback
+        return JSONResponse({
+            "success": False,
+            "error": str(e),
+            "traceback": traceback.format_exc()
+        }, status_code=500)
+
 @app.get("/onboarding", response_class=HTMLResponse)
 async def onboarding(request: Request):
     """Onboarding page - choose Express or Deep mode"""
