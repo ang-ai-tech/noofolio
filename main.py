@@ -866,6 +866,45 @@ async def save_chat_feedback(request: Request, profile_id: str):
             "error": str(e)
         }, status_code=500)
 
+@app.post("/api/archetype-customization/{profile_id}")
+async def save_archetype_customization(request: Request, profile_id: str):
+    """Save user's archetype customization preferences"""
+    try:
+        data = await request.json()
+
+        # Load profile
+        profiles_dir = Path("data/profiles")
+        json_path = profiles_dir / f"{profile_id}.json"
+
+        if not json_path.exists():
+            raise HTTPException(status_code=404, detail="Profile not found")
+
+        with open(json_path, 'r', encoding='utf-8') as f:
+            portfolio_data = json.load(f)
+
+        # Update customization preferences
+        if 'customization' not in portfolio_data:
+            portfolio_data['customization'] = {}
+
+        portfolio_data['customization']['primary_color'] = data.get('primary_color', '#6366f1')
+        portfolio_data['customization']['font_family'] = data.get('font_family', 'Inter')
+        portfolio_data['customization']['archetype_feedback'] = data.get('archetype_feedback', '')
+        portfolio_data['customization']['last_updated'] = datetime.now().isoformat()
+
+        # Save updated profile
+        with open(json_path, 'w', encoding='utf-8') as f:
+            json.dump(portfolio_data, f, ensure_ascii=False, indent=2)
+
+        return JSONResponse({"success": True})
+
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        return JSONResponse({
+            "success": False,
+            "error": str(e)
+        }, status_code=500)
+
 # Run: uvicorn main:app --reload
 if __name__ == "__main__":
     import uvicorn

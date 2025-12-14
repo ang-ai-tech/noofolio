@@ -21,9 +21,38 @@
 
         <!-- 2. CV Quick -->
         <div class="form-group">
-            <label>2️⃣ Il tuo background in 3 righe *</label>
-            <textarea name="cv_content" rows="4" required 
-                      placeholder="Ruolo attuale, anni di esperienza, specializzazione principale..."></textarea>
+            <label>2️⃣ Il tuo background *</label>
+            <div class="cv-options" style="margin-top: 0.5rem;">
+                <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="radio" name="cv_type" value="text" checked onchange="toggleExpressCVInput('text')">
+                        <span>Scrivi (3 righe)</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="radio" name="cv_type" value="upload" onchange="toggleExpressCVInput('upload')">
+                        <span>Allega CV (PDF/Word)</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="radio" name="cv_type" value="link" onchange="toggleExpressCVInput('link')">
+                        <span>Link CV</span>
+                    </label>
+                </div>
+
+                <div id="express-cv-text" style="display: block;">
+                    <textarea name="cv_content" rows="4"
+                              placeholder="Ruolo attuale, anni di esperienza, specializzazione principale..."></textarea>
+                </div>
+
+                <div id="express-cv-upload" style="display: none;">
+                    <input type="file" name="cv_file" accept=".pdf,.doc,.docx"
+                           style="padding: 0.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); width: 100%;">
+                </div>
+
+                <div id="express-cv-link" style="display: none;">
+                    <input type="url" name="cv_link" placeholder="https://drive.google.com/... o altro link"
+                           style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text);">
+                </div>
+            </div>
         </div>
 
         <!-- 3. Superpotere -->
@@ -47,10 +76,30 @@
                       placeholder="Dove sei insostituibile rispetto all'AI..."></textarea>
         </div>
 
-        <!-- Link (opzionale) -->
+        <!-- Links (opzionali) -->
         <div class="form-group">
-            <label>🔗 Un link (LinkedIn, GitHub, Portfolio...)</label>
-            <input type="url" name="main_link" placeholder="https://...">
+            <label>🔗 Link professionali (opzionali)</label>
+            <p class="form-help">LinkedIn, GitHub, Portfolio, ecc.</p>
+
+            <div id="express-links-container">
+                <div class="link-row" style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <input type="url" name="link_url[]" placeholder="https://linkedin.com/in/..."
+                           style="flex: 2; padding: 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text);">
+                    <select name="link_type[]"
+                            style="flex: 1; padding: 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text);">
+                        <option value="LinkedIn">LinkedIn</option>
+                        <option value="GitHub">GitHub</option>
+                        <option value="Behance">Behance</option>
+                        <option value="Portfolio">Portfolio</option>
+                        <option value="Altro">Altro</option>
+                    </select>
+                    <button type="button" onclick="removeExpressLink(this)" class="btn-icon" style="padding: 0.75rem; background: var(--accent-red); color: white; border: none; border-radius: 8px; cursor: pointer;">✕</button>
+                </div>
+            </div>
+
+            <button type="button" onclick="addExpressLink()" class="btn btn-secondary" style="margin-top: 0.5rem; font-size: 0.9rem; padding: 0.5rem 1rem;">
+                ➕ Aggiungi link
+            </button>
         </div>
 
         <div class="encouragement-box">
@@ -66,4 +115,37 @@
 
     <div id="result" style="margin-top: 2rem;"></div>
 </div>
+
+<script>
+function toggleExpressCVInput(type) {
+    document.getElementById('express-cv-text').style.display = type === 'text' ? 'block' : 'none';
+    document.getElementById('express-cv-upload').style.display = type === 'upload' ? 'block' : 'none';
+    document.getElementById('express-cv-link').style.display = type === 'link' ? 'block' : 'none';
+}
+
+function addExpressLink() {
+    const container = document.getElementById('express-links-container');
+    const newRow = document.createElement('div');
+    newRow.className = 'link-row';
+    newRow.style.cssText = 'display: flex; gap: 0.5rem; margin-bottom: 0.5rem;';
+    newRow.innerHTML = `
+        <input type="url" name="link_url[]" placeholder="https://..."
+               style="flex: 2; padding: 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text);">
+        <select name="link_type[]"
+                style="flex: 1; padding: 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text);">
+            <option value="LinkedIn">LinkedIn</option>
+            <option value="GitHub">GitHub</option>
+            <option value="Behance">Behance</option>
+            <option value="Portfolio">Portfolio</option>
+            <option value="Altro">Altro</option>
+        </select>
+        <button type="button" onclick="removeExpressLink(this)" class="btn-icon" style="padding: 0.75rem; background: var(--accent-red); color: white; border: none; border-radius: 8px; cursor: pointer;">✕</button>
+    `;
+    container.appendChild(newRow);
+}
+
+function removeExpressLink(button) {
+    button.parentElement.remove();
+}
+</script>
 {% endblock %}
