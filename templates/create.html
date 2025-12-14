@@ -430,7 +430,7 @@
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
+            <button type="button" class="btn btn-secondary" onclick="goBackStep(1)">← Indietro</button>
             <button type="submit" class="btn btn-primary">Avanti →</button>
         </div>
     </form>
@@ -456,7 +456,7 @@
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
+            <button type="button" class="btn btn-secondary" onclick="goBackStep(2)">← Indietro</button>
             <button type="submit" class="btn btn-primary">Avanti →</button>
         </div>
     </form>
@@ -482,7 +482,7 @@
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
+            <button type="button" class="btn btn-secondary" onclick="goBackStep(3)">← Indietro</button>
             <button type="submit" class="btn btn-primary">Avanti →</button>
         </div>
     </form>
@@ -520,7 +520,7 @@
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
+            <button type="button" class="btn btn-secondary" onclick="goBackStep(4)">← Indietro</button>
             <button type="submit" class="btn btn-primary">Avanti →</button>
         </div>
     </form>
@@ -552,7 +552,7 @@
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
+            <button type="button" class="btn btn-secondary" onclick="goBackStep(5)">← Indietro</button>
             <button type="submit" class="btn btn-primary">Avanti →</button>
         </div>
     </form>
@@ -583,7 +583,7 @@
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
+            <button type="button" class="btn btn-secondary" onclick="goBackStep(6)">← Indietro</button>
             <button type="submit" class="btn btn-primary">Avanti →</button>
         </div>
     </form>
@@ -609,7 +609,7 @@
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
+            <button type="button" class="btn btn-secondary" onclick="goBackStep(7)">← Indietro</button>
             <button type="submit" class="btn btn-primary">Avanti →</button>
         </div>
     </form>
@@ -644,7 +644,7 @@
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="history.back()">← Indietro</button>
+            <button type="button" class="btn btn-secondary" onclick="goBackStep(8)">← Indietro</button>
             <button type="submit" class="btn btn-primary">🚀 Genera Noofolio</button>
         </div>
     </form>
@@ -686,4 +686,140 @@
 
     </div><!-- end step-content -->
 </div><!-- end creation-layout -->
+
+<script>
+// Salva i dati del form corrente in localStorage prima di cambiare step
+function saveCurrentFormData() {
+    const currentForm = document.querySelector('.step-content form');
+    if (!currentForm) return;
+
+    const formData = new FormData(currentForm);
+    const currentStep = {{ step }};
+    const data = {};
+
+    for (let [key, value] of formData.entries()) {
+        if (key.endsWith('[]')) {
+            // Array fields (like links)
+            if (!data[key]) data[key] = [];
+            data[key].push(value);
+        } else {
+            data[key] = value;
+        }
+    }
+
+    // Salva in localStorage
+    const savedData = JSON.parse(localStorage.getItem('noofolio_temp_data') || '{}');
+    savedData[`step_${currentStep}`] = data;
+    localStorage.setItem('noofolio_temp_data', JSON.stringify(savedData));
+}
+
+// Funzione per tornare indietro
+function goBackStep(targetStep) {
+    // Salva i dati correnti prima di andare indietro
+    saveCurrentFormData();
+
+    // Crea un form nascosto per fare POST allo step precedente
+    const form = document.createElement('form');
+    form.method = 'GET';
+    form.action = '/create';
+
+    // Aggiunge un input nascosto con lo step target (se il backend lo supporta)
+    // Altrimenti naviga semplicemente a /create che mostrerà lo step dalla sessione
+
+    // Per ora, dato che non possiamo modificare il backend,
+    // dobbiamo fare un workaround: simulare un click sul form dello step precedente
+    // Ma la soluzione più semplice è ricaricare /create e poi usare HTMX per caricare lo step
+
+    // Salviamo in localStorage quale step vogliamo caricare
+    localStorage.setItem('noofolio_target_step', targetStep);
+
+    // Ricarichiamo la pagina /create
+    window.location.href = '/create';
+}
+
+// Ripristina i dati salvati quando la pagina si carica
+document.addEventListener('DOMContentLoaded', function() {
+    // Controlla se dobbiamo navigare a uno step specifico
+    const targetStep = localStorage.getItem('noofolio_target_step');
+    const currentStep = {{ step }};
+
+    if (targetStep && parseInt(targetStep) !== currentStep) {
+        // Rimuovi il target step salvato
+        localStorage.removeItem('noofolio_target_step');
+
+        // Simula un submit del form per andare allo step target
+        // Creiamo un form temporaneo che fa POST allo step precedente
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = `/create/step/${targetStep}`;
+
+        // Aggiungi i dati salvati per questo step (se esistono)
+        const savedData = JSON.parse(localStorage.getItem('noofolio_temp_data') || '{}');
+        const stepData = savedData[`step_${targetStep}`];
+
+        if (stepData) {
+            Object.keys(stepData).forEach(key => {
+                const value = stepData[key];
+                if (Array.isArray(value)) {
+                    value.forEach(v => {
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = key;
+                        input.value = v;
+                        form.appendChild(input);
+                    });
+                } else {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = key;
+                    input.value = value;
+                    form.appendChild(input);
+                }
+            });
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+        return;
+    }
+
+    // Altrimenti, ripristina i dati salvati per lo step corrente
+    const savedData = JSON.parse(localStorage.getItem('noofolio_temp_data') || '{}');
+    const stepData = savedData[`step_${currentStep}`];
+
+    if (stepData) {
+        // Riempi i campi del form con i dati salvati
+        Object.keys(stepData).forEach(key => {
+            const value = stepData[key];
+
+            if (Array.isArray(value)) {
+                // Gestisci array (come i link)
+                const inputs = document.querySelectorAll(`[name="${key}"]`);
+                inputs.forEach((input, index) => {
+                    if (value[index]) input.value = value[index];
+                });
+            } else {
+                const input = document.querySelector(`[name="${key}"]`);
+                if (input) {
+                    if (input.type === 'radio' || input.type === 'checkbox') {
+                        input.checked = (input.value === value);
+                    } else {
+                        input.value = value;
+                    }
+                }
+            }
+        });
+    }
+});
+
+// Salva i dati anche quando si va avanti (submit del form)
+document.addEventListener('DOMContentLoaded', function() {
+    const forms = document.querySelectorAll('.step-content form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function() {
+            saveCurrentFormData();
+        });
+    });
+});
+</script>
 {% endblock %}
